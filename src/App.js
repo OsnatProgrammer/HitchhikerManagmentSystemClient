@@ -1,16 +1,20 @@
 import logo from './logo.svg';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 import './App.css';
+import AppRoutes from './appRoutes';
+import counterSlice from './features/counterSlice';
 
+const myStore = configureStore({
+  reducer: {
+    counterSlice
+  }
+})
 function App() {
   return (
-    <BrowserRouter>
-          <Routes>
-          {/* <Route path="" element={} /> */}
-
-          </Routes>
-
-    </BrowserRouter>
+    <Provider store={myStore}>
+      <AppRoutes />
+    </Provider>
   );
 }
 
