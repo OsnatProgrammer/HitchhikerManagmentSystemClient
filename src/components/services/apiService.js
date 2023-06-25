@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const API_URL = "http://localhost:3001"
-export const TOKEN_NAME = "HITCHHIKER_TOKEN"
+export const TOKEN_NAME = "USER_TOKEN"
+export const CURRENT_USER="USER" 
 
 export const doApiGet = async(_url) => {
   try{
