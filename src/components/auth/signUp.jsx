@@ -38,12 +38,6 @@ export default function SignUp() {
         }
     }
 
-    // name: Joi.string().min(2).max(99).required(),
-    // email: Joi.string().min(2).max(99).email().required(),
-    // address: Joi.string().min(2).max(99).required(),
-    // gender: Joi.string().min(4).max(6).required(),
-    // password: Joi.string().min(5).max(8).required(),
-
     let nameRef = register("name", { required: true, minLength: 2 });
     let emailRef = register("email", {
         required: true,

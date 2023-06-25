@@ -8,13 +8,6 @@ export default function UserNav() {
                 <a className="navbar-brand" href="#">Logo</a>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                    {/* <Route path='/user/myInfo' element={< MyInfo />} />
-                    <Route path='/user/nearbyRides' element={< NearbyRides />} />
-                    <Route path='/user/rideOffer' element={< RideOffer />} />
-                    <Route path='/user/rideRequest' element={< RideRequest />} />
-                    <Route path='/user/myRides' element={< MyRides/>} />
-                    <Route path='/user/messages' element={< Messages />} />
-                    <Route path='/user/ridesHistory' element={< RidesHistory />} /> */}
                         <Link className="nav-link active" aria-current="page" to={"/user/myInfo"}>My Info</Link>
                         <Link className="nav-link active" aria-current="page" to={"/user/rideOffer"}>Ride Offer</Link>
                         <Link className="nav-link active" aria-current="page" to={"/user/rideRequest"}>Ride Request</Link>
