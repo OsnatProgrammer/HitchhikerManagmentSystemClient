@@ -1,9 +1,12 @@
 import React from 'react'
-import Login from '../components/auth/login'
-import Home from '../components/auth/home'
+import Header from '../components/general_comps/header'
+import { Outlet } from 'react-router-dom'
 
 export default function GeneralLayout() {
     return (
-        <Home/>
+        <>
+            <Header />
+            <Outlet />
+        </>
     )
 }

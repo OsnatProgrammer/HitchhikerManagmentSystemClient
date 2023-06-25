@@ -24,12 +24,12 @@ export default function Login() {
       localStorage.setItem(TOKEN_NAME, resp.data.token);
       localStorage.setItem(CURRENT_USER, JSON.stringify(resp.data.user));
       // לשגר לעמוד של רשימת המשתמשים
-
-      if (resp.token) {
-        if (resp.user.role.includes("admin")) {
+      if (resp.data.token) {
+        
+        if (resp.data.user.role.includes("admin")) {
           nav("/manager");
         }
-        else if (resp.user.role.includes("user"))
+        else if (resp.data.user.role.includes("user"))
           nav("/user");
 
         window.location.reload();
@@ -61,7 +61,7 @@ let passwordRef = register("password", { required: true, minLength: 3 });
 return (
     <>
   <div className='container'>
-    <h1 className='text-center'>Log in to admin</h1>
+    <h1 className='text-center'>Login</h1>
     <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto'>
       <label>Email:</label>
       <input {...emailRef} type="text" className='form-control' />
