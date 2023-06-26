@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-function RadioButtons() {
-  const [selectedOption, setSelectedOption] = useState('');
+const SelectGender = (props) => {
+  const [selectedOption, setSelectedOption] = useState(props.defaultValue);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -12,36 +12,24 @@ function RadioButtons() {
       <label>
         <input
           type="radio"
-          value="option1"
-          checked={selectedOption === 'option1'}
+          value="male"
+          checked={selectedOption === 'male'}
           onChange={handleOptionChange}
         />
-        Option 1
+        Male
       </label>
 
       <label>
         <input
           type="radio"
-          value="option2"
-          checked={selectedOption === 'option2'}
+          value="female"
+          checked={selectedOption === 'female'}
           onChange={handleOptionChange}
         />
-        Option 2
+        Female
       </label>
-
-      <label>
-        <input
-          type="radio"
-          value="option3"
-          checked={selectedOption === 'option3'}
-          onChange={handleOptionChange}
-        />
-        Option 3
-      </label>
-
-      <p>Selected option: {selectedOption}</p>
     </div>
   );
-}
+};
 
-export default RadioButtons;
+export default SelectGender;
