@@ -128,7 +128,7 @@ const MyInfo = () => {
             />
 
             <SelectGender
-              label="Gender"
+              label={" Gender "}
               register={register}
               errors={errors}
               defaultValue={user.gender} // Assuming `user.gender` contains the gender from the database

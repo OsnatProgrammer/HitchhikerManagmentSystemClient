@@ -50,7 +50,7 @@ export default function SignUp() {
     return (
         <>
             <div className='container'>
-                <h1 className='text-center'>Sign up</h1>
+                <h1 className='text-center'>CREATE AN ACCOUNT</h1>
                 <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto'>
                     <label>Name:</label>
                     <input {...nameRef} type="text" className='form-control' />
@@ -72,7 +72,8 @@ export default function SignUp() {
                     <input {...passwordRef} type="text" className='form-control' />
                     {errors.password && <div className="text-danger">Enter min 3 charts password</div>}
 
-                    <button type='submit' className='btn btn-dark mt-3'>Log in to system</button>
+                    <div>By creating an account, I consent to the processing of my personal data in accordance of the <span className='fw-bold'>PRIVACY POLICY</span></div>
+                    <button type='submit' className='btn btn-dark mt-3'>CREATE</button>
                 </form>
             </div>
         </>
