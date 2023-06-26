@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { API_URL, doApiTukenGet, TOKEN_NAME } from "../../services/servise"
+import { API_URL, doApiTukenGet, TOKEN_NAME } from "../components/services/apiService"
 
 
 
 export const getUserInfo = createAsyncThunk(
     "user,getUserInfo", async (dispatch, getState) => {
         if (localStorage.getItem(TOKEN_NAME)) {
-            let data = await doApiTukenGet(API_URL + '/users/checkToken')
+            let data = await doApiTukenGet(API_URL + '/users/myInfo')
             if (!data.err) {
-
+                console.log(data)
                 return data.data;
             } else {
                 return null
