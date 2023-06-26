@@ -14,6 +14,7 @@ import InputHouseNumber from '../inputs/inputHouseNumber';
 import SelectCity from '../inputs/selectCity';
 import SelectCountry from '../inputs/selectCountry';
 import InputEmail from '../inputs/inputEmail';
+import SelectGender from '../inputs/selectGender';
 
 const MyInfo = () => {
 
@@ -91,7 +92,7 @@ const MyInfo = () => {
         <div className='flex-col text-center'>
 
           <h2 className="mb-2 text-3xl font-bold tracking-tight text-purple-300">
-            See your details
+            Your Personal details
           </h2>
           <button className="mt-3 tracking-tight text-purple-500 bg-red-200 rounded-full p-2" onClick={() => {
             if (isChangeAddress)
@@ -100,15 +101,14 @@ const MyInfo = () => {
               setIsChangeAddress(true)
           }}>change address</button>
         </div>
-        {user && <form onSubmit={handleSubmit(onSub)} className="mt-8 space-y-6" action="#" method="POST">
-          <div className="-space-y-px rounded-md shadow-sm">
-
+        {user && <form onSubmit={handleSubmit(onSub)} className="col-md-6 p-3 shadow mx-auto" action="#" method="POST">
+          <div className="-space-y-px rounded-md shadow-sm p-3">
             <InputFirstName
               label={" First Name "}
               register={register}
               errors={errors}
               defaultValue={user.fullName.firstName}
-              className={"relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"}
+              className={"relative m-2 block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"}
             />
 
             <InputLastName
@@ -116,17 +116,23 @@ const MyInfo = () => {
               register={register}
               errors={errors}
               defaultValue={user.fullName.lastName}
-              className={"relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"}
+              className={"relative m-2 block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"}
             />
-
-
 
             <InputEmail
               label={" Email "}
               register={register}
               errors={errors}
               defaultValue={user.email}
-              className={"relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"}
+              className={"relative m-2 block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"}
+            />
+
+            <SelectGender
+              label="Gender"
+              register={register}
+              errors={errors}
+              defaultValue={user.gender} // Assuming `user.gender` contains the gender from the database
+              className="relative m-2 block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
 
 

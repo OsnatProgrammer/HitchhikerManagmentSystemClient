@@ -16,7 +16,7 @@ const InputEmail = (props) => {
 
     return (
         <>
-            <div className="col-span-6">
+            <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                    {label}
                 </label>
