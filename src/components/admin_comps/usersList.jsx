@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER, doApiMethod } from '../services/apiService';
+import { doApiGet, API_URL, doApiMethod } from '../services/apiService';
 
 
 export const getUsersList = async () => {
@@ -21,8 +20,6 @@ export const getUsersList = async () => {
 export default function UsersList() {
 
   const [users, setUsers] = useState([]);
-  const [isOn, setIsOn] = useState(false);
-
 
   useEffect(() => {
     async function fetchUsers() {
@@ -35,7 +32,7 @@ export default function UsersList() {
     }
 
     fetchUsers();
-  }, []);
+  }, [users]);
 
 
   const doApiStatus = async (_user) => {
@@ -44,7 +41,6 @@ export default function UsersList() {
     try {
       _user.status = !_user.status
       await doApiMethod(url, "PATCH", _user);
-      window.location.reload();
     }
     catch (err) {
       console.log(err.response);

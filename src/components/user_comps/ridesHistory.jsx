@@ -14,7 +14,6 @@ export const getAllRides = async () => {
     try {
         const url = API_URL + "/rides/getAllRidesRequest";
         const response = await doApiGet(url);
-
         const rides = response.data.arr;
         console.log(rides);
         return rides;
