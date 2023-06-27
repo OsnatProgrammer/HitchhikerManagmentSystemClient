@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
-import {GoogleMap} from 'react-google-maps';
+// import {GoogleMap} from 'react-google-maps';
 
 // import $ from 'jquery';
 // import 'bootstrap/dist/css/bootstrap.css';
