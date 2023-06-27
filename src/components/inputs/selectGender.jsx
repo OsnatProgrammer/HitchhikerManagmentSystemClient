@@ -1,47 +1,51 @@
 import React, { useState } from 'react';
 
-function RadioButtons() {
-  const [selectedOption, setSelectedOption] = useState('');
+const SelectGender = (props) => {
+    const [selectedOption, setSelectedOption] = useState(props.defaultValue);
+    const label = props.label
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
-  return (
-    <div>
-      <label>
-        <input
-          type="radio"
-          value="option1"
-          checked={selectedOption === 'option1'}
-          onChange={handleOptionChange}
-        />
-        Option 1
-      </label>
+    return (
+        <div className='d-flex justify-content-between'>
+            <label htmlFor="gender" className="block text-sm font-medium text-gray-700">
+                {label}
+            </label>
 
-      <label>
-        <input
-          type="radio"
-          value="option2"
-          checked={selectedOption === 'option2'}
-          onChange={handleOptionChange}
-        />
-        Option 2
-      </label>
+            <label>
+                <input
+                    type="radio"
+                    value="male"
+                    checked={selectedOption === 'male'}
+                    onChange={handleOptionChange}
+                />
+                Male
+            </label>
 
-      <label>
-        <input
-          type="radio"
-          value="option3"
-          checked={selectedOption === 'option3'}
-          onChange={handleOptionChange}
-        />
-        Option 3
-      </label>
+            <label>
+                <input
+                    type="radio"
+                    value="female"
+                    checked={selectedOption === 'female'}
+                    onChange={handleOptionChange}
+                />
+                Female
+            </label>
 
-      <p>Selected option: {selectedOption}</p>
-    </div>
-  );
-}
+            <label>
+                <input
+                    type="radio"
+                    value="another"
+                    checked={selectedOption === 'another'}
+                    onChange={handleOptionChange}
+                />
+                Another
+            </label>
+        </div>
 
-export default RadioButtons;
+    );
+};
+
+export default SelectGender;
