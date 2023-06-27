@@ -16,6 +16,7 @@ export const getRidesList = async () => {
   }
 };
 
+
 //Travel requests
 export const getAllRidesRequest = async () => {
   try {
