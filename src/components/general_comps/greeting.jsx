@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { CURRENT_USER } from '../services/apiService';
-import classes from './general.css';
 
 export default function Greeting() {
     const [greeting, setGreeting] = useState('');

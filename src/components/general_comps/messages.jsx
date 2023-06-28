@@ -61,7 +61,7 @@ export default function Messages() {
       <h1>Messages I Sent</h1>
 
       {messages.length > 0 ? (
-        <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
+        <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">
             <tr>
               <th>Date</th>
@@ -86,7 +86,7 @@ export default function Messages() {
 
       <h1>Messages I Got</h1>
       {receivedMessages.length > 0 ? (
-        <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
+        <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">
             <tr>
               <th>Date</th>
@@ -108,7 +108,6 @@ export default function Messages() {
         <p>No Messages available</p>
       )}
 
-<button className='btn btn-dark'>+ NEW MESSAGE</button>
     </div>
   );
 }
