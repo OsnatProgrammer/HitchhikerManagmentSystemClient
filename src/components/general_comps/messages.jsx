@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
-
+import MessageItem from './messageItem';
 const user = JSON.parse(localStorage.getItem(CURRENT_USER))
 
 export const getMessageByIdSend = async (_idSend) => {
@@ -53,7 +53,7 @@ export default function Messages() {
   }, []);
 
   // const displayArrInTable=(_arr)=>{
-   
+
   // }
 
   return (
@@ -61,38 +61,32 @@ export default function Messages() {
       <h1>Messages I Sent</h1>
 
       {messages.length > 0 ? (
-      <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
-        <thead className="thead-dark">
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>User Received</th>
-            <th>MessageDetails</th>
-            <th>Rides id</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {messages.map((message) => (
-            <tr key={message._id}>
-              <td>{new Date(message.date_created).toLocaleDateString()}</td>
-              <td>{new Date(message.date_created).toLocaleTimeString()}</td>
-              <td>{message.user_idReceive}</td>
-              <td>{message.messageDetails}</td>
-              <td>{message.rides_id}</td>
-              <td>{JSON.stringify(message.status)}</td>
+        <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
+          <thead className="thead-dark">
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>User Received</th>
+              <th>MessageDetails</th>
+              <th>Rides id</th>
+              <th>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    ) : (
-      <p>No Messages available</p>
-    )}
+          </thead>
+          <tbody>
+            {messages.map((message) => (
+              <MessageItem key={message.id} message={message} />
+
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No Messages available</p>
+      )}
 
 
       <h1>Messages I Got</h1>
       {receivedMessages.length > 0 ? (
-        <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
+        <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">
             <tr>
               <th>Date</th>
@@ -105,21 +99,14 @@ export default function Messages() {
           </thead>
           <tbody>
             {receivedMessages.map((message) => (
-              <tr key={message._id}>
-                <td>{new Date(message.date_created).toLocaleDateString()}</td>
-                <td>{new Date(message.date_created).toLocaleTimeString()}</td>
-                <td>{message.user_idReceive}</td>
-                <td>{message.messageDetails}</td>
-                <td>{message.rides_id}</td>
-                <td>{JSON.stringify(message.status)}</td>
-              </tr>
+              <MessageItem key={message.id} message={message} />
+
             ))}
           </tbody>
         </table>
       ) : (
         <p>No Messages available</p>
       )}
-
 
     </div>
   );

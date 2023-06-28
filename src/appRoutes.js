@@ -14,6 +14,7 @@ import RideOffer from './components/user_comps/rideOffer';
 import RideRequest from './components/user_comps/rideRequest';
 import MyRides from './components/user_comps/myRides';
 import Messages from './components/general_comps/messages';
+import MessageDetails from './components/general_comps/messageDetails';
 import RidesHistory from './components/user_comps/ridesHistory';
 import Logout from './components/auth/logout';
 import UsersList from './components/admin_comps/usersList';
@@ -55,6 +56,7 @@ const AppRoutes = () => {
                     <Route path='/user/rideRequest' element={< RideRequest />} />
                     <Route path='/user/myRides' element={< MyRides/>} />
                     <Route path='/user/messages' element={< Messages />} />
+                    <Route path='/user/message-details/:id' element={<MessageDetails />} />
                     <Route path='/user/ridesHistory' element={< RidesHistory />} />
                     <Route path='/user/ridesHistoryDetails/:id' element={< RidesHistoryDetails />} />
                     {/* <Route path='/user/ridesHistoryDetails/:item' component={RidesHistoryDetails} /> */}
