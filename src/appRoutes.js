@@ -18,6 +18,7 @@ import RidesHistory from './components/user_comps/ridesHistory';
 import Logout from './components/auth/logout';
 import UsersList from './components/admin_comps/usersList';
 import RidesList from './components/admin_comps/ridesList';
+import RidesHistoryDetails from './components/user_comps/ridesHistoryDetails';
 
 const AppRoutes = () => {
 
@@ -55,6 +56,8 @@ const AppRoutes = () => {
                     <Route path='/user/myRides' element={< MyRides/>} />
                     <Route path='/user/messages' element={< Messages />} />
                     <Route path='/user/ridesHistory' element={< RidesHistory />} />
+                    <Route path='/user/ridesHistoryDetails/:id' element={< RidesHistoryDetails />} />
+                    {/* <Route path='/user/ridesHistoryDetails/:item' component={RidesHistoryDetails} /> */}
                     <Route path='/user/logout' element={<Logout />} />
                     {/* <Route path='/user/Settings' element={< SystemSettings />} /> */}
                 </Route>
