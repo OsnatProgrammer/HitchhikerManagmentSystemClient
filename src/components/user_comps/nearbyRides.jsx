@@ -55,20 +55,20 @@ export default function NearbyRides() {
 
   return (
     <div className='container'>
-      <h2>Rides Reques: </h2>
+      <h2>Rides Requests: </h2>
       <div className='row g-3'>
-        {ridesRequests.map(item => {
+        {ridesRequests.map((item,i) => {
           return (
-            <RideRequestItem key={item.id} item={item} />
+            <RideRequestItem key={i} item={item} />
             )
           })}
         {ridesRequests.length < 1 && <h2>Loading...</h2>}
       </div>
       <div className='row g-3'>
-        <h2>Rides Offer: </h2>
-        {ridesoffers.map(item => {
+        <h2>Rides Offers: </h2>
+        {ridesoffers.map((item,i) => {
           return (
-            <RideOfferItem key={item.id} item={item} />
+            <RideOfferItem key={i} item={item} />
           )
         })}
         {ridesoffers.length < 1 && <h2>Loading...</h2>}
