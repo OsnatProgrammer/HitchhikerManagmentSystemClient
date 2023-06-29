@@ -19,7 +19,8 @@ import RidesHistory from './components/user_comps/ridesHistory';
 import Logout from './components/auth/logout';
 import UsersList from './components/admin_comps/usersList';
 import RidesList from './components/admin_comps/ridesList';
-import RidesHistoryDetails from './components/user_comps/ridesHistoryDetails';
+// import RidesHistoryDetails from './components/user_comps/ridesHistoryDetails';
+// import PopUp from './components/user_comps/popup';
 
 const AppRoutes = () => {
 
@@ -58,7 +59,8 @@ const AppRoutes = () => {
                     <Route path='/user/messages' element={< Messages />} />
                     <Route path='/user/message-details/:id' element={<MessageDetails />} />
                     <Route path='/user/ridesHistory' element={< RidesHistory />} />
-                    <Route path='/user/ridesHistoryDetails/:id' element={< RidesHistoryDetails />} />
+                    {/* <Route path='/user/popup' element={<  PopUp/>} /> */}
+                    {/* <Route path='/user/ridesHistoryDetails/:id' element={< RidesHistoryDetails />} /> */}
                     {/* <Route path='/user/ridesHistoryDetails/:item' component={RidesHistoryDetails} /> */}
                     <Route path='/user/logout' element={<Logout />} />
                     {/* <Route path='/user/Settings' element={< SystemSettings />} /> */}
