@@ -112,12 +112,12 @@ export default function RidesList() {
           <tbody>
             {ridesOffer.map((ride) => (
               <tr key={ride._id}>
-                <td>{ride.departure_address}</td>
-                <td>{ride.destination_address}</td>
-                <td>{new Date(ride.departure_time).toLocaleDateString()}</td>
-                <td>{new Date(ride.departure_time).toLocaleTimeString()}</td>
-                <td>{ride.emptySeatNum}</td>
-                <td>{ride.status == 0 ? 'open' : 'closes'}</td>
+                <td>{ride.details_offer.departure_address}</td>
+                <td>{ride.details_offer.destination_address}</td>
+                <td>{new Date(ride.details_offer.departure_time).toLocaleDateString()}</td>
+                <td>{new Date(ride.details_offer.departure_time).toLocaleTimeString()}</td>
+                <td>{ride.details_offer.emptySeatNum}</td>
+                <td>{ride.details_offer.status == 0 ? 'open' : 'closes'}</td>
               </tr>
             ))}
           </tbody>
@@ -143,12 +143,12 @@ export default function RidesList() {
           <tbody>
             {ridesRequest.map((ride) => (
               <tr key={ride._id}>
-                <td>{ride.departure_address}</td>
-                <td>{ride.destination_address}</td>
-                <td>{new Date(ride.departure_time).toLocaleDateString()}</td>
-                <td>{new Date(ride.departure_time).toLocaleTimeString()}</td>
-                <td>{ride.emptySeatNum}</td>
-                <td>{ride.status == 0 ? 'open' : 'closes'}</td>
+                <td>{ride.details_request.departure_address}</td>
+                <td>{ride.details_request.destination_address}</td>
+                <td>{new Date(ride.details_request.departure_time).toLocaleDateString()}</td>
+                <td>{new Date(ride.details_request.departure_time).toLocaleTimeString()}</td>
+                <td>{ride.details_request.emptySeatNum}</td>
+                <td>{ride.details_request.status == 0 ? 'open' : 'closes'}</td>
               </tr>
             ))}
           </tbody>
