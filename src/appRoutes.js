@@ -19,6 +19,7 @@ import RidesHistory from './components/user_comps/ridesHistory';
 import Logout from './components/auth/logout';
 import UsersList from './components/admin_comps/usersList';
 import RidesList from './components/admin_comps/ridesList';
+// import PrivacyPolicy from './components/general_comps/PrivacyPolicy';
 // import RidesHistoryDetails from './components/user_comps/ridesHistoryDetails';
 // import PopUp from './components/user_comps/popup';
 
@@ -30,6 +31,7 @@ const AppRoutes = () => {
             <Routes>
                 <Route index element={<Home />} />
                 <Route path='/logout' element={<Logout />} />
+                    {/* <Route path='/privacyPolicy' element={<PrivacyPolicy/>} /> */}
 
                 {/*  Layout */}
                 <Route path='/' element={<GeneralLayout />}>

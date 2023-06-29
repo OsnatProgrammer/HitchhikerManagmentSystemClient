@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from "react-hook-form"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { doApiMethod, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
+import SignIn from './signIn';
+import SignUp from './signUp';
+// import SignUp from './signUp';
 
 
 export default function Login() {
@@ -10,13 +13,37 @@ export default function Login() {
 
   const nav = useNavigate();
 
-  const onSubForm = (bodyData) => {
+
+  const onSubFormSignUP = (bodyData) => {
     // data -> מכיל את כל המאפיינים שלה השמות של האינפוטים עם הערך שלהם
     console.log(bodyData)
-    doApiForm(bodyData);
+    doApiFormSignUp(bodyData);
   }
 
-  const doApiForm = async (bodyData) => {
+  const doApiFormSignUp = async (bodyData) => {
+    let url = API_URL + "/users"
+    try {
+      let resp = await doApiMethod(url, "POST", bodyData);
+      // לשמור את הטוקן
+      localStorage.setItem(TOKEN_NAME, resp.data.token);
+      localStorage.setItem(CURRENT_USER, JSON.stringify(resp.data.user));
+      // לשגר לעמוד של רשימת המשתמשים
+      nav("/login");
+      window.location.reload();
+    }
+    catch (err) {
+      console.log(err.response);
+      alert("There is problem or email already exist");
+    }
+  }
+
+  const onSubFormLogin = (bodyData) => {
+    // data -> מכיל את כל המאפיינים שלה השמות של האינפוטים עם הערך שלהם
+    console.log(bodyData)
+    doApiFormLogin(bodyData);
+  }
+
+  const doApiFormLogin = async (bodyData) => {
     let url = API_URL + "/users/login"
     try {
       let resp = await doApiMethod(url, "POST", bodyData);
@@ -25,7 +52,7 @@ export default function Login() {
       localStorage.setItem(CURRENT_USER, JSON.stringify(resp.data.user));
       // לשגר לעמוד של רשימת המשתמשים
       if (resp.data.token) {
-        
+
         if (resp.data.user.role.includes("admin")) {
           nav("/manager");
         }
@@ -33,48 +60,142 @@ export default function Login() {
           nav("/user");
 
         window.location.reload();
-
-        // if (!data.user.role)
-        //   nav("/");
-
       }
-
     }
     catch (err) {
       console.log(err.response);
       alert("User or password wrong, or service down");
-
     }
   }
 
+  useEffect(() => {
+    const handleClick = () => {
+      document.querySelector('.cont').classList.toggle('s--signup');
+    };
+  
+    const imgBtn = document.querySelector('.img__btn');
+    if (imgBtn) {
+      imgBtn.addEventListener('click', handleClick);
+    }
+  
+    return () => {
+      if (imgBtn) {
+        imgBtn.removeEventListener('click', handleClick);
+      }
+    };
+  }, []);
+  
+
+  // document.querySelector(".img__btn").addEventListener("click", function () {
+  //   document.querySelector(".cont").classList.toggle("s--signup");
+  // });
+  
+
+  
+  // let nameRef = register("name", { required: true, minLength: 2 });
+  // let emailRef = register("email", {
+  //   required: true,
+  //   pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+  // })
+  // let addressRef = register("address", { required: true, minLength: 2 });
+  // let genderRef = register("gender", { required: true, minLength: 4 });
+  // let passwordRef = register("password", { required: true, minLength: 3 });
+  
+  let passwordRefLogin = register("password", { required: true, minLength: 3 });
+  let emailRefLogin = register("email", {
+    required: true,
+    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+  })
 
 
+  return (
+    //   <>
+    // <div className='container'>
+    //   <h1 className='text-center'>Login</h1>
+    //   <form onSubmit={handleSubmit(onSubFormLogin)} className='col-md-6 p-3 shadow mx-auto'>
+    //     <label>Email:</label>
+    //     <input {...emailRef} type="text" className='form-control' />
+    //     {errors.email && <div className="text-danger">Enter valid email</div>}
 
-let emailRef = register("email", {
-  required: true,
-  pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-})
+    //     <label>Password:</label>
+    //     <input {...passwordRef} type="text" className='form-control' />
+    //     {errors.password && <div className="text-danger">Enter min 3 charts password</div>}
+    //     <button type='submit' className='btn btn-dark mt-3'>Log in to system</button>
+    //   </form>
+    // </div>
+    // </>
+    <div className="cont">
+      <div className="form sign-in">
+       
+        <div>
+          <SignIn/>
+          {/* <form onSubmit={handleSubmit(onSubFormLogin)} className=' p-3 mx-auto'>
+            <h2>Welcome back</h2>
+            <label>
+              <span>Email</span>
+              <input  {...emailRefLogin} type="email" />
+              {errors.email && <div className="text-danger">Enter valid email</div>}
+            </label>
+            <label>
+              <span>Password</span>
+              <input {...passwordRefLogin} type="password" />
+              {errors.password && <div className="text-danger ">Enter min 3 charts password</div>}
+            </label>
+            <button type="submit" className="submit">login</button>
+            <button type="button" className="fb-btn">Join with <span>facebook</span></button>
+          </form> */}
+        </div>
 
-let passwordRef = register("password", { required: true, minLength: 3 });
+        <p className="forgot-pass">Forgot password?</p>
+        <button type="button" className="fb-btn">Connect with <span>facebook</span></button>
+      </div>
+      <div className="sub-cont">
+        <div className="img">
+          <div className="img__text m--up">
+            <h2>New here?</h2>
+            <p>Sign up and discover great amount of new opportunities!</p>
+          </div>
+          <div className="img__text m--in">
+            <h2>One of us?</h2>
+            <p>If you already have an account, just sign in. We've missed you!</p>
+          </div>
+          <div className="img__btn">
+            <span className="m--up">Sign Up</span>
+            <span className="m--in">Sign In</span>
+          </div>
+        </div>
+        <div className="form sign-up">          
+          <SignUp/>
+          {/* <form onSubmit={handleSubmit(onSubFormSignUP)} className='col-md-6 p-3 shadow mx-auto'>
+            <label>Name:</label>
+            <input {...nameRef} type="text" className='form-control' />
+            {errors.name && <div className="text-danger">Enter valid name</div>}
 
+            <label>Email:</label>
+            <input {...emailRef} type="text" className='form-control' />
+            {errors.email && <div className="text-danger">Enter valid email</div>}
 
-return (
-    <>
-  <div className='container'>
-    <h1 className='text-center'>Login</h1>
-    <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto'>
-      <label>Email:</label>
-      <input {...emailRef} type="text" className='form-control' />
-      {errors.email && <div className="text-danger">Enter valid email</div>}
+            <label>Address:</label>
+            <input {...addressRef} type="text" className='form-control' />
+            {errors.address && <div className="text-danger">Enter valid address</div>}
 
-      <label>Password:</label>
-      <input {...passwordRef} type="text" className='form-control' />
-      {errors.password && <div className="text-danger">Enter min 3 charts password</div>}
-      <button type='submit' className='btn btn-dark mt-3'>Log in to system</button>
-    </form>
-  </div>
-  </>
-)
+            <label>Gender:</label>
+            <input {...genderRef} type="text" className='form-control' />
+            {errors.email && <div className="text-danger">Enter valid gender</div>}
+
+            <label>Password:</label>
+            <input {...passwordRef} type="text" className='form-control' />
+            {errors.password && <div className="text-danger">Enter min 3 charts password</div>}
+
+            <div>By creating an account, I consent to the processing of my personal data in accordance of the <span className='fw-bold'>PRIVACY POLICY</span></div>
+            <button type='submit' className='btn btn-dark mt-3'>CREATE</button>
+          </form> */}
+
+        </div>
+      </div>
+    </div>
+
+  )
 
 }
 
@@ -214,7 +335,7 @@ return (
 //                   color="blue"
 //                   ariaLabel="three-dots-loading"
 //                   wrapperStyle={{}}
-//                   wrapperClass="flex justify-center"
+//                   wrapperclassName="flex justify-center"
 //                   visible={true}
 //                 />
 
