@@ -44,7 +44,7 @@ export default function MessageDetails() {
       <button className="btn btn-dark m-2">BACK</button>
 
       {showNewMessage & message.user_idSend!=0? (
-        <NewMessage message={message} />
+        <NewMessage message={message} nav = {'/user/messages'}/>
       ) : (
         <button className="btn btn-dark me-2" onClick={handleReplyMessage}>
           + REPLY MESSAGE

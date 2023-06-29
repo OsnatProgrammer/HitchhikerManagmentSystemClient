@@ -12,7 +12,7 @@ export default function NewMessage(props) {
 
     const sendMessage = async () => {
         const url = `${API_URL}/messages/addMessage`;
-
+        console.log(props.nav);
         try {
             // Send the message and await the response
             let resp = await doApiMethod(url, 'POST', {
@@ -32,9 +32,13 @@ export default function NewMessage(props) {
             // Navigate to the Messages component
             setTimeout(() => {
                 // Navigate to the Messages component after 2 seconds
-                navigate('/user/messages');
+                navigate(props.nav);
+                if (props.nav == '/user/') {
+                props.setShowNewMessage(false)
+            }
             }, 2000);
 
+            
         } catch (err) {
             console.log(err.response);
             alert('There is a problem');
