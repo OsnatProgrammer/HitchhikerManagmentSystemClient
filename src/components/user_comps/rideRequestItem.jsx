@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { API_URL, CURRENT_USER, doApiMethod } from '../services/apiService';
+import NewMessage from '../general_comps/newMessage';
 // import { Carousel } from 'react-bootstrap';
 
 
@@ -7,6 +8,14 @@ export default function RideRequestItem(props) {
 
   const [openPopUp, setOpenPopUp] = useState(false);
   let item = props.item;
+  let current_user = JSON.parse(localStorage.getItem(CURRENT_USER))
+  let rideId;
+  const [showNewMessage, setShowNewMessage] = useState(false);
+
+  const changeShowNewMessage = () => {
+    setOpenPopUp(false)
+    setShowNewMessage(!showNewMessage)
+  }
 
   const joinToRide = () => {
     doApi();
@@ -14,12 +23,17 @@ export default function RideRequestItem(props) {
   }
 
   const closePopUp = () => {
+
     setOpenPopUp(false)
-    window.location.reload();
+    // window.location.reload();
   }
 
+  // const cancel = () => {
+  //   setOpenPopUp(false)
+  // }
+
   const sendMessage = () => {
-    //nav to message
+
   }
 
   const doApi = async () => {
@@ -32,10 +46,11 @@ export default function RideRequestItem(props) {
       // doApiChangeStatus("rideRequests", request.data._id);
 
       let ride = await doApiOpenRide(offer.data);
+      rideId = ride.data._id;
 
      let message = doApiOpenMessageSystem(ride.data._id)
 
-      window.location.reload();
+      // window.location.reload();
 
     }
     catch (err) {
@@ -149,7 +164,7 @@ export default function RideRequestItem(props) {
               position: 'relative',
             }}
           >
-            <h2>Your ride has been successfully coordinated with the driver</h2>
+            <h2>Your ride has been successfully coordinated with the hitchhiker</h2>
             <button
               style={{
                 position: 'absolute',
@@ -177,9 +192,7 @@ export default function RideRequestItem(props) {
                 marginRight: '60px',
                 cursor: 'pointer',
               }}
-              onClick={() => {
-                // Handle button click event
-              }}
+              onClick={changeShowNewMessage}
             >
               Send message to hitchhiker
             </button>
@@ -191,14 +204,81 @@ export default function RideRequestItem(props) {
                 border: 'none',
                 borderRadius: '5px',
                 marginTop: '20px',
+                marginRight: '60px',
                 cursor: 'pointer',
               }}
               onClick={closePopUp}
             >
               Continue
             </button>
+
+            {/* <button
+              style={{
+                padding: '10px 20px',
+                backgroundColor: 'blue',
+                color: 'white',
+                border: 'none',
+                borderRadius: '5px',
+                marginTop: '20px',
+                cursor: 'pointer',
+              }}
+              onClick={cancel}
+            >
+              Cancel
+            </button> */}
+
           </div>
         </div>
+      }
+
+      {showNewMessage &&
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: 'white',
+              padding: '20px',
+              borderRadius: '10px',
+              textAlign: 'center',
+              width: '600px',
+              height: '300px',
+              position: 'relative',
+            }}
+          >
+                        <button
+              style={{
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                padding: '5px',
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                fontSize: '24px'
+              }}
+              onClick={changeShowNewMessage}
+            >
+              X
+            </button>
+            <div>
+              <NewMessage message={{ user_idReceive: item.ride_offer._id, user_idSend: current_user._id, rides_id: rideId }} />
+            </div>
+          </div>
+        </div>
+
       }
 
     </div>
