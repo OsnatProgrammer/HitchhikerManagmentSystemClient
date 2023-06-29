@@ -58,6 +58,33 @@ export default function Messages() {
 
   return (
     <div className="container">
+
+      <h1>Messages I Got</h1>
+      {receivedMessages.length > 0 ? (
+        <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
+          <thead className="thead-dark">
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>User Received</th>
+              <th>MessageDetails</th>
+              <th>Rides id</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {receivedMessages.map((message) => (
+              <MessageItem key={message.id} message={message} />
+
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No Messages available</p>
+      )}
+
+
+
       <h1>Messages I Sent</h1>
 
       {messages.length > 0 ? (
@@ -84,29 +111,6 @@ export default function Messages() {
       )}
 
 
-      <h1>Messages I Got</h1>
-      {receivedMessages.length > 0 ? (
-        <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
-          <thead className="thead-dark">
-            <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>User Received</th>
-              <th>MessageDetails</th>
-              <th>Rides id</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {receivedMessages.map((message) => (
-              <MessageItem key={message.id} message={message} />
-
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No Messages available</p>
-      )}
 
     </div>
   );
