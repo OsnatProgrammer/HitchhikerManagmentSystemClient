@@ -310,9 +310,9 @@ export default function RideOfferItem(props) {
   }
 
   const save = () => {
-      doApi();
-      setOpenPopUp(false)
-      // window.location.reload();
+    doApi();
+    setOpenPopUp(false)
+    // window.location.reload();
   };
 
   const doApi = async () => {
@@ -386,12 +386,12 @@ export default function RideOfferItem(props) {
 
   return (
     <div className='col-md-4'>
-      <div className='shadow p-2 overflow-hidden h-100 p-3' style={{ borderRadius: '10%' }}>
+      <div className='shadow p-2 overflow-hidden h-100 text-center' style={{ borderRadius: '30px', lineHeight: '1.6' }}>
         departure: {item.details_offer.departure_address}<br />
         destination: {item.details_offer.destination_address}<br />
         departure time: {new Date(item.details_offer.departure_time).toLocaleDateString()}<br />
         departure time: {new Date(item.details_offer.departure_time).toLocaleTimeString()}<br />
-        <button className='btn btn-dark' onClick={joinToRide}>
+        <button className='btn m-2 col-md-6' onClick={joinToRide}>
           Join to ride
         </button>
       </div>
@@ -530,7 +530,7 @@ export default function RideOfferItem(props) {
               X
             </button>
             <div>
-              <NewMessage message={{ user_idReceive: item.ride_offer._id, user_idSend: current_user._id, rides_id: rideId }} nav = {'/user/'} setShowNewMessage = {setShowNewMessage}/>
+              <NewMessage message={{ user_idReceive: item.ride_offer._id, user_idSend: current_user._id, rides_id: rideId }} nav={'/user/'} setShowNewMessage={setShowNewMessage} />
             </div>
           </div>
         </div>

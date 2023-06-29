@@ -34,22 +34,22 @@ export default function MessageDetails() {
   };
 
   return (
-    <div className="container">
-      <h1>Message Details</h1>
-      <p>User Received: {message.user_idReceive}</p>
-      <p>Message Details: {message.messageDetails}</p>
-      <p>Rides ID: {message.rides_id}</p>
-      <p>Status: {message.status ? 'True' : 'False'}</p>
+    <div className="container shadow col-md-6 my-5">
+      <h1 className='font-weight-bold text-center m-3'>Message Details</h1>
+      <p><span className='font-weight-bold'>User Received:</span> {message.user_idReceive}</p>
+      <p><span className='font-weight-bold'>Message Details:</span> {message.messageDetails}</p>
+      <p><span className='font-weight-bold'>Rides ID:</span> {message.rides_id}</p>
+      <p><span className='font-weight-bold'>Status:</span> {message.status ? 'True' : 'False'}</p>
+      <div className='text-center'>
+        <button className="btn m-2">BACK</button>
 
-      <button className="btn btn-dark m-2">BACK</button>
-
-      {showNewMessage & message.user_idSend!=0? (
-        <NewMessage message={message} nav = {'/user/messages'}/>
-      ) : (
-        <button className="btn btn-dark me-2" onClick={handleReplyMessage}>
-          + REPLY MESSAGE
-        </button>
-      )}
-    </div>
+        {showNewMessage & message.user_idSend != 0 ? (
+          <NewMessage message={message} nav={'/user/messages'} />
+        ) : (
+          <button className="btn me-2" onClick={handleReplyMessage}>
+            + REPLY MESSAGE
+          </button>
+        )}
+      </div></div>
   );
 }

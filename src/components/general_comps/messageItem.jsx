@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doApiMethod, API_URL } from '../services/apiService';
-import classes from './General.module.css';
+import classes from './css/General.module.css'
 
 
 

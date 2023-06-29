@@ -10,11 +10,9 @@ export default function SignUp() {
 
     const nav = useNavigate();
 
-
     const handleAddressChange = (newAddress) => {
         setAddress(newAddress);
     };
-
 
     const onSubForm = (bodyData) => {
         // data -> מכיל את כל המאפיינים שלה השמות של האינפוטים עם הערך שלהם
@@ -30,22 +28,16 @@ export default function SignUp() {
             localStorage.setItem(TOKEN_NAME, resp.data.token);
             localStorage.setItem(CURRENT_USER, JSON.stringify(resp.data.user));
             // לשגר לעמוד של רשימת המשתמשים
-
             nav("/login");
-
             window.location.reload();
-
             // if (!data.user.role)
             //   nav("/");
-
         }
         catch (err) {
             console.log(err.response);
             alert("There is problem or email already exist");
-
         }
     }
-
 
     const firstNameRef = register('fullName.firstName', {
         required: true,
@@ -66,8 +58,8 @@ export default function SignUp() {
     return (
         <>
             <div className='container'>
-                <h2 className='text-center'>CREATE AN ACCOUNT</h2>
-                <form onSubmit={handleSubmit(onSubForm)} className='col-md-12 row p-3 mx-auto'>
+                <h2 className='text-center mt-1'>CREATE AN ACCOUNT</h2>
+                <form onSubmit={handleSubmit(onSubForm)} className='row p-3 mx-auto'>
 
                     <div className="col-md-6">
                         <label>First Name:</label>
@@ -137,15 +129,14 @@ export default function SignUp() {
                     </div>
 
                     <div className="mt-4">
-                        <div className="checkbox-container">
+                        {/* <div className="checkbox-container">
                             <input id="consent" type="checkbox" />
-                        </div>
+                        </div> */}
                         <div className="text-container">
                             <span>By creating an account, I consent to the processing of my personal data in accordance with the </span>
-                            <a target="_blank" href="/privacyPolicy">Privacy Policy</a>
+                            <Link to={"/privacyPolicy"} target="_blank">Privacy Policy</Link>
                         </div>
                     </div>
-
 
                     {/* <div className='m-4'>By creating an account, I consent to the processing of my personal data in accordance of the</div> */}
                     {/* <Link to="/privacyPolicy" className="fw-bold" target="_blank">PRIVACY POLICY</Link> */}

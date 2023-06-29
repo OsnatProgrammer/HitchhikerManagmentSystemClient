@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {TOKEN_NAME, CURRENT_USER} from '../services/apiService'
+import { TOKEN_NAME, CURRENT_USER } from '../services/apiService'
 
 export default function Logout() {
     const nav = useNavigate()
@@ -14,7 +14,6 @@ export default function Logout() {
         localStorage.removeItem(CURRENT_USER)
 
         nav("/")
-
     }
     return (
         <></>

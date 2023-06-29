@@ -1,34 +1,3 @@
-* {
-  /* background-color: #1b1f23;;
-  color: white; */
-  font-family: 'Permanent Marker', cursive;
-}
-
-.greenColor {
-  color: #6db33f;
-}
-
-.greenBg {
-  background: #6db33f;
-}
-
-.btn {
-  background: #6db33f;
-  color: white;
-}
-
-.btn:hover {
-  background: white;
-  color: #6db33f;
-  border: solid 2px  #6db33f;
-}
-
-/* nav */
-.MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root {
-  background: #6db33f;
-}
-
-
 /* signUp */
 .radio-label {
   display: flex;
@@ -88,7 +57,7 @@ button {
   overflow: hidden;
   position: relative;
   width: 900px;
-  height: 520px;
+  height: 550px;
   margin: 0 auto 100px;
   background: #fff;
 }

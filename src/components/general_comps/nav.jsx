@@ -9,7 +9,7 @@ export default function Nav() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <Link className="nav-link active" aria-current="page" to={"/login"}>Login</Link>
-                        <Link className="nav-link active" aria-current="page" to={"/signUp"}>Sign Up</Link>
+                        <Link className="nav-link active" aria-current="page" to={"/"}>summary</Link>
                     </div>
                 </div>
             </div>

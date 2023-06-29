@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { doApiGet, API_URL, CURRENT_USER } from '../services/apiService';
 import { Route } from 'react-router-dom';
 import PopUp from './popup';
+// import { useSelector } from "react-redux";
+// import { ridesSelector } from "../slices/ridesSlice";
 
 const user = JSON.parse(localStorage.getItem(CURRENT_USER));
+
 
 export const getAllRidesById = async () => {
     try {
@@ -19,11 +22,13 @@ export const getAllRidesById = async () => {
 };
 
 
-
-
 export default function RidesHistory() {
     const [rides, setRides] = useState([]);
     const [isOpenPopup, setIsOpenPopup] = useState(false);
+    const [selectedRide, setSelectedRide] = useState(null);
+    const [IsOfferedByUser, setIsOfferedByUser] = useState(null);
+    // const ride = useSelector(ridesSelector);
+    // console.log("ride", ride);
     let item = rides;
     const itemString = JSON.stringify(item)
 
@@ -61,7 +66,7 @@ export default function RidesHistory() {
                         const isRequestedByUser = ride.userIdRequest === user._id;
 
                         const rideDetails = isOfferedByUser ? ride.ride_offer : ride.ride_request;
-                        // console.log(ride);
+                        console.log(ride);
                         return (
                             <tr key={ride.rideID}>
                                 <td>{new Date(isOfferedByUser ? ride.details_offer.departure_time : ride.details_request.departure_time).toLocaleDateString()}</td>
@@ -71,77 +76,30 @@ export default function RidesHistory() {
                                 <td>{isOfferedByUser ? ride.details_offer.destination_address : ride.details_request.destination_address}</td>
                                 <td>{isOfferedByUser ? ride.details_offer.status : ride.details_request.status}</td>
                                 <td>
-                                    {/* <Link key={i}
-                                        to={`/user/ridesHistoryDetails/${ride.rideID}`}
-                                        state={isOfferedByUser ?
-                                             {
-                                                ride_request: ride.ride_request,
-                                                details_request: ride.details_request
-                                            } : 
-                                             {
-                                                ride_offer: ride.ride_offer,
-                                                details_offer: ride.details_offer
-                                            }}
-                                    >
-                                        +
-                                    </Link> */}
-
-
-                                    {/* <Link
-                                        key={ride.rideID}
-                                        to={{
-                                            pathname: `/user/ridesHistoryDetails/${ride.rideID}`,
-                                            state: {
-                                                rideDetails: {
-                                                    ride_request: ride.ride_request,
-                                                    details_request: ride.details_request
-                                                }
-                                            }
-                                        }}
-                                    >
-                                        +
-                                    </Link> */}
-
-                                    {/* <Link
-                                        key={ride.rideID}
-                                        to={{
-                                            pathname: `/user/ridesHistoryDetails/${ride.rideID}`,
-                                            state: isOfferedByUser
-                                                ? {
-                                                    isRequestedByUser,
-                                                    ride_request: ride.ride_request,
-                                                    details_request: ride.details_request,
-                                                }
-                                                : {
-                                                    isOfferedByUser,
-                                                    ride_offer: ride.ride_offer,
-                                                    details_offer: ride.details_offer,
-                                                },
-                                        }}
-                                    >
-                                        +
-                                    </Link> */}
-                                    {/* {isOpenPopup ? (
-                                        <PopUp close={() => setIsOpenPopup(false)}>
-                                            <p>{}</p>
-                                        </PopUp>
-                                    ) : null} */}
-
-                                    <button onClick={() => setIsOpenPopup(true)}>X</button>
-
-
-                                </td>
+                                    <button onClick={() => {
+                                        setSelectedRide(ride); setIsOfferedByUser(ride.userIdOffer === user._id ? ride.userIdOffer : ride.userIdRequest)
+                                        setIsOpenPopup(true);
+                                    }}>X</button>                                </td>
                             </tr>
                         );
                     })}
                 </tbody>
             </table>
-
-
             {isOpenPopup ? (
-                <PopUp close={() => setIsOpenPopup(false)}>+
-                    <p>
-                        "hello"</p>
+                <PopUp close={() => setIsOpenPopup(false)}>
+                    <p>Ride Details:</p>
+                    {IsOfferedByUser ? (
+                        <div>
+
+                            <p>Ride ID: {selectedRide.rideID}</p>
+                            <p>name: {selectedRide.ride_offer.fullName.firstName}</p>
+                            {/* Display other ride details as needed */}
+                        </div>
+                    ) :
+                        <p>name: "hi"</p>
+
+
+                    }
                 </PopUp>
             ) : null}
         </div>

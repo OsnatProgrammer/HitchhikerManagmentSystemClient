@@ -19,7 +19,8 @@ import RidesHistory from './components/user_comps/ridesHistory';
 import Logout from './components/auth/logout';
 import UsersList from './components/admin_comps/usersList';
 import RidesList from './components/admin_comps/ridesList';
-// import PrivacyPolicy from './components/general_comps/PrivacyPolicy';
+import PrivacyPolicy from './components/general_comps/privacyPolicy';
+
 // import RidesHistoryDetails from './components/user_comps/ridesHistoryDetails';
 // import PopUp from './components/user_comps/popup';
 
@@ -31,7 +32,7 @@ const AppRoutes = () => {
             <Routes>
                 <Route index element={<Home />} />
                 <Route path='/logout' element={<Logout />} />
-                    {/* <Route path='/privacyPolicy' element={<PrivacyPolicy/>} /> */}
+                <Route path='/privacyPolicy' element={<PrivacyPolicy/>} />
 
                 {/*  Layout */}
                 <Route path='/' element={<GeneralLayout />}>
@@ -57,7 +58,7 @@ const AppRoutes = () => {
                     <Route path='/user' element={< NearbyRides />} />
                     <Route path='/user/rideOffer' element={< RideOffer />} />
                     <Route path='/user/rideRequest' element={< RideRequest />} />
-                    <Route path='/user/myRides' element={< MyRides/>} />
+                    <Route path='/user/myRides' element={< MyRides />} />
                     <Route path='/user/messages' element={< Messages />} />
                     <Route path='/user/message-details/:id' element={<MessageDetails />} />
                     <Route path='/user/ridesHistory' element={< RidesHistory />} />

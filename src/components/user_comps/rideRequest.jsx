@@ -92,7 +92,7 @@ export default function RideRequest() {
           <input {...emptySeatNumRef} type="number" defaultValue={1} className='form-control' />
           {errors.emptySeatNum && <div className="text-danger">Enter valid address</div>}
 
-          <button type='submit' className='btn btn-dark mt-3'>Send</button>
+          <button type='submit' className='btn m-3'>Send</button>
         </form>
       </div>
     </>

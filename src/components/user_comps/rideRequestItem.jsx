@@ -29,9 +29,9 @@ export default function RideRequestItem(props) {
   }
 
   const save = () => {
-      doApi();
-      setOpenPopUp(false)
-      // window.location.reload();
+    doApi();
+    setOpenPopUp(false)
+    // window.location.reload();
   };
 
 
@@ -47,7 +47,7 @@ export default function RideRequestItem(props) {
       let ride = await doApiOpenRide(offer.data);
       rideId = ride.data._id;
 
-     let message = doApiOpenMessageSystem(ride.data._id)
+      let message = doApiOpenMessageSystem(ride.data._id)
 
       // window.location.reload();
 
@@ -81,7 +81,7 @@ export default function RideRequestItem(props) {
 
     try {
 
-      let resp = await doApiMethod(url, "PATCH", {status: 1});
+      let resp = await doApiMethod(url, "PATCH", { status: 1 });
 
       return resp;
 
@@ -97,7 +97,7 @@ export default function RideRequestItem(props) {
     let urlRides = API_URL + "/rides/addRide"
     try {
 
-      let resp = await doApiMethod(urlRides, "POST", { rideOffer_id:offer._id , rideRequest_id:item.ride_request._id})
+      let resp = await doApiMethod(urlRides, "POST", { rideOffer_id: offer._id, rideRequest_id: item.ride_request._id })
 
       return resp;
 
@@ -114,7 +114,7 @@ export default function RideRequestItem(props) {
 
     try {
 
-      let resp = await doApiMethod(urlMessages, "POST", {user_idReceive: item.ride_request.user_id, messageDetails: "Hello, There is driver that you can join his  ride:)", rides_id: id_ride})
+      let resp = await doApiMethod(urlMessages, "POST", { user_idReceive: item.ride_request.user_id, messageDetails: "Hello, There is driver that you can join his  ride:)", rides_id: id_ride })
 
       return resp;
 
@@ -129,12 +129,12 @@ export default function RideRequestItem(props) {
   return (
 
     <div className='col-md-4'>
-      <div className='shadow p-2 overflow-hidden h-100 p-3 border border-warning' style={{ borderRadius: '10%' }}>
+      <div className='shadow p-2 overflow-hidden h-100 text-center' style={{ borderRadius: '30px', lineHeight: '1.6' }}>
         departure: {item.details_request.departure_address}<br />
         destination: {item.details_request.destination_address}<br />
         departure date: {new Date(item.details_request.departure_time).toLocaleDateString()}<br />
         departure time: {new Date(item.details_request.departure_time).toLocaleTimeString()}<br />
-        <button className='btn btn-dark' onClick={joinToRide}>Accept Request</button>
+        <button className='btn m-2 col-md-6' onClick={joinToRide}>Accept Request</button>
       </div>
 
       {openPopUp && (
@@ -271,7 +271,7 @@ export default function RideRequestItem(props) {
               X
             </button>
             <div>
-              <NewMessage message={{ user_idReceive: item.ride_request._id, user_idSend: current_user._id, rides_id: rideId }} nav = {'/user/'} setShowNewMessage = {setShowNewMessage}/>
+              <NewMessage message={{ user_idReceive: item.ride_request._id, user_idSend: current_user._id, rides_id: rideId }} nav={'/user/'} setShowNewMessage={setShowNewMessage} />
             </div>
           </div>
         </div>

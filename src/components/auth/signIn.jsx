@@ -31,23 +31,16 @@ export default function SignIn() {
                 }
                 else if (resp.data.user.role.includes("user"))
                     nav("/user");
-
                 window.location.reload();
-
                 // if (!data.user.role)
                 //  nav("/");
-
             }
-
         }
         catch (err) {
             console.log(err.response);
             alert("User or password wrong, or service down");
-
         }
     }
-
-
 
 
     let emailRef = register("email", {
@@ -57,12 +50,12 @@ export default function SignIn() {
 
     let passwordRef = register("password", { required: true, minLength: 3 });
 
-
     return (
         <>
             <div className='container'>
                 <form onSubmit={handleSubmit(onSubForm)} className=' p-3 mx-auto'>
-                    <h2>Welcome back</h2>
+                    {/* <h2>Welcome back</h2> */}
+                    <h2>WELCOME BACK</h2>
                     <label>
                         <span>Email</span>
                         <input  {...emailRef} type="email" />
