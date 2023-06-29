@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { doApiGet, API_URL, CURRENT_USER } from '../services/apiService';
 import { Route } from 'react-router-dom';
-import RidesHistoryDetails from './ridesHistoryDetails';
+import PopUp from './popup';
 
 const user = JSON.parse(localStorage.getItem(CURRENT_USER));
 
@@ -23,9 +23,9 @@ export const getAllRidesById = async () => {
 
 export default function RidesHistory() {
     const [rides, setRides] = useState([]);
+    const [isOpenPopup, setIsOpenPopup] = useState(false);
     let item = rides;
     const itemString = JSON.stringify(item)
-
 
     useEffect(() => {
         async function fetchRides() {
@@ -56,7 +56,7 @@ export default function RidesHistory() {
                     </tr>
                 </thead>
                 <tbody>
-                    {rides.map((ride,i) => {
+                    {rides.map((ride, i) => {
                         const isOfferedByUser = ride.userIdOffer === user._id;
                         const isRequestedByUser = ride.userIdRequest === user._id;
 
@@ -71,7 +71,7 @@ export default function RidesHistory() {
                                 <td>{isOfferedByUser ? ride.details_offer.destination_address : ride.details_request.destination_address}</td>
                                 <td>{isOfferedByUser ? ride.details_offer.status : ride.details_request.status}</td>
                                 <td>
-                                    <Link key={i}
+                                    {/* <Link key={i}
                                         to={`/user/ridesHistoryDetails/${ride.rideID}`}
                                         state={isOfferedByUser ?
                                              {
@@ -84,10 +84,10 @@ export default function RidesHistory() {
                                             }}
                                     >
                                         +
-                                    </Link>
+                                    </Link> */}
 
 
-                                    <Link
+                                    {/* <Link
                                         key={ride.rideID}
                                         to={{
                                             pathname: `/user/ridesHistoryDetails/${ride.rideID}`,
@@ -100,13 +100,50 @@ export default function RidesHistory() {
                                         }}
                                     >
                                         +
-                                    </Link>
+                                    </Link> */}
+
+                                    {/* <Link
+                                        key={ride.rideID}
+                                        to={{
+                                            pathname: `/user/ridesHistoryDetails/${ride.rideID}`,
+                                            state: isOfferedByUser
+                                                ? {
+                                                    isRequestedByUser,
+                                                    ride_request: ride.ride_request,
+                                                    details_request: ride.details_request,
+                                                }
+                                                : {
+                                                    isOfferedByUser,
+                                                    ride_offer: ride.ride_offer,
+                                                    details_offer: ride.details_offer,
+                                                },
+                                        }}
+                                    >
+                                        +
+                                    </Link> */}
+                                    {/* {isOpenPopup ? (
+                                        <PopUp close={() => setIsOpenPopup(false)}>
+                                            <p>{}</p>
+                                        </PopUp>
+                                    ) : null} */}
+
+                                    <button onClick={() => setIsOpenPopup(true)}>X</button>
+
+
                                 </td>
                             </tr>
                         );
                     })}
                 </tbody>
             </table>
+
+
+            {isOpenPopup ? (
+                <PopUp close={() => setIsOpenPopup(false)}>+
+                    <p>
+                        "hello"</p>
+                </PopUp>
+            ) : null}
         </div>
     );
 }
