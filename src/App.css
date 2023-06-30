@@ -4,6 +4,8 @@
   font-family: 'Permanent Marker', cursive;
 }
 
+
+
 .greenColor {
   color: #6db33f;
 }
@@ -24,8 +26,41 @@
 }
 
 /* nav */
-.MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root {
+.MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root ,.css-hip9hq-MuiPaper-root-MuiAppBar-root{
   background: #6db33f;
+}
+
+/* Scroll foter */
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #6db33f;
+  z-index: 9999;
+  transition: width 0.2s ease;
+}
+
+/* Scroll */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6db33f;
+  border-radius: 10px;
+  border: solid 2px white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border: solid 2px #6db33f;
+  background: white;
 }
 
 
@@ -336,3 +371,41 @@ input {
   left: auto;
   right: 5px;
 }
+
+/* .popUpBg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1001;
+  overflow: hidden;
+  background: #000000a7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popUp {
+  overflow: hidden;
+  position: relative;
+  width: 35%;
+  height: 12%;
+  z-index: 1001;
+  background: blanchedalmond;
+  color: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  margin: 10px;
+} */

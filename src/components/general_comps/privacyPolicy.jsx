@@ -1,4 +1,5 @@
 import React from 'react'
+import ScrollProgressBar from './scroll';
 
 export default function PrivacyPolicy() {
     return (
@@ -32,6 +33,8 @@ export default function PrivacyPolicy() {
             If you have any questions or concerns about our Privacy Policy, please contact us at [contact email or support page].
 
             Note: RouteRide reserves the right to block or suspend users who do not adhere to our Terms of Service or behave improperly, ensuring the safety and satisfaction of our community.
+            <ScrollProgressBar/>
+
         </div>
     )
 }
