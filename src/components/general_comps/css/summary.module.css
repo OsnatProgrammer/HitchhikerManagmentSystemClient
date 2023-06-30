@@ -1,13 +1,14 @@
-.container {
-  background-image: url("https://i.ibb.co/rwmqSwx/road-no-3-top-mountains-with-green-jungle-nan-province-thailand.jpg");
+.strip {
+  background-image: url("https://i.ibb.co/Cv8WbJm/pexels-erica-gaia-12905646.jpg");
   box-shadow: 0px 3px 10px 1px #000;
   background-position: center;
   background-size: cover;
-  min-height: 490px;
-  position: relative;
+  min-height: 510px;
+  /* position: relative; */
+  width: 100%;
 }
 
-.container::before {
+/* .strip::before {
   content: "";
   background-size: cover;
   position: absolute;
@@ -15,9 +16,9 @@
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 0.2; /* Adjust the opacity as desired */
-  background-color: black; /* Adjust the overlay color as needed */
-}
+  opacity: 0.2; 
+  background-color: black; 
+} */
 
 .textContainer {
   position: relative;
@@ -26,5 +27,9 @@
   color: white;
   text-align: justify;
   line-height: 1.8;
+}
+
+.container{
+  max-width: 1000px;
 }
 
