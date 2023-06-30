@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
 import RideOfferItem from './rideOfferItem';
 import RideRequestItem from './rideRequestItem';
+import Loading from '../general_comps/loading';
 
 
 export const getAllridesRequestsOpen = async () => {
@@ -37,6 +38,7 @@ export const getAllridesoffersOpen = async () => {
 export default function NearbyRides() {
   const [ridesRequests, setRidesRequests] = useState([]);
   const [ridesoffers, setridesoffers] = useState([]);
+  const [refreshFlag, setRefreshFlag] = useState(false);
 
   useEffect(() => {
     async function fetchrides() {
@@ -51,28 +53,101 @@ export default function NearbyRides() {
       }
     }
     fetchrides();
-  }, []);
+    // setRefreshFlag(false)
+  }, [refreshFlag]);
 
   return (
     <div className='container'>
-      <h2 className='m-3 mt-5 font-weight-bold'>Rides Requests: </h2>
+      <h2 className='m-3 mt-5 font-weight-bold text-light mt-5'>Rides Requests: </h2>
       <div className='row g-3'>
-        {ridesRequests.map((item,i) => {
+        {/* {ridesRequests.map((item, i) => {
           return (
-            <RideRequestItem key={i} item={item} />
-            )
-          })}
-        {ridesRequests.length < 1 && <h2>Loading...</h2>}
-      </div>
-      <div className='row g-3'>
-        <h2 className='m-3 font-weight-bold '>Rides Offers: </h2>
-        {ridesoffers.map((item,i) => {
-          return (
-            <RideOfferItem key={i} item={item} />
+            <RideRequestItem key={i} item={item} refreshFlag={refreshFlag} setRefreshFlag={setRefreshFlag} />
           )
-        })}
-        {ridesoffers.length < 1 && <h2>Loading...</h2>}
+        })} */}
+
+        <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+          <div className="carousel-inner">
+            {ridesRequests.length > 0 && (
+              <>
+                {ridesRequests.reduce((result, item, index) => {
+                  if (index % 3 === 0) {
+                    const carouselItem = ridesRequests.slice(index, index + 3);
+                    result.push(
+                      <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                        <div className="d-flex">
+                          {carouselItem.map((ride, i) => (
+                            <div key={i} className="col-md-4 border border-5 border-black">
+                              <RideRequestItem item={ride} setRefreshFlag={setRefreshFlag} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return result;
+                }, [])}
+              </>
+            )}
+          </div>
+          <button className="carousel-control-prev" style={{top:63, left: -103}} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" style={{top:63, right: -103}} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+
+
+        {ridesRequests.length < 1 && <Loading/>}
       </div>
+      <div className='row g-3'>
+        <h2 className='m-3 font-weight-bold text-light mt-5'>Rides Offers: </h2>
+        {/* {ridesoffers.map((item,i) => {
+          return (
+            <RideOfferItem key={i} item={item} setRefreshFlag = {setRefreshFlag}/>
+          )
+        })} */}
+
+        <div id="carouselExampleInterval2" className="carousel slide" data-bs-ride="carousel">
+          <div className="carousel-inner">
+            {ridesoffers.length > 0 && (
+              <>
+                {ridesoffers.reduce((result, item, index) => {
+                  if (index % 3 === 0) {
+                    const carouselItem = ridesoffers.slice(index, index + 3);
+                    result.push(
+                      <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                        <div className="d-flex">
+                          {carouselItem.map((ride, i) => (
+                            <div key={i} className="col-md-4 border border-5 border-black">
+                              <RideOfferItem item={ride} setRefreshFlag={setRefreshFlag} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return result;
+                }, [])}
+              </>
+            )}
+          </div>
+          <button className="carousel-control-prev" style={{top:63, left: -103}} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" style={{top:63, right: -103}} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        {ridesoffers.length < 1 && <Loading/>}
+      </div>
+      
     </div>
   )
 }

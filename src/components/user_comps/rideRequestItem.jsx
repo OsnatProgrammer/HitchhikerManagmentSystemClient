@@ -16,6 +16,7 @@ export default function RideRequestItem(props) {
     setOpenPopUp(false);
     setShowNewMessage(!showNewMessage);
     doApi();
+    props.setRefreshFlag(!props.refreshFlag);
   };
 
   const joinToRide = () => {
@@ -31,6 +32,7 @@ export default function RideRequestItem(props) {
   const save = () => {
     doApi();
     setOpenPopUp(false)
+    props.setRefreshFlag(!props.refreshFlag);
     // window.location.reload();
   };
 
@@ -128,8 +130,8 @@ export default function RideRequestItem(props) {
 
   return (
 
-    <div className='col-md-4'>
-      <div className='shadow p-2 overflow-hidden h-100 text-center' style={{ borderRadius: '30px', lineHeight: '1.6' }}>
+    <div>
+      <div className='shadow p-2 overflow-hidden h-100 text-center bg-light' style={{ borderRadius: '30px', lineHeight: '1.6' }}>
         departure: {item.details_request.departure_address}<br />
         destination: {item.details_request.destination_address}<br />
         departure date: {new Date(item.details_request.departure_time).toLocaleDateString()}<br />

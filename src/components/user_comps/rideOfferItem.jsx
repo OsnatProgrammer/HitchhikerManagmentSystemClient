@@ -297,6 +297,7 @@ export default function RideOfferItem(props) {
     setOpenPopUp(false);
     setShowNewMessage(!showNewMessage);
     doApi();
+    props.setRefreshFlag(!props.refreshFlag);
   };
 
   const joinToRide = () => {
@@ -312,11 +313,14 @@ export default function RideOfferItem(props) {
   const save = () => {
     doApi();
     setOpenPopUp(false)
+    props.setRefreshFlag(!props.refreshFlag);
     // window.location.reload();
   };
 
   const doApi = async () => {
     try {
+      props.setRefreshFlag(!props.refreshFlag);
+
       let request = await doApiOpenRequest();
       doApiChangeStatus('rideOffers', item.ride_offer._id);
 
@@ -385,8 +389,8 @@ export default function RideOfferItem(props) {
   };
 
   return (
-    <div className='col-md-4'>
-      <div className='shadow p-2 overflow-hidden h-100 text-center' style={{ borderRadius: '30px', lineHeight: '1.6' }}>
+    <div>
+      <div className='shadow p-2 overflow-hidden h-100 text-center bg-light' style={{ borderRadius: '30px', lineHeight: '1.6' }}>
         departure: {item.details_offer.departure_address}<br />
         destination: {item.details_offer.destination_address}<br />
         departure time: {new Date(item.details_offer.departure_time).toLocaleDateString()}<br />
