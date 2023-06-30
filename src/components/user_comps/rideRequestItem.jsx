@@ -134,7 +134,7 @@ export default function RideRequestItem(props) {
         destination: {item.details_request.destination_address}<br />
         departure date: {new Date(item.details_request.departure_time).toLocaleDateString()}<br />
         departure time: {new Date(item.details_request.departure_time).toLocaleTimeString()}<br />
-        <button className='btn m-2 col-md-6' onClick={joinToRide}>Accept Request</button>
+        <button className='btn button m-2 col-md-6' onClick={joinToRide}>Accept Request</button>
       </div>
 
       {openPopUp && (

@@ -52,7 +52,7 @@ export default function NewMessage(props) {
 
             <h5 className='m-2'>Write your message here:</h5>
             <textarea ref={messageText} rows={4} cols={50} /><br />
-            <button className='btn m-2' onClick={sendMessage}>SEND</button>
+            <button className='btn button m-2' onClick={sendMessage}>SEND</button>
         </div>
     );
 }

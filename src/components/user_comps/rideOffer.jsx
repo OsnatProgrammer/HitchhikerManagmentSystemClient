@@ -96,7 +96,7 @@ export default function RideOffer() {
           <input {...emptySeatNumRef} type="number" defaultValue={1} className='form-control' />
           {errors.emptySeatNum && <div className="text-danger">Enter valid address</div>}
 
-          <button type='submit' className='btn mt-3'>Send</button>
+          <button type='submit' className='btn button mt-3'>Send</button>
         </form>
       </div>
     </>

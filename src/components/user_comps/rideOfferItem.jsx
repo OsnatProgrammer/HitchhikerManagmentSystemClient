@@ -391,7 +391,7 @@ export default function RideOfferItem(props) {
         destination: {item.details_offer.destination_address}<br />
         departure time: {new Date(item.details_offer.departure_time).toLocaleDateString()}<br />
         departure time: {new Date(item.details_offer.departure_time).toLocaleTimeString()}<br />
-        <button className='btn m-2 col-md-6' onClick={joinToRide}>
+        <button className='btn button m-2 col-md-6' onClick={joinToRide}>
           Join to ride
         </button>
       </div>

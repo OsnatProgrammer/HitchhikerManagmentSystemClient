@@ -41,12 +41,12 @@ export default function MessageDetails() {
       <p><span className='font-weight-bold'>Rides ID:</span> {message.rides_id}</p>
       <p><span className='font-weight-bold'>Status:</span> {message.status ? 'True' : 'False'}</p>
       <div className='text-center'>
-        <button className="btn m-2">BACK</button>
+        <button className="btn button m-2">BACK</button>
 
         {showNewMessage & message.user_idSend != 0 ? (
           <NewMessage message={message} nav={'/user/messages'} />
         ) : (
-          <button className="btn me-2" onClick={handleReplyMessage}>
+          <button className="btn button me-2" onClick={handleReplyMessage}>
             + REPLY MESSAGE
           </button>
         )}

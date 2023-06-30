@@ -12,12 +12,12 @@
   background: #6db33f;
 }
 
-.btn {
+.button {
   background: #6db33f;
   color: white;
 }
 
-.btn:hover {
+.button:hover {
   background: white;
   color: #6db33f;
   border: solid 2px  #6db33f;
