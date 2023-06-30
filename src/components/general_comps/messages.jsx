@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
 import MessageItem from './messageItem';
+import ScrollProgressBar from './scroll';
 const user = JSON.parse(localStorage.getItem(CURRENT_USER))
 
 export const getMessageByIdSend = async (_idSend) => {
@@ -110,6 +111,7 @@ export default function Messages() {
         <p>No Messages available</p>
       )}
 
+      <ScrollProgressBar />
 
 
     </div>

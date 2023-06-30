@@ -4,7 +4,7 @@ import styles from './css/summary.module.css'
 
 export default function Summary() {
     return (
-        <div className={`container mt-3 ${styles.container}`}>
+        <div className={`container mt-3  ${styles.container}`}>
             <div className={`p-4 ${styles.textContainer}`}>
                 <h3 className="mb-3 text-center font-weight-bold text-light">Welcome to RouteRide - Your On-Demand Ride Matching Platform!</h3>
                 At RouteRide, we've revolutionized the way people travel by creating a convenient and safe platform that connects drivers and hitchhikers.<br />
