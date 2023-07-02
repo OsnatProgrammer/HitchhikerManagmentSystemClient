@@ -19,7 +19,16 @@ const ScrollProgressBar = () => {
     };
   }, []);
 
-  return <div className="progress-bar" style={{ width: `${scrollProgress}%` }} />;
+  return (
+    <div
+      className="progress-bar"
+      style={{
+        width: `${scrollProgress}%`,
+        background: ' #6db33f',
+        height: '6px', 
+      }}
+    />
+  );
 };
 
 export default ScrollProgressBar;
