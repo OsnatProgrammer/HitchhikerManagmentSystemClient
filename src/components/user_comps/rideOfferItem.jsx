@@ -179,7 +179,7 @@
 //             <button
 //               style={{
 //                 padding: '10px 20px',
-//                 backgroundColor: 'blue',
+//                 backgroundColor: ' #54E8A9',
 //                 color: 'white',
 //                 border: 'none',
 //                 borderRadius: '5px',
@@ -194,7 +194,7 @@
 //             <button
 //               style={{
 //                 padding: '10px 20px',
-//                 backgroundColor: 'blue',
+//                 backgroundColor: ' #54E8A9',
 //                 color: 'white',
 //                 border: 'none',
 //                 borderRadius: '5px',
@@ -210,7 +210,7 @@
 //             {/* <button
 //               style={{
 //                 padding: '10px 20px',
-//                 backgroundColor: 'blue',
+//                 backgroundColor: ' #54E8A9',
 //                 color: 'white',
 //                 border: 'none',
 //                 borderRadius: '5px',
@@ -452,7 +452,9 @@ export default function RideOfferItem(props) {
           >
             <div
               style={{
-                backgroundColor: 'white',
+                backgroundColor: 'black',
+                border: '0.5px  #54E8A9 solid',
+                color: "#54E8A9",
                 padding: '20px',
                 borderRadius: '10px',
                 textAlign: 'center',
@@ -461,12 +463,13 @@ export default function RideOfferItem(props) {
                 position: 'relative',
               }}
             >
-              <h2>Your ride has been successfully coordinated with the driver</h2>
+              <h3>Your ride has been successfully coordinated with the driver</h3>
               <button
                 style={{
                   position: 'absolute',
-                  top: '10px',
-                  right: '10px',
+                  color: "#54E8A9",
+                  top: '-2px',
+                  left: '-110px',
                   padding: '5px',
                   backgroundColor: 'transparent',
                   border: 'none',
@@ -478,41 +481,48 @@ export default function RideOfferItem(props) {
               >
                 X
               </button>
+
+              <div className='d-flex m-5'>
+                <button
+                  style={{
+                    // padding: '10px 20px',
+                    backgroundColor: ' #54E8A9',
+                    color: 'black',
+                    fontWeight: 'bold',
+                    border: 'none',
+                    borderRadius: '5px',
+                    marginTop: '50px',
+                    marginRight: '10px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={changeShowNewMessage}
+                >
+                  Send message to hitchhiker
+                </button>
+                <button
+                  style={{
+                    // padding: '10px 20px',
+                    backgroundColor: ' #54E8A9',
+                    color: 'black',
+                    fontWeight: 'bold',
+                    border: 'none',
+                    borderRadius: '5px',
+                    marginTop: '50px',
+                    marginRight: '10px',
+                    marginLeft:'20px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={save}
+                >
+                  Continue
+                </button>
+              </div>
               <button
                 style={{
-                  padding: '10px 20px',
-                  backgroundColor: 'blue',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  marginTop: '70px',
-                  marginRight: '60px',
-                  cursor: 'pointer',
-                }}
-                onClick={changeShowNewMessage}
-              >
-                Send message to hitchhiker
-              </button>
-              <button
-                style={{
-                  padding: '10px 20px',
-                  backgroundColor: 'blue',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  marginTop: '20px',
-                  marginRight: '60px',
-                  cursor: 'pointer',
-                }}
-                onClick={save}
-              >
-                Continue
-              </button>
-              <button
-                style={{
-                  padding: '10px 20px',
-                  backgroundColor: 'blue',
-                  color: 'white',
+                  // padding: '10px 20px',
+                  backgroundColor: ' #54E8A9',
+                  color: 'black',
+                  fontWeight: 'bold',
                   border: 'none',
                   borderRadius: '5px',
                   marginTop: '20px',
@@ -574,7 +584,7 @@ export default function RideOfferItem(props) {
             </div>
           </div>
         )}
-      </div>
+      </div >
     </>
   );
 }

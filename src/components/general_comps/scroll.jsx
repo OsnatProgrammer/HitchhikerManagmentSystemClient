@@ -24,7 +24,7 @@ const ScrollProgressBar = () => {
       className="progress-bar"
       style={{
         width: `${scrollProgress}%`,
-        background: ' #6db33f',
+        background: '  #54E8A9',
         height: '6px', 
       }}
     />

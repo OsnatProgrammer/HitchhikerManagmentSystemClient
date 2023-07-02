@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
 import _ from 'lodash';
 import styles from './css/myRides.module.css'
+import { styled } from 'styled-components';
 
 export default function MyRides() {
   const [ridesOffer, setRidesOffer] = useState([]);
@@ -89,20 +90,20 @@ export default function MyRides() {
           My Rides
         </div>
       </div>
-      <h1 className='text-white'>My Rides</h1>
-      <div className="row">
-        <h6 className='text-white'>Rides Offer</h6>
+      {/* <h1 className='text-white'>My Rides</h1> */}
+      <div className="row justify-content-between text-center">
+        <h2 className='text-white mt-4'>Rides Offer</h2>
         {ridesOffer.length > 0 ? (
           ridesOffer.map((ride) => (
             <div className={`${styles.box}`} key={ride.rideID}>
-              <h6>Ride date: {new Date(ride.details_offer.departure_time).toLocaleDateString()}</h6>
+              <h6>Ride date:<span className='bold'></span> {new Date(ride.details_offer.departure_time).toLocaleDateString()}</h6>
               <h6>Ride time: {new Date(ride.details_offer.departure_time).toLocaleTimeString()}</h6>
               <h6>Departure address:<br /> {ride.details_offer.departure_address}</h6>
               <h6>Destination address:<br /> {ride.details_offer.destination_address}</h6>
               {/* <h6>Status: {ride.details_offer.status}</h6> */}
               <div className='d-flex'>
-                <button className='btn'>Update</button>
-                <button className='btn'>Delete</button>
+                <button className={`btn m-1 ${styled.button}`}  >Update</button>
+                <button className={`btn m-1 ${styled.button}`}  >Delete</button>
               </div>
             </div>
           ))
@@ -110,8 +111,8 @@ export default function MyRides() {
           <p>No rides available</p>
         )}
       </div>
-      <div className="row">
-        <h6 className='text-white'>Rides Request</h6>
+      <div className="row justify-content-between text-center">
+        <h2 className='text-white mt-4'>Rides Request</h2>
         {ridesRequest.length > 0 ? (
           ridesRequest.map((ride) => (
             <div className={`${styles.box}`} key={ride.rideID}>
@@ -121,8 +122,8 @@ export default function MyRides() {
               <h6>Destination address:<br /> {ride.details_request.destination_address}</h6>
               {/* <h6>Status: {ride.details_request.status}</h6> */}
               <div className='d-flex'>
-                <button className='btn'>Update</button>
-                <button className='btn'>Delete</button>
+                <button className={`btn m-1 ${styled.button}`}>Update</button>
+                <button className={`btn m-1 ${styled.button}`}>Delete</button>
               </div>
             </div>
           ))

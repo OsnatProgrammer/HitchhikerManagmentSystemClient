@@ -6,8 +6,19 @@
     border-radius: 5px;
     box-shadow: 0px 30px 40px -20px var(hsl(229, 6%, 66%));
     padding: 15px;
-    background: #ffffff;
+    background: #E1E2E0;
     border-top: 5px solid #54E8A9;
     margin: 5px;
-    width: 30%;
+    width: 24%;
+    /* justify-content: space-between; */
+}
+.button{
+    border:#E1E2E0 1px solid;
+    background-color:  #54E8A9;
+    color:#E1E2E0;
+}
+.button:hover{
+    border: #54E8A9 1px solid;
+    background-color: #E1E2E0;
+    color: #54E8A9;
 }
