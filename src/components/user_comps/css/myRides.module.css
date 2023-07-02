@@ -1,0 +1,13 @@
+.box p {
+    color: var(hsl(229, 6%, 66%));
+}
+
+.box {
+    border-radius: 5px;
+    box-shadow: 0px 30px 40px -20px var(hsl(229, 6%, 66%));
+    padding: 15px;
+    background: #ffffff;
+    border-top: 5px solid #54E8A9;
+    margin: 5px;
+    width: 30%;
+}

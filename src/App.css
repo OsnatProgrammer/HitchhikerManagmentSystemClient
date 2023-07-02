@@ -373,5 +373,19 @@ input {
 }
 
 
-/* footer */
+/* table */
+/* .table-sm>:not(caption)>*>*{
+  background: transparent;
+  color: white;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border-color: #6db33f;
+  border-style: solid;
+  border-width: 0;
+}
+
+.table-bordered>:not(caption)>*>* {
+  border-width: 0 var();
+} */
 

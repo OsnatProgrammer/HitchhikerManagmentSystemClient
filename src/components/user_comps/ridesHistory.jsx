@@ -109,6 +109,7 @@ import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, CURRENT_USER } from '../services/apiService';
 import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce, usePagination } from 'react-table';
 import PopUp from './popup';
+import { color } from '@mui/system';
 
 const user = JSON.parse(localStorage.getItem(CURRENT_USER));
 
@@ -146,15 +147,15 @@ export default function RidesHistory() {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Ride date',
-        accessor: (row) => (row.ride_details && row.ride_details.departure_time.toLocaleDateString()) ? new Date(row.ride_details.departure_time).toLocaleDateString() : '',
+        Header: 'Ride date ',
+        accessor: (row) => (row.details_offer && row.details_offer.departure_time && new Date(row.details_offer.departure_time).toLocaleDateString()) ? new Date(row.details_request.departure_time).toLocaleDateString() : '',
       },
       {
-        Header: 'Ride time',
-        accessor: (row) => (row.ride_details && row.ride_details.departure_time.toLocaleTimeString()) ? new Date(row.ride_details.departure_time).toLocaleTimeString() : '',
+        Header: 'Ride time ',
+        accessor: (row) => (row.details_offer && row.details_offer.departure_time && new Date(row.details_offer.departure_time).toLocaleTimeString()) ? new Date(row.details_request.departure_time).toLocaleTimeString() : '',
       },
       {
-        Header: 'Name',
+        Header: 'Name ',
         accessor: (row) => {
           if (row.userIdOffer === user._id) {
             return row.ride_offer.fullName.firstName;
@@ -164,7 +165,7 @@ export default function RidesHistory() {
         },
       },
       {
-        Header: 'Departure address',
+        Header: 'Departure address ',
         accessor: (row) => {
           if (row.userIdOffer === user._id) {
             return row.details_offer.departure_address;
@@ -174,7 +175,7 @@ export default function RidesHistory() {
         },
       },
       {
-        Header: 'Destination address',
+        Header: 'Destination address ',
         accessor: (row) => {
           if (row.userIdOffer === user._id) {
             return row.details_offer.destination_address;
@@ -184,7 +185,7 @@ export default function RidesHistory() {
         },
       },
       {
-        Header: 'Status',
+        Header: 'Status ',
         accessor: (row) => {
           if (row.userIdOffer === user._id) {
             return row.details_offer.status;
@@ -194,7 +195,7 @@ export default function RidesHistory() {
         },
       },
       {
-        Header: 'More details',
+        Header: 'More details ',
         Cell: ({ row }) => (
           <button onClick={() => {
             setSelectedRide(row.original);
@@ -249,7 +250,13 @@ export default function RidesHistory() {
           }}
         />
       </div>
-      <table {...getTableProps()} className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
+      <table
+        {...getTableProps()}
+        className="table table-striped table-bordered table-sm"
+        style={{ backgroundColor: "transparent", color: "#fff" }}
+        cellSpacing="0"
+        width="100%"
+      >
         <thead className="thead-dark">
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -257,9 +264,20 @@ export default function RidesHistory() {
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className={column.isSorted ? (column.isSortedDesc ? 'sort-desc' : 'sort-asc') : ''}
+                  style={{
+                    fontWeight: column.isSorted ? 'bold' : 'black',
+                    color: 'black',
+                  }}
                 >
                   {column.render('Header')}
-                  <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
+                  <span>{column.isSorted ? (column.isSortedDesc ? <svg style={{ color: "black" }} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                  </svg> : <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                  </svg>
+                  ) : <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+                  </svg>}</span>
                 </th>
               ))}
             </tr>
@@ -326,5 +344,6 @@ export default function RidesHistory() {
     </div>
   );
 }
+
 
 
