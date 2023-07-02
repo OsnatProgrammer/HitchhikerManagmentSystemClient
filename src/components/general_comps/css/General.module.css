@@ -5,3 +5,8 @@
 .highlighted-row {
     background-color: rgb(34, 32, 32);
 }
+
+.deleteIcon {
+    color: red;
+    cursor: pointer;
+}
