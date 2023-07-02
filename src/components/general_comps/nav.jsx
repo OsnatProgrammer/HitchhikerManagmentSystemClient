@@ -10,7 +10,7 @@ export default function Nav() {
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
 
-                <i class='bx bxs-car bx-tada' style={{fontSize: '60px'}}></i>
+                <i className='bx bxs-car bx-tada' style={{fontSize: '60px'}}></i>
                 </a>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">

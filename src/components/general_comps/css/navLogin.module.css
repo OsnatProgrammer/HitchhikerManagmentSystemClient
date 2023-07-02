@@ -1,0 +1,22 @@
+.bgNav{
+    background-color: #54E8A9d8; 
+    min-height: 80px;
+    position: fixed;
+    width: 100%;
+    box-shadow: 10px 10px 35px 2px rgba(0,0,0,0.75);
+    z-index: 99;
+    border-bottom: #32511dd8 10px solid;
+ }
+
+ nav .link{
+    padding-left: 20px;
+    font-size: 24px;
+    transition: 500ms;
+}
+
+nav .link:hover{
+    transform: translate(0px ,-4px);
+}
+
+
+ 

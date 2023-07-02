@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import { useNavigate } from 'react-router-dom';
 import { doApiMethod, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
+import Nav from '../general_comps/nav';
 
 
 export default function SignIn() {

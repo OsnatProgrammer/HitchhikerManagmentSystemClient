@@ -122,6 +122,7 @@ import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, CURRENT_USER, doApiMethod, TOKEN_NAME } from '../services/apiService';
 import MessageItem from './messageItem';
 import ScrollProgressBar from './scroll';
+import styles from '../user_comps/css/nearByRides.module.css'
 const user = JSON.parse(localStorage.getItem(CURRENT_USER))
 
 export const getMessageByIdSend = async (_idSend) => {
@@ -189,56 +190,64 @@ export default function Messages() {
   };
 
   return (
-    <div className="container">
-      <h1>Messages I Got</h1>
-      {receivedMessages.length > 0 ? (
-        <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
-          <thead className="thead-dark">
-            <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>User Received</th>
-              <th>MessageDetails</th>
-              <th>Rides id</th>
-              <th>Status</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {receivedMessages.map((message) => (
-              <MessageItem key={message._id} message={message} onDelete={handleDelete} />
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No Messages available</p>
-      )}
+    <>
+      <div className={`${styles.strip} d-flex align-items-end`}>
+        <div className='display-1'>
+          Messages
+        </div>
+      </div>
 
-      <h1>Messages I Sent</h1>
-      {messages.length > 0 ? (
-        <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
-          <thead className="thead-dark">
-            <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>User Received</th>
-              <th>MessageDetails</th>
-              <th>Rides id</th>
-              <th>Status</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {messages.map((message) => (
-              <MessageItem key={message._id} message={message} onDelete={handleDelete} />
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No Messages available</p>
-      )}
-      <ScrollProgressBar />
+      <div className="container">
+        <h1>Messages I Got</h1>
+        {receivedMessages.length > 0 ? (
+          <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
+            <thead className="thead-dark">
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>User Received</th>
+                <th>MessageDetails</th>
+                <th>Rides id</th>
+                <th>Status</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {receivedMessages.map((message) => (
+                <MessageItem key={message._id} message={message} onDelete={handleDelete} />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No Messages available</p>
+        )}
 
-    </div>
+        <h1>Messages I Sent</h1>
+        {messages.length > 0 ? (
+          <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
+            <thead className="thead-dark">
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>User Received</th>
+                <th>MessageDetails</th>
+                <th>Rides id</th>
+                <th>Status</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {messages.map((message) => (
+                <MessageItem key={message._id} message={message} onDelete={handleDelete} />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No Messages available</p>
+        )}
+        <ScrollProgressBar />
+
+      </div>
+    </>
   );
 }

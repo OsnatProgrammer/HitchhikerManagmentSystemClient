@@ -84,16 +84,21 @@ export default function MyRides() {
 
   return (
     <div className="container">
+      <div className={`${styles.strip} d-flex align-items-end`}>
+        <div className='display-1'>
+          My Rides
+        </div>
+      </div>
       <h1 className='text-white'>My Rides</h1>
       <div className="row">
-        <h6  className='text-white'>Rides Offer</h6>
+        <h6 className='text-white'>Rides Offer</h6>
         {ridesOffer.length > 0 ? (
           ridesOffer.map((ride) => (
             <div className={`${styles.box}`} key={ride.rideID}>
               <h6>Ride date: {new Date(ride.details_offer.departure_time).toLocaleDateString()}</h6>
               <h6>Ride time: {new Date(ride.details_offer.departure_time).toLocaleTimeString()}</h6>
-              <h6>Departure address:<br/> {ride.details_offer.departure_address}</h6>
-              <h6>Destination address:<br/> {ride.details_offer.destination_address}</h6>
+              <h6>Departure address:<br /> {ride.details_offer.departure_address}</h6>
+              <h6>Destination address:<br /> {ride.details_offer.destination_address}</h6>
               {/* <h6>Status: {ride.details_offer.status}</h6> */}
               <div className='d-flex'>
                 <button className='btn'>Update</button>
@@ -112,8 +117,8 @@ export default function MyRides() {
             <div className={`${styles.box}`} key={ride.rideID}>
               <h6>Ride date: {new Date(ride.details_request.departure_time).toLocaleDateString()}</h6>
               <h6>Ride time: {new Date(ride.details_request.departure_time).toLocaleTimeString()}</h6>
-              <h6>Departure address:<br/> {ride.details_request.departure_address}</h6>
-              <h6>Destination address:<br/> {ride.details_request.destination_address}</h6>
+              <h6>Departure address:<br /> {ride.details_request.departure_address}</h6>
+              <h6>Destination address:<br /> {ride.details_request.destination_address}</h6>
               {/* <h6>Status: {ride.details_request.status}</h6> */}
               <div className='d-flex'>
                 <button className='btn'>Update</button>
@@ -125,7 +130,6 @@ export default function MyRides() {
           <p>No rides available</p>
         )}
       </div>
-
     </div>
   );
 }  

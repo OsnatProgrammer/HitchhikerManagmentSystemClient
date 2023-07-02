@@ -6,6 +6,7 @@ import { doApiMethod, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiS
 import SignIn from './signIn';
 import SignUp from './signUp';
 import styles from './css/login.module.css'
+import NavLogin from '../general_comps/navLogin';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -36,14 +37,16 @@ export default function Login() {
   })
 
   return (
-    <div className="cont mt-4 shadow ">
-      <div className="form sign-in">
+    <>
+    <NavLogin/>
+    <div className="cont shadow" style={{position:'relative', top:'125px'}}>
+      <div className="form sign-in" style={{boxShadow: 'box-shadow: 0px 0px 44px 20px #D32929 inset', background:'#70746e36'}}>
         <div>
           <SignIn />
         </div>
         <p className="forgot-pass">Forgot password?</p>
         <button type="button" className="fb-btn">Connect with <span>facebook</span></button>
-      </div>
+      </div >
       <div className="sub-cont">
         <div className="img">
           <div className="img__text m--up">
@@ -59,10 +62,11 @@ export default function Login() {
             <span className="m--in">Sign In</span>
           </div>
         </div>
-        <div className="form sign-up">
+        <div className="form sign-up" style={{background:'#70746e36'}}>
           <SignUp />
         </div>
       </div>
     </div>
+    </>
   )
 }

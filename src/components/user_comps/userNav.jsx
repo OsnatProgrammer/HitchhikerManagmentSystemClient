@@ -44,6 +44,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import Greeting from '../general_comps/greeting';
+import styles from './css/userNav.module.css'
 
 function UserNav() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -66,15 +67,15 @@ function UserNav() {
 
     return (
 
-        <AppBar position="static">
+        <AppBar position="static" style={{background: 'transparent', position: 'fixed', minHeight:'80px',
+        display:'flex', alignItems:'center'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
+                        href="/user"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -85,7 +86,7 @@ function UserNav() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        <i className='bx bxs-car bx-tada' style={{fontSize: '60px', color:'#ffffff'}}></i>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -153,41 +154,46 @@ function UserNav() {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/rideOffer"
+                            className={`${styles.link}`}
                         >
                             Ride Offer
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/rideRequest"
+                            className={`${styles.link}`}
                         >
                             Ride Request
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/myRides"
+                            className={`${styles.link}`}
                         >
                             My Rides
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/messages"
+                            className={`${styles.link}`}
                         >
                             Messages
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/ridesHistory"
+                            className={`${styles.link}`}
                         >
                             Rides History
                         </Button>
