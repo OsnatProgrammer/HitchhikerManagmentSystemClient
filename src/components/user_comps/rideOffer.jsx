@@ -34,11 +34,13 @@ export default function RideOffer() {
     let dateString = bodyData.departure_time;
     let timeString = time.current.value;
 
-    let [day, month, year] = dateString.split('-');
+    console.log(dateString);
+
+    let [year, month, day] = dateString.split('-');
     let [hours, minutes] = timeString.split(':');
 
     // JavaScript Date months are zero-based, so subtract 1 from the month
-    let date = new Date(year, month, day, hours, minutes);
+    let date = new Date(year, month-1, day, hours, minutes);
     bodyData.departure_time = date;
 
     console.log(bodyData)

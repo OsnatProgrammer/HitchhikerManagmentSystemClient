@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { API_URL, CURRENT_USER, doApiMethod } from '../services/apiService';
 import NewMessage from '../general_comps/newMessage';
 // import { Carousel } from 'react-bootstrap';
@@ -12,10 +12,10 @@ export default function RideRequestItem(props) {
   let rideId;
   const [showNewMessage, setShowNewMessage] = useState(false);
 
-  const changeShowNewMessage = () => {
+  const changeShowNewMessage = async() => {
     setOpenPopUp(false);
     setShowNewMessage(!showNewMessage);
-    doApi();
+    await doApi();
     props.setRefreshFlag(!props.refreshFlag);
   };
 
@@ -127,7 +127,7 @@ export default function RideRequestItem(props) {
 
     }
   }
-
+   
   return (
 
     <div>
@@ -273,7 +273,7 @@ export default function RideRequestItem(props) {
               X
             </button>
             <div>
-              <NewMessage message={{ user_idReceive: item.ride_request._id, user_idSend: current_user._id, rides_id: rideId }} nav={'/user/'} setShowNewMessage={setShowNewMessage} />
+              <NewMessage message={{user_idSend: item.ride_request.user_id, user_idReceive: current_user._id, rides_id: rideId }} nav={'/user/'} setShowNewMessage={setShowNewMessage} />
             </div>
           </div>
         </div>

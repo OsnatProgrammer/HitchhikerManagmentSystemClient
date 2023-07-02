@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-// require("https://maps.googleapis.com/maps/api/js?key=AIzaSyCT3agufxk2bjy29FuCUkNx11nuJB-gC30&libraries=places")
 
 const AddressInput = (props) => {
 
@@ -16,13 +15,6 @@ const AddressInput = (props) => {
         setAddress(event.target.value);
         setSelectedAddress('');
     };
-
-    // const handleSelectAddress = (selected) => {
-    //     console.log(selected.description);
-    //     setAddress(selected.description);
-    //     setSelectedAddress(selected.place_id);
-    //     onAddressChange(selected.description);
-    // };
 
     useEffect(() => {
         const autocompleteService = new window.google.maps.places.AutocompleteService();
@@ -72,21 +64,6 @@ const AddressInput = (props) => {
                 onChange={handleChange}
                 ref={inputRef}
             />
-
-            {/* {predictions.length > 0 && (
-                <select
-                    value={selectedAddress}
-                    onChange={(e) => handleSelectAddress(predictions[e.target.value])}
-                    style={{ marginLeft: '10px' }}
-                >
-                    <option value="">Select an address</option>
-                    {predictions.map((prediction, index) => (
-                        <option key={prediction.place_id} value={index}>
-                            {prediction.description}
-                        </option>
-                    ))}
-                </select>
-            )} */}
         </div>
     );
 };

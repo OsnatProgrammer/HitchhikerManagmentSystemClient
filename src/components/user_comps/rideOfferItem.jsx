@@ -534,7 +534,7 @@ export default function RideOfferItem(props) {
               X
             </button>
             <div>
-              <NewMessage message={{ user_idReceive: item.ride_offer._id, user_idSend: current_user._id, rides_id: rideId }} nav={'/user/'} setShowNewMessage={setShowNewMessage} />
+              <NewMessage message={{ user_idSend: item.ride_offer.user_id,  user_idReceive:current_user._id,  rides_id: rideId }} nav={'/user/'} setShowNewMessage={setShowNewMessage} />
             </div>
           </div>
         </div>

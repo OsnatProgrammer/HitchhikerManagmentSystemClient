@@ -1,10 +1,12 @@
 import React from 'react'
 import styles from './css/summary.module.css'
+import Nav from './nav'
 // import './css/summary.css'
 
 export default function Summary() {
     return (
         <>
+        <Nav />
         <div className={`${styles.strip}`}>
            
         </div>
