@@ -63,6 +63,8 @@ const AddressInput = (props) => {
                 value={address}
                 onChange={handleChange}
                 ref={inputRef}
+                className='form-control'
+                style={{width:'65%', margin:'0 auto'}}
             />
         </div>
     );

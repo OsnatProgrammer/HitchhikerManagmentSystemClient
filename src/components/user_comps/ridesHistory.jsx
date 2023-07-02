@@ -109,6 +109,7 @@ import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, CURRENT_USER } from '../services/apiService';
 import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce, usePagination } from 'react-table';
 import PopUp from './popup';
+import styles from './css/nearByRides.module.css'
 
 const user = JSON.parse(localStorage.getItem(CURRENT_USER));
 
@@ -238,92 +239,99 @@ export default function RidesHistory() {
   }, 200);
 
   return (
-    <div className="container">
-      <h1>Rides History</h1>
-      <div className="global-filter">
-        Search: {' '}
-        <input
-          value={globalFilter || ''}
-          onChange={(e) => {
-            debounceFilter(e.target.value);
-          }}
-        />
-      </div>
-      <table {...getTableProps()} className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
-        <thead className="thead-dark">
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className={column.isSorted ? (column.isSortedDesc ? 'sort-desc' : 'sort-asc') : ''}
-                >
-                  {column.render('Header')}
-                  <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()} onClick={() => {
-                setSelectedRide(row.original);
-                setIsOfferedByUser(row.original.userIdOffer === user._id ? row.original.userIdOffer : row.original.userIdRequest);
-                setIsOpenPopup(true);
-              }}>
-                {row.cells.map((cell) => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <div className="pagination">
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          Previous
-        </button>
-        <span>
-          Page {pageIndex + 1} of {pageOptions.length}
-        </span>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          Next
-        </button>
-        <div className="page-size">
-          Page Size: {' '}
-          <select value={pageSize} onChange={(e) => setPageSize(Number(e.target.value))}>
-            {[10, 25, 50].map((size) => (
-              <option key={size} value={size}>
-                {size}
-              </option>
-            ))}
-          </select>
+    <>
+      <div className={`${styles.strip} d-flex align-items-end`}>
+        <div className='display-1'>
+          Rides History
         </div>
       </div>
-      {isOpenPopup ? (
-        <PopUp close={() => setIsOpenPopup(false)}>
-          <div className="popup-content">
-            <p>Ride Details:</p>
-            {isOfferedByUser ? (
-              <div>
-                <p>Ride ID: {selectedRide.rideID}</p>
-                <p>Name: {selectedRide.ride_offer.fullName.firstName} {selectedRide.ride_offer.fullName.lastName}</p>
-                {/* Add more details here */}
-              </div>
-            ) : (
-              <div>
-                <p>Ride ID: {selectedRide.rideID}</p>
-                <p>Name: {selectedRide.ride_request.fullName.firstName} {selectedRide.ride_request.fullName.lastName}</p>
-                {/* Add more details here */}
-              </div>
-            )}
+
+      <div className="container">
+        <div className="global-filter">
+          Search: {' '}
+          <input
+            value={globalFilter || ''}
+            onChange={(e) => {
+              debounceFilter(e.target.value);
+            }}
+          />
+        </div>
+        <table {...getTableProps()} className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
+          <thead className="thead-dark">
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    className={column.isSorted ? (column.isSortedDesc ? 'sort-desc' : 'sort-asc') : ''}
+                  >
+                    {column.render('Header')}
+                    <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {page.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} onClick={() => {
+                  setSelectedRide(row.original);
+                  setIsOfferedByUser(row.original.userIdOffer === user._id ? row.original.userIdOffer : row.original.userIdRequest);
+                  setIsOpenPopup(true);
+                }}>
+                  {row.cells.map((cell) => {
+                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <div className="pagination">
+          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+            Previous
+          </button>
+          <span>
+            Page {pageIndex + 1} of {pageOptions.length}
+          </span>
+          <button onClick={() => nextPage()} disabled={!canNextPage}>
+            Next
+          </button>
+          <div className="page-size">
+            Page Size: {' '}
+            <select value={pageSize} onChange={(e) => setPageSize(Number(e.target.value))}>
+              {[10, 25, 50].map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
           </div>
-        </PopUp>
-      ) : null}
-    </div>
+        </div>
+        {isOpenPopup ? (
+          <PopUp close={() => setIsOpenPopup(false)}>
+            <div className="popup-content">
+              <p>Ride Details:</p>
+              {isOfferedByUser ? (
+                <div>
+                  <p>Ride ID: {selectedRide.rideID}</p>
+                  <p>Name: {selectedRide.ride_offer.fullName.firstName} {selectedRide.ride_offer.fullName.lastName}</p>
+                  {/* Add more details here */}
+                </div>
+              ) : (
+                <div>
+                  <p>Ride ID: {selectedRide.rideID}</p>
+                  <p>Name: {selectedRide.ride_request.fullName.firstName} {selectedRide.ride_request.fullName.lastName}</p>
+                  {/* Add more details here */}
+                </div>
+              )}
+            </div>
+          </PopUp>
+        ) : null}
+      </div>
+    </>
   );
 }
 

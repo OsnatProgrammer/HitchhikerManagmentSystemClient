@@ -4,6 +4,7 @@ import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiServ
 import RideOfferItem from './rideOfferItem';
 import RideRequestItem from './rideRequestItem';
 import Loading from '../general_comps/loading';
+import styles from './css/nearByRides.module.css'
 
 
 export const getAllridesRequestsOpen = async () => {
@@ -85,118 +86,114 @@ export default function NearbyRides() {
   }
 
   return (
-    <div className='container'>
-      <div className='row g-3'>
-      <div className='d-flex m-5' style={{ alignItems: 'center' }}>
-        <h2 className='font-weight-bold text-light'>Rides Requests: </h2>
-        <div>
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-            onInput={(e) => setSearchTermRequests(e.target.value)} />
+    <>
+      <div className={`${styles.strip} d-flex align-items-end`}>
+        <div className='display-1'>
+          Ride Requests & Ride Offers
         </div>
+
       </div>
+      <div className='container'>
+        <div className='row g-3'>
+          <div className='d-flex m-5' style={{ alignItems: 'center' }}>
+            <h2 className='font-weight-bold text-light'>Rides Requests: </h2>
+            <div>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                onInput={(e) => setSearchTermRequests(e.target.value)} />
+            </div>
+          </div>
 
-      
-        {/* <input
-          type="text"
-          // value={searchTerm}
-          onInput={(e) => setSearchTermRequests(e.target.value)}
-          placeholder="Filter by address"
-        /> */}
 
-        {/* {ridesRequests.map((item, i) => {
-          return (
-            <RideRequestItem key={i} item={item} refreshFlag={refreshFlag} setRefreshFlag={setRefreshFlag} />
-          )
-        })} */}
-
-        <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
-          <div className="carousel-inner">
-            {FilteredRidesRequests.length > 0 && (
-              <>
-                {FilteredRidesRequests.reduce((result, item, index) => {
-                  if (index % 3 === 0) {
-                    const carouselItem = FilteredRidesRequests.slice(index, index + 3);
-                    result.push(
-                      <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                        <div className="d-flex">
-                          {carouselItem.map((ride, i) => (
-                            <div key={i} className="col-md-4"
-                            style={{border: '5px solid #1B1F23'}}>
-                              <RideRequestItem item={ride} setRefreshFlag={setRefreshFlag} />
-                            </div>
-                          ))}
+          <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-inner">
+              {FilteredRidesRequests.length > 0 && (
+                <>
+                  {FilteredRidesRequests.reduce((result, item, index) => {
+                    if (index % 3 === 0) {
+                      const carouselItem = FilteredRidesRequests.slice(index, index + 3);
+                      result.push(
+                        <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                          <div className="d-flex">
+                            {carouselItem.map((ride, i) => (
+                              <div key={i} className="col-md-4"
+                                style={{ border: '5px solid #1B1F23' }}>
+                                <RideRequestItem item={ride} setRefreshFlag={setRefreshFlag} />
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  }
-                  return result;
-                }, [])}
-              </>
-            )}
+                      );
+                    }
+                    return result;
+                  }, [])}
+                </>
+              )}
+            </div>
+            <button className="carousel-control-prev" style={{ top: 63, left: -103 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" style={{ top: 63, right: -103 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
-          <button className="carousel-control-prev" style={{ top: 63, left: -103 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" style={{ top: 63, right: -103 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
+
+
+          {FilteredRidesRequests.length < 1 && <Loading />}
         </div>
 
 
-        {FilteredRidesRequests.length < 1 && <Loading />}
-      </div>
+        <div className='row g-3'>
 
-
-      <div className='row g-3'>
-
-        <div className='d-flex m-5' style={{ alignItems: 'center' }}>
-          <h2 className='font-weight-bold text-light'>Rides Offers: </h2>
-          <div>
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-              onInput={(e) => setSearchTermOffers(e.target.value)} />
+          <div className='d-flex m-5' style={{ alignItems: 'center' }}>
+            <h2 className='font-weight-bold text-light'>Rides Offers: </h2>
+            <div>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                onInput={(e) => setSearchTermOffers(e.target.value)} />
+            </div>
           </div>
-        </div>
 
-        <div id="carouselExampleInterval2" className="carousel slide" data-bs-ride="carousel">
-          <div className="carousel-inner">
-            {FilteredRidesOffers.length > 0 && (
-              <>
-                {FilteredRidesOffers.reduce((result, item, index) => {
-                  if (index % 3 === 0) {
-                    const carouselItem = FilteredRidesOffers.slice(index, index + 3);
-                    result.push(
-                      <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                        <div className="d-flex">
-                          {carouselItem.map((ride, i) => (
-                            <div key={i} className="col-md-4"
-                            style={{border: '5px solid #1B1F23'}}>
-                              <RideOfferItem item={ride} setRefreshFlag={setRefreshFlag} />
-                            </div>
-                          ))}
+          <div id="carouselExampleInterval2" className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-inner">
+              {FilteredRidesOffers.length > 0 && (
+                <>
+                  {FilteredRidesOffers.reduce((result, item, index) => {
+                    if (index % 3 === 0) {
+                      const carouselItem = FilteredRidesOffers.slice(index, index + 3);
+                      result.push(
+                        <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                          <div className="d-flex">
+                            {carouselItem.map((ride, i) => (
+                              <div key={i} className="col-md-4"
+                                style={{ border: '5px solid #1B1F23' }}>
+                                <RideOfferItem item={ride} setRefreshFlag={setRefreshFlag} />
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  }
-                  return result;
-                }, [])}
-              </>
-            )}
+                      );
+                    }
+                    return result;
+                  }, [])}
+                </>
+              )}
+            </div>
+            <button className="carousel-control-prev" style={{ top: 63, left: -103 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" style={{ top: 63, right: -103 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
-          <button className="carousel-control-prev" style={{ top: 63, left: -103 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" style={{ top: 63, right: -103 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
+
+          {FilteredRidesOffers.length < 1 && <Loading />}
         </div>
 
-        {FilteredRidesOffers.length < 1 && <Loading />}
       </div>
 
-    </div>
+    </>
   )
 }
