@@ -37,9 +37,9 @@ body {
     position: relative;
     display: inline;
     display: inline-block;
-    float: left;
-    margin-right: 2%;
-    margin-bottom: 20px;
+    /* float: left; */
+    /* margin-right: 2%; */
+    /* margin-bottom: 20px; */
   }
   .end {
     margin-right: 0 !important;
