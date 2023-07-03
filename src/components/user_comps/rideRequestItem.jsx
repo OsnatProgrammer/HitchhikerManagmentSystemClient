@@ -136,10 +136,10 @@ export default function RideRequestItem(props) {
         <div className="container-card bg-green-box">
           {/* <p className="card-title">Request</p> */}
           <p className="card-description">
-            Departure: {item.details_request.departure_address}<br />
-            Destination: {item.details_request.destination_address}<br />
-            Departure date: {new Date(item.details_request.departure_time).toLocaleDateString()}<br />
-            Departure time: {new Date(item.details_request.departure_time).toLocaleTimeString()}<br />
+            <span className='text-decoration-underline'>Departure Address:</span> <br />{item.details_request.departure_address}<br />
+            <span className='text-decoration-underline'>Destination Address:</span> <br /> {item.details_request.destination_address}<br />
+            <span className='text-decoration-underline'>Departure date:</span> {new Date(item.details_request.departure_time).toLocaleDateString()}<br />
+            <span className='text-decoration-underline'>Departure time: </span>{new Date(item.details_request.departure_time).toLocaleTimeString()}<br />
           </p>
 
           {/* <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -202,7 +202,7 @@ export default function RideRequestItem(props) {
                 position: 'relative',
               }}
             >
-              <h2>Your ride has been successfully coordinated with the driver</h2>
+              <h2>Your ride has been successfully coordinated with the hitchhiker</h2>
               <button
                 style={{
                   position: 'absolute',
@@ -220,6 +220,42 @@ export default function RideRequestItem(props) {
               >
                 X
               </button>
+
+              <div className='row'>
+                <button
+                className='col-md-5'
+                  style={{
+                    backgroundColor: ' #54E8A9',
+                    color: 'black',
+                    fontWeight: 'bold',
+                    border: 'none',
+                    borderRadius: '5px',
+                    marginTop: '100px',
+                    // marginRight: '10px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={changeShowNewMessage}
+                >
+                  Send message to hitchhiker
+                </button>
+                <button
+                className='col-md-5'
+                  style={{
+                    backgroundColor: ' #54E8A9',
+                    color: 'black',
+                    fontWeight: 'bold',
+                    border: 'none',
+                    borderRadius: '5px',
+                    marginTop: '100px',
+                    // marginRight: '10px',
+                    // marginLeft: '20px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={save}
+                >
+                  Continue
+                </button>
+              </div>
               <button
                 style={{
                   backgroundColor: ' #54E8A9',
@@ -227,38 +263,7 @@ export default function RideRequestItem(props) {
                   fontWeight: 'bold',
                   border: 'none',
                   borderRadius: '5px',
-                  marginTop: '50px',
-                  marginRight: '10px',
-                  cursor: 'pointer',
-                }}
-                onClick={changeShowNewMessage}
-              >
-                Send message to hitchhiker
-              </button>
-              <button
-                style={{
-                  backgroundColor: ' #54E8A9',
-                  color: 'black',
-                  fontWeight: 'bold',
-                  border: 'none',
-                  borderRadius: '5px',
-                  marginTop: '50px',
-                  marginRight: '10px',
-                  marginLeft: '20px',
-                  cursor: 'pointer',
-                }}
-                onClick={save}
-              >
-                Continue
-              </button>
-              <button
-                style={{
-                  backgroundColor: ' #54E8A9',
-                  color: 'black',
-                  fontWeight: 'bold',
-                  border: 'none',
-                  borderRadius: '5px',
-                  marginTop: '10px',
+                  marginTop: '30px',
                   marginBottom: '10px',
                   cursor: 'pointer',
                 }}

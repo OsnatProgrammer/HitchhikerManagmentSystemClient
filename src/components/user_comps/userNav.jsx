@@ -67,7 +67,7 @@ function UserNav() {
 
     return (
 
-        <AppBar position="static" style={{background: 'transparent', position: 'fixed', minHeight:'80px',
+        <AppBar position="static" style={{background: 'transparent', position: 'fixed', minHeight:'70px',
         display:'flex', alignItems:'center'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
@@ -154,7 +154,7 @@ function UserNav() {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'14px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/rideOffer"
                             className={`${styles.link}`}
@@ -163,7 +163,7 @@ function UserNav() {
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'14px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/rideRequest"
                             className={`${styles.link}`}
@@ -172,7 +172,7 @@ function UserNav() {
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'14px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/myRides"
                             className={`${styles.link}`}
@@ -181,7 +181,7 @@ function UserNav() {
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'14px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/messages"
                             className={`${styles.link}`}
@@ -190,7 +190,7 @@ function UserNav() {
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'14px', fontFamily: '"Permanent Marker", cursive'}}
                             component={Link}
                             to="/user/ridesHistory"
                             className={`${styles.link}`}

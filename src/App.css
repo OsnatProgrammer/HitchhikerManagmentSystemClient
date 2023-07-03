@@ -434,7 +434,8 @@ body {
   background: linear-gradient(71deg, #080509, #1a171c, #080509);
   background-clip: padding-box;
   border-radius: 45px;
-  padding: 40px;
+  padding: 20px;
+  text-align: center;
   img {
     margin-bottom: 32px;
   }
@@ -493,6 +494,7 @@ body {
   color: hsla(0, 0%, 100%, 0.5);
   font-size: 16px;
   max-width: 470px;
+  text-align: center;
 }
 
 .card{

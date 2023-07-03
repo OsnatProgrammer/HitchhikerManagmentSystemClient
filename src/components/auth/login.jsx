@@ -7,6 +7,7 @@ import SignIn from './signIn';
 import SignUp from './signUp';
 import styles from './css/login.module.css'
 import NavLogin from '../general_comps/navLogin';
+import Footer from '../general_comps/footer';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -67,6 +68,7 @@ export default function Login() {
         </div>
       </div>
     </div>
+    <Footer/>
     </>
   )
 }

@@ -1,7 +1,7 @@
 .bgNav{
    background-color: #54E8A9d8; 
    background-color: transparent;
-   min-height: 80px;
+   min-height: 70px;
    position: fixed;
    width: 100%;
    box-shadow: 10px 10px 35px 2px rgba(0,0,0,0.75);
