@@ -20,6 +20,8 @@ export const getUsersList = async () => {
 
 export default function UsersList() {
 
+  const imageFemale = "https://media.istockphoto.com/id/1098017436/photo/portrait-of-a-young-woman-side-view.jpg?s=612x612&w=0&k=20&c=Tr3GW0WT5ytzuj6JcLV98R4MDTtB6i2K3Z8gvqPTCpA=";
+  const imageMale = "https://media.istockphoto.com/id/498085583/photo/silhouette-of-the-man-on-a-white-background.jpg?b=1&s=612x612&w=0&k=20&c=qtvfp762Uyes36ThewDwdRnTuj1xf45rHJEDsk4ius0=";
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -60,8 +62,8 @@ export default function UsersList() {
               <div className={`text-center ${styles.card_box}`}>
                 <div className="member-card pt-2 pb-2">
                   <div className={`${styles.thumb_lg} ${styles.member_thumb} mx-auto`}>
-                  {/* <img src={user.gender == "male" ? "public/images/anonimusMan.jpg" : "public/images/anonimusWoman.png"} className={`rounded-circle ${styles.img_thumbnail}`} alt="profile-image" /> */}
-                  <img src="./components/admin_comps/css/anonimusMan.jpg" alt="profile-image" />
+                  <img src={user.gender == "male" ? `${imageMale}` : `${imageFemale}`} className={`rounded-circle ${styles.img_thumbnail}`} alt="profile-image" />
+                  {/* <img src="" alt="profile-image" /> */}
                   </div>
                   <div className="">
                     <h4>{user.fullName.firstName + " " + user.fullName.lastName}</h4>
