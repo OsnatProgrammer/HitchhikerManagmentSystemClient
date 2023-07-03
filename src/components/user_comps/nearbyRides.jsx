@@ -6,36 +6,6 @@ import RideRequestItem from './rideRequestItem';
 import Loading from '../general_comps/loading';
 import styles from './css/nearByRides.module.css'
 
-
-export const getAllridesRequestsOpen = async () => {
-  let url = API_URL + "/rideRequests/getAllridesRequestsOpen";
-  try {
-    const response = await doApiGet(url);
-    console.log("Requests", response);
-    const ridesRequests = response.data.ar_rideRequests;
-    console.log(ridesRequests);
-    return ridesRequests;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch ridesRequests");
-  }
-};
-
-export const getAllridesoffersOpen = async () => {
-  let url = API_URL + "/rideoffers/getAllridesoffersOpen";
-  try {
-    const response = await doApiGet(url);
-    console.log("Offer", response);
-    const ridesoffers = response.data.ar_rideoffers;
-    console.log(ridesoffers);
-    return ridesoffers;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch ridesoffers");
-  }
-};
-
-
 export default function NearbyRides() {
   const [ridesRequests, setRidesRequests] = useState([]);
   const [ridesoffers, setridesoffers] = useState([]);
@@ -43,16 +13,55 @@ export default function NearbyRides() {
   const [FilteredRidesRequests, setFilteredRidesRequests] = useState([])
   const [FilteredRidesOffers, setFilteredRidesOffers] = useState([])
 
+  const getAllridesRequestsOpen = async () => {
+    let url = API_URL + "/rideRequests/getAllridesRequestsOpen";
+    try {
+      const response = await doApiGet(url);
+      console.log("Requests", response);
+      const ridesRequests = response.data.ar_rideRequests;
+      console.log(ridesRequests);
+      return ridesRequests;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Failed to fetch ridesRequests");
+    }
+  };
+
+  const getAllridesoffersOpen = async () => {
+    let url = API_URL + "/rideoffers/getAllridesoffersOpen";
+    try {
+      const response = await doApiGet(url);
+      console.log("Offer", response);
+      const ridesoffers = response.data.ar_rideoffers;
+      console.log(ridesoffers);
+      return ridesoffers;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Failed to fetch ridesoffers");
+    }
+  };
 
   useEffect(() => {
     async function fetchrides() {
       try {
         const ridesRequestsData = await getAllridesRequestsOpen();
         setRidesRequests(ridesRequestsData);
+
+        setFilteredRidesRequests(ridesRequestsData);
+
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchrides();
+  }, [refreshFlag]);
+
+  useEffect(() => {
+    async function fetchrides() {
+      try {
         const ridesoffersData = await getAllridesoffersOpen();
         setridesoffers(ridesoffersData);
 
-        setFilteredRidesRequests(ridesRequestsData);
         setFilteredRidesOffers(ridesoffersData)
 
       } catch (err) {
@@ -60,9 +69,7 @@ export default function NearbyRides() {
       }
     }
     fetchrides();
-    // setRefreshFlag(false)
   }, [refreshFlag]);
-
 
   const setSearchTermRequests = (searchTerm) => {
     console.log(searchTerm);
@@ -103,7 +110,6 @@ export default function NearbyRides() {
             </div>
           </div>
 
-
           <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
               {FilteredRidesRequests.length > 0 && (
@@ -139,13 +145,14 @@ export default function NearbyRides() {
             </button>
           </div>
 
-
-          {FilteredRidesRequests.length < 1 && <Loading />}
+          {FilteredRidesRequests.length < 1 &&
+            <div class="spinner-border text-light text-center" role="status">
+              <span class="sr-only"></span>
+            </div>
+          }
         </div>
 
-
         <div className='row g-3'>
-
           <div className='d-flex m-5' style={{ alignItems: 'center' }}>
             <h2 className='font-weight-bold text-light'>Rides Offers: </h2>
             <div>
@@ -189,11 +196,13 @@ export default function NearbyRides() {
             </button>
           </div>
 
-          {FilteredRidesOffers.length < 1 && <Loading />}
+          {FilteredRidesOffers.length < 1 &&
+            <div className="spinner-border text-light text-center" role="status">
+              <span className="sr-only"></span>
+            </div>
+          }
         </div>
-
       </div>
-
     </>
   )
 }
