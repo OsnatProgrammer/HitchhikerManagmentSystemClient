@@ -158,7 +158,7 @@ export default function RideRequestItem(props) {
                 </defs>
               </svg> */}
 
-           <button className='btn button m-2 col-md-6' onClick={joinToRide}>Accept Request</button>
+          <button className='btn button m-2 col-md-6' onClick={joinToRide}>Accept Request</button>
         </div>
       </div>
 
@@ -223,13 +223,13 @@ export default function RideRequestItem(props) {
               <button
                 style={{
                   backgroundColor: ' #54E8A9',
-                    color: 'black',
-                    fontWeight: 'bold',
-                    border: 'none',
-                    borderRadius: '5px',
-                    marginTop: '50px',
-                    marginRight: '10px',
-                    cursor: 'pointer',
+                  color: 'black',
+                  fontWeight: 'bold',
+                  border: 'none',
+                  borderRadius: '5px',
+                  marginTop: '50px',
+                  marginRight: '10px',
+                  cursor: 'pointer',
                 }}
                 onClick={changeShowNewMessage}
               >
@@ -244,7 +244,7 @@ export default function RideRequestItem(props) {
                   borderRadius: '5px',
                   marginTop: '50px',
                   marginRight: '10px',
-                  marginLeft:'20px',
+                  marginLeft: '20px',
                   cursor: 'pointer',
                 }}
                 onClick={save}
@@ -259,7 +259,7 @@ export default function RideRequestItem(props) {
                   border: 'none',
                   borderRadius: '5px',
                   marginTop: '10px',
-                  marginBottom:'10px',
+                  marginBottom: '10px',
                   cursor: 'pointer',
                 }}
                 onClick={cancel}
