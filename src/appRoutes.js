@@ -20,6 +20,7 @@ import Logout from './components/auth/logout';
 import UsersList from './components/admin_comps/usersList';
 import RidesList from './components/admin_comps/ridesList';
 import PrivacyPolicy from './components/general_comps/privacyPolicy';
+import HomeManager from './components/admin_comps/homeManager';
 
 // import RidesHistoryDetails from './components/user_comps/ridesHistoryDetails';
 // import PopUp from './components/user_comps/popup';
@@ -45,6 +46,7 @@ const AppRoutes = () => {
                 </Route>
 
                 <Route path='/manager' element={<AdminLayout />}>
+                    <Route path='/manager' element={< HomeManager />} />
                     <Route path='/manager/usersList' element={< UsersList />} />
                     <Route path='/manager/ridesList' element={< RidesList />} />
                     <Route path='/manager/messages' element={< Messages />} />
