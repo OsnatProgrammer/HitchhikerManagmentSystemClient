@@ -20,6 +20,8 @@ import Logout from './components/auth/logout';
 import UsersList from './components/admin_comps/usersList';
 import RidesList from './components/admin_comps/ridesList';
 import PrivacyPolicy from './components/general_comps/privacyPolicy';
+import UploadTest from './components/user_comps/upload';
+import HomeManager from './components/admin_comps/homeManager';
 
 // import RidesHistoryDetails from './components/user_comps/ridesHistoryDetails';
 // import PopUp from './components/user_comps/popup';
