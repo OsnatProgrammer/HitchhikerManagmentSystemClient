@@ -417,7 +417,7 @@
 //   );
 // }
 import React, { useEffect, useState } from 'react';
-import { doApiGet, API_URL, CURRENT_USER } from '../services/apiService';
+import { doApiGet, API_URL, CURRENT_USER, arrRideHistory } from '../services/apiService';
 import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce, usePagination } from 'react-table';
 import PopUp from './popup';
 import { color } from '@mui/system';
@@ -430,24 +430,13 @@ export default function RidesHistory() {
   const [selectedRide, setSelectedRide] = useState(null);
   const [isOfferedByUser, setIsOfferedByUser] = useState(null);
 
-  const getAllRidesById = async () => {
-    try {
-      const url = API_URL + "/rides/getAllRidesById";
-      const response = await doApiGet(url);
-      const rides = response.data.rides;
-      console.log(rides);
-      return rides;
-    } catch (err) {
-      console.log(err);
-      throw new Error("Failed to fetch rides");
-    }
-  };
+
 
   useEffect(() => {
     async function fetchRides() {
       try {
-        const ridesData = await getAllRidesById();
-        setRides(ridesData);
+        setRides( JSON.parse(localStorage.getItem(arrRideHistory)));
+      console.log(rides);
       } catch (err) {
         console.log(err);
       }
@@ -563,16 +552,16 @@ export default function RidesHistory() {
       </div>
       <table
         {...getTableProps()}
-        className="table table-striped table-bordered table-sm"
+        className="table table-striped table-bordered table-sm text-gray-400 border-separate space-y-6"
         style={{ backgroundColor: "transparent", color: "#fff" }}
         cellSpacing="0"
         width="100%"
       >
-        <thead className="thead-dark">
+        <thead className="bg-gray-800 text-gray-500">
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th
+                <th 
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className={column.isSorted ? (column.isSortedDesc ? 'sort-desc' : 'sort-asc') : ''}
                   style={{
@@ -600,7 +589,7 @@ export default function RidesHistory() {
           {page.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} onClick={() => {
+              <tr className='bg-gray-800 p-3'{...row.getRowProps()} onClick={() => {
                 setSelectedRide(row.original);
                 setIsOfferedByUser(row.original.userIdOffer === user._id ? row.original.userIdOffer : row.original.userIdRequest);
                 setIsOpenPopup(true);
@@ -656,7 +645,12 @@ export default function RidesHistory() {
       ) : null}
     </div>
   );
+
 }
+
+
+
+
 
 
 
