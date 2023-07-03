@@ -36,10 +36,29 @@ function UserNav() {
         setAnchorElUser(null);
     };
 
+    const navStyles = {
+        backdropFilter: 'blur(10px)', // יצירת אפקט blur לרקע
+        backgroundColor: 'rgba(255, 255, 255, 0.3)', // צבע הרקע השקוף
+        boxShadow: 'none', // הסרת הצל של הנאב
+      };
+
     return (
 
-        <AppBar position="static" style={{ background: 'transparent', position: 'fixed', minHeight: '70px', overflow: 'hidden', display: 'flex', alignItems: 'center', zIndex:'999' }}>
-            <Container maxWidth="xl">
+        // <AppBar position="static" style={{ background: 'transparent', position: 'fixed', minHeight: '70px', overflow: 'hidden', display: 'flex', alignItems: 'center', zIndex:'999' }}>
+        <AppBar
+        position="static"
+        style={{
+          ...navStyles,
+          background: 'transparent',
+          position: 'fixed',
+          minHeight: '70px',
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          zIndex: '999',
+        }}
+      >
+           <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
                         variant="h6"
