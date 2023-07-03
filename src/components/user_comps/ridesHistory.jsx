@@ -234,6 +234,7 @@ import { doApiGet, API_URL, CURRENT_USER, arrRideHistory } from '../services/api
 import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce, usePagination } from 'react-table';
 import PopUp from './popup';
 import { color } from '@mui/system';
+import stylesTitle from './css/nearByRides.module.css'
 
 const user = JSON.parse(localStorage.getItem(CURRENT_USER));
 
@@ -371,7 +372,11 @@ export default function RidesHistory() {
 
   return (
     <div className="container">
-      <div>Rides History</div>
+      
+      <div className={`${stylesTitle.title} display-1 mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '174px'}}>
+        Rides History
+      </div>
+
       <div className="global-filter">
         Search: {' '}
         <input
