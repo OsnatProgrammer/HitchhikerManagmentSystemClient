@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useForm } from "react-hook-form"
 import { useNavigate } from 'react-router-dom';
-import { doApiMethod, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
+import { doApiMethod, API_URL, TOKEN_NAME, CURRENT_USER, arrRideHistory, doApiGet } from '../services/apiService';
 import Nav from '../general_comps/nav';
 
 
@@ -16,6 +16,18 @@ export default function SignIn() {
         console.log(bodyData)
         doApiForm(bodyData);
     }
+    const getAllRidesById = async () => {
+        try {
+            const url = API_URL + "/rides/getAllRidesById";
+            const response = await doApiGet(url);
+            const rides = response.data.rides;
+            console.log(rides);
+            return rides;
+        } catch (err) {
+            console.log(err);
+            throw new Error("Failed to fetch rides");
+        }
+    };
 
     const doApiForm = async (bodyData) => {
         let url = API_URL + "/users/login"
@@ -29,10 +41,17 @@ export default function SignIn() {
 
                 if (resp.data.user.role.includes("admin")) {
                     nav("/manager");
+                    let rideHistory = await getAllRidesById();
+                    console.log(rideHistory);
+                    localStorage.setItem(arrRideHistory, JSON.stringify(rideHistory));
                 }
-                else if (resp.data.user.role.includes("user"))
+                else if (resp.data.user.role.includes("user")) {
                     nav("/user");
-                window.location.reload();
+                    let rideHistory = await getAllRidesById();
+                    console.log(rideHistory);
+                    localStorage.setItem(arrRideHistory, JSON.stringify(rideHistory));
+                }
+                // window.location.reload();
                 // if (!data.user.role)
                 //  nav("/");
             }
