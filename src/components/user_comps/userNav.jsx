@@ -38,7 +38,7 @@ function UserNav() {
 
     return (
 
-        <AppBar position="static" style={{ background: 'transparent', position: 'fixed', minHeight: '70px', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+        <AppBar position="static" style={{ background: 'transparent', position: 'fixed', minHeight: '70px', overflow: 'hidden', display: 'flex', alignItems: 'center', zIndex:'999' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography

@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { API_URL, CURRENT_USER, doApiMethod } from '../services/apiService';
 import AddressInput from './addressInput';
 import styles from './css/nearByRides.module.css'
+import { border } from '@mui/system';
 
 export default function RideRequest() {
 
@@ -91,7 +92,7 @@ export default function RideRequest() {
       <div className={`${styles.title} display-1 mb-3`}>
           Ride Request
         </div>
-        <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto' style={{ background: '#DDDEDC', borderRadius: '10px', width: '45' }}>
+        <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto' style={{ background: '#DDDEDC', borderRadius: '10px', width: '45', border:'#54E8A9 3px solid' }}>
 
           <label style={{ fontSize: '20px' }}>Departure Address:</label>
           <AddressInput

@@ -4,6 +4,7 @@ import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER, doApiMethod } from '../ser
 import _ from 'lodash';
 import styles from './css/myRides.module.css'
 import { toast, ToastContainer } from 'react-toastify';
+import stylesTitle from './css/nearByRides.module.css'
 
 const user = JSON.parse(localStorage.getItem(CURRENT_USER));
 
@@ -110,22 +111,26 @@ export default function MyRides() {
     }
     fetchRidesRequest();
   }, [flagRequest]);
-  
 
-  console.log("rideR",ridesRequest);
-  console.log("rideO",ridesOffer);
+
+  console.log("rideR", ridesRequest);
+  console.log("rideO", ridesOffer);
   return (
     <div className="container">
-      <div className={`${styles.strip} d-flex align-items-end`}>
+
+      <div className={`${stylesTitle.title} display-1 mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '174px'}}>
+        My Rides
+      </div>
+      {/* <div className={`${styles.strip} d-flex align-items-end`}>
         <div className='display-1'>
           My Rides
         </div>
-      </div>
+      </div> */}
       {/* <h1 className='text-white'>My Rides</h1> */}
       <div className="row justify-content-between text-center">
         <h2 className='text-white mt-4'>Rides Offer</h2>
         {ridesOffer.length > 0 ? (
-          ridesOffer.map((ride,i) => (
+          ridesOffer.map((ride, i) => (
             <div className={`${styles.box}`} key={ride.ride_offer._id}>
               <h6>Ride date:<span className='bold'></span> {new Date(ride.details_offer.departure_time).toLocaleDateString()}</h6>
               <h6>Ride time: {new Date(ride.details_offer.departure_time).toLocaleTimeString()}</h6>
@@ -134,7 +139,7 @@ export default function MyRides() {
               {/* <h6>Status: {ride.details_offer.status}</h6> */}
               <div className='d-flex'>
                 <button className={`btn m-1 ${styles.button}`}  >Update</button>
-                <button className={`btn m-1 ${styles.button}`} onClick={()=>{console.log(ride.ride_offer._id);deleteRideOffer(ride.ride_offer._id)}} >Delete</button>
+                <button className={`btn m-1 ${styles.button}`} onClick={() => { console.log(ride.ride_offer._id); deleteRideOffer(ride.ride_offer._id) }} >Delete</button>
               </div>
             </div>
           ))
@@ -144,8 +149,8 @@ export default function MyRides() {
       </div>
       <div className="row justify-content-between text-center">
         <h2 className='text-white mt-4'>Rides Request</h2>
-          {ridesRequest.length > 0 ? (
-          ridesRequest.map((ride,i) => (
+        {ridesRequest.length > 0 ? (
+          ridesRequest.map((ride, i) => (
             <div className={`${styles.box}`} key={ride.ride_request._id}>
               <h6>Ride date: {new Date(ride.details_request.departure_time).toLocaleDateString()}</h6>
               <h6>Ride time: {new Date(ride.details_request.departure_time).toLocaleTimeString()}</h6>
@@ -154,7 +159,7 @@ export default function MyRides() {
               {/* <h6>Status: {ride.details_request.status}</h6> */}
               <div className='d-flex'>
                 <button className={`btn m-1 ${styles.button}`}>Update</button>
-                <button className={`btn m-1 ${styles.button}`} onClick={()=>{deleteRideRequest(ride.ride_request._id)}}>Delete</button>
+                <button className={`btn m-1 ${styles.button}`} onClick={() => { deleteRideRequest(ride.ride_request._id) }}>Delete</button>
               </div>
             </div>
           ))
