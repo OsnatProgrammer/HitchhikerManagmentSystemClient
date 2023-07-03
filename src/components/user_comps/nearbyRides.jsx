@@ -13,8 +13,8 @@ export default function NearbyRides() {
   const [FilteredRidesRequests, setFilteredRidesRequests] = useState([])
   const [FilteredRidesOffers, setFilteredRidesOffers] = useState([])
 
-  const getAllridesRequestsOpen = async () => {
-    let url = API_URL + "/rideRequests/getAllridesRequestsOpen";
+  const getAllridesRequestsOpenDifferentId = async () => {
+    let url = API_URL + "/rideRequests/getAllridesRequestsOpenDifferentId";
     try {
       const response = await doApiGet(url);
       console.log("Requests", response);
@@ -27,8 +27,8 @@ export default function NearbyRides() {
     }
   };
 
-  const getAllridesoffersOpen = async () => {
-    let url = API_URL + "/rideoffers/getAllridesoffersOpen";
+  const getAllridesoffersOpenDifferentId = async () => {
+    let url = API_URL + "/rideoffers/getAllridesoffersOpenDifferentId";
     try {
       const response = await doApiGet(url);
       console.log("Offer", response);
@@ -44,7 +44,7 @@ export default function NearbyRides() {
   useEffect(() => {
     async function fetchrides() {
       try {
-        const ridesRequestsData = await getAllridesRequestsOpen();
+        const ridesRequestsData = await getAllridesRequestsOpenDifferentId();
         setRidesRequests(ridesRequestsData);
 
         setFilteredRidesRequests(ridesRequestsData);
@@ -59,7 +59,7 @@ export default function NearbyRides() {
   useEffect(() => {
     async function fetchrides() {
       try {
-        const ridesoffersData = await getAllridesoffersOpen();
+        const ridesoffersData = await getAllridesoffersOpenDifferentId();
         setridesoffers(ridesoffersData);
 
         setFilteredRidesOffers(ridesoffersData)
@@ -135,19 +135,19 @@ export default function NearbyRides() {
                 </>
               )}
             </div>
-            <button className="carousel-control-prev" style={{ top: 63, left: -103 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <button className="carousel-control-prev" style={{ top: 135, left: -72 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" style={{ top: 63, right: -103 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            </button> 
+            <button className="carousel-control-next" style={{ top: 135, right: -72 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
               <span className="carousel-control-next-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>
           </div>
 
           {FilteredRidesRequests.length < 1 &&
-            <div class="spinner-border text-light text-center" role="status">
-              <span class="sr-only"></span>
+            <div className="spinner-border text-light text-center" role="status">
+              <span className="sr-only"></span>
             </div>
           }
         </div>
@@ -186,11 +186,11 @@ export default function NearbyRides() {
                 </>
               )}
             </div>
-            <button className="carousel-control-prev" style={{ top: 63, left: -103 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
+            <button className="carousel-control-prev" style={{ top: 135, left: -72 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
             </button>
-            <button className="carousel-control-next" style={{ top: 63, right: -103 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
+            <button className="carousel-control-next" style={{  top: 135,right: -72 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
               <span className="carousel-control-next-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>

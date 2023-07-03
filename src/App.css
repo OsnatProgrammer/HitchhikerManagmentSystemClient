@@ -29,6 +29,13 @@
 .MuiContainer-root.MuiContainer-maxWidthXl.css-19r6kue-MuiContainer-root ,.css-hip9hq-MuiPaper-root-MuiAppBar-root{
   /* background: #54E8A9; */
   background: transparent;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 0px;;
+}
+
+.css-av538e-MuiButtonBase-root-MuiIconButton-root,.css-1pz7awu-MuiButtonBase-root-MuiIconButton-root {
+  width: 50px;
 }
 
 /* Scroll foter */
