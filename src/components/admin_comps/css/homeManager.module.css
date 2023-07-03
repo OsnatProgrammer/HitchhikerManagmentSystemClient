@@ -1,0 +1,27 @@
+.strip {
+    background-image: url("https://i.ibb.co/G3DWbj5/front-view-couple-hitchhiking-while-road-trip.jpg");
+    box-shadow: 0px 3px 10px 1px #000;
+    background-position: center;
+    background-size: cover;
+    min-height: 350px;
+    /* position: relative; */
+    width: 100%;
+  }
+.strip div{
+    margin-left: 24px;
+   color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 10px #0D0E0D;
+}
+
+.link{
+    transition: 500ms;
+    color: white;
+    font-size: 80px;
+}
+
+.link:hover{
+    transform: translate(0px ,-4px);
+    transition: 500ms;
+    color: #54E8A9;
+}
