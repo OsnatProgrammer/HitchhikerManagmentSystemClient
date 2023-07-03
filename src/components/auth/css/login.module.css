@@ -36,7 +36,8 @@
 
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  background: #ededed;
+  /* background: #ededed; */
+  
 }
 
 input,
@@ -59,7 +60,7 @@ button {
   width: 900px;
   height: 550px;
   margin: 0 auto 100px;
-  background: #fff;
+  /* background: #fff; */
 }
 
 .form {
@@ -68,6 +69,7 @@ button {
   height: 100%;
   transition: transform 1.2s ease-in-out;
   padding: 50px 30px 0;
+  background:#70746e36
 }
 
 .sub-cont {
@@ -80,10 +82,12 @@ button {
   padding-left: 260px;
   background: #fff;
   transition: transform 1.2s ease-in-out;
+  background:#70746e36
 }
 
 .cont.s--signup .sub-cont {
   transform: translate3d(-640px, 0, 0);
+  background:#70746e36
 }
 
 button {
@@ -257,7 +261,7 @@ input {
 .submit {
   margin-top: 20px;
   margin-bottom: 20px;
-  background: #6db33f;
+  background: #54E8A9;
   text-transform: uppercase;
 }
 

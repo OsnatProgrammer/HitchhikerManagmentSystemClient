@@ -1,16 +1,13 @@
 
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doApiMethod, API_URL } from '../services/apiService';
-import classes from './css/General.module.css'
-
-
+import classes from './css/General.module.css';
+import { FaTrash } from 'react-icons/fa';
 
 export default function MessageItem(props) {
   const [status, setStatus] = useState(props.message.status);
   const navigate = useNavigate();
-
 
   const handleClick = async () => {
     if (!status) {
@@ -26,12 +23,28 @@ export default function MessageItem(props) {
       } catch (error) {
         console.log('Failed to update status:', error);
       }
+
     }
-    navigate(`/user/message-details/${message._id}`, { state: { message: message } });
+    navigate(`/user/message-details/${props.message._id}`, { state: { message: props.message } });
 
   };
 
-  let message = props.message;
+  const handleDelete = async (e) => {
+    e.stopPropagation(); // Prevent the click event from propagating to the parent element
+    try {
+      // Make an API request to delete the message
+      const url = `${API_URL}/messages/deleteMessage/${props.message._id}`;
+      await doApiMethod(url, 'DELETE');
+
+      // Remove the deleted message from the list
+      props.onDelete(props.message._id);
+
+    } catch (error) {
+      console.log('Failed to delete message:', error);
+    }
+  };
+
+  const message = props.message;
 
   const rowStyles = {
     fontWeight: status ? 'normal' : 'bold',
@@ -46,7 +59,9 @@ export default function MessageItem(props) {
       <td>{message.messageDetails}</td>
       <td>{message.rides_id}</td>
       <td>{JSON.stringify(status)}</td>
+      <td>
+        <FaTrash onClick={handleDelete} className={classes.deleteIcon} />
+      </td>
     </tr>
   );
 }
-

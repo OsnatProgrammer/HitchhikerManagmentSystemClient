@@ -1,0 +1,27 @@
+.strip {
+    background-image: url("https://deih43ym53wif.cloudfront.net/large_hitchhiking-catch-car-backpack-traveller-shutterstock_1351163843_4f2979b480.jpeg");
+    box-shadow: 0px 3px 10px 1px #000;
+    background-position: center;
+    background-size: cover;
+    min-height: 350px;
+    /* position: relative; */
+    width: 100%;
+  }
+.strip div{
+    margin-left: 24px;
+   color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 10px #0D0E0D;
+}
+
+.title{
+  /* margin-left: 24px; */
+  color: white;
+ font-weight: bold;
+ text-shadow: 1px 1px 10px #54E8A9;
+ font-size: 60px;
+ text-align: center;
+ /* margin-bottom: 12px; */
+ position: relative;
+ top: 0px;
+}

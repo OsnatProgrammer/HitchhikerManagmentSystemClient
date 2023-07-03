@@ -1,32 +1,3 @@
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-// import Greeting from '../general_comps/greeting'
-
-// export default function UserNav() {
-//     return (
-//         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-//             <div className="container-fluid d-flex justify-content-between align-items-center">
-//                 <a className="navbar-brand" href="#">Logo</a>
-//                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-//                     <div className="navbar-nav">
-//                         <Link className="nav-link active" aria-current="page" to={"/user/myInfo"}>My Info</Link>
-//                         <Link className="nav-link active" aria-current="page" to={"/user/rideOffer"}>Ride Offer</Link>
-//                         <Link className="nav-link active" aria-current="page" to={"/user/rideRequest"}>Ride Request</Link>
-//                         <Link className="nav-link active" aria-current="page" to={"/user/myRides"}>My Rides</Link>
-//                         <Link className="nav-link active" aria-current="page" to={"/user/messages"}>Messages</Link>
-//                         <Link className="nav-link active" aria-current="page" to={"/user/ridesHistory"}>Rides History</Link>
-//                         <Link className="nav-link active" aria-current="page" to={"/user/logout"}>Logout</Link>
-//                     </div>
-//                 </div>
-
-//                 <div className="p-0 align-items-center">
-//                     <Greeting/>
-//                 </div>
-//             </div>
-//         </nav>
-//     )
-// }
-
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -44,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import Greeting from '../general_comps/greeting';
+import styles from './css/userNav.module.css'
 
 function UserNav() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -66,15 +38,14 @@ function UserNav() {
 
     return (
 
-        <AppBar position="static">
+        <AppBar position="static" style={{ background: 'transparent', position: 'fixed', minHeight: '70px', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
+                        href="/user"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -85,7 +56,7 @@ function UserNav() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        <i className='bx bxs-car bx-tada' style={{ fontSize: '60px', color: '#ffffff' }}></i>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -131,8 +102,8 @@ function UserNav() {
                             </MenuItem>
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
+                    {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
+                    {/* <Typography
                         variant="h5"
                         noWrap
                         component="a"
@@ -149,50 +120,55 @@ function UserNav() {
                         }}
                     >
                         LOGO
-                    </Typography>
+                    </Typography> */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{ fontWeight: 'bold', my: 2, color: 'white', display: 'block', fontSize: '14px', fontFamily: '"Permanent Marker", cursive' }}
                             component={Link}
                             to="/user/rideOffer"
+                            className={`${styles.link}`}
                         >
                             Ride Offer
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{ fontWeight: 'bold', my: 2, color: 'white', display: 'block', fontSize: '14px', fontFamily: '"Permanent Marker", cursive' }}
                             component={Link}
                             to="/user/rideRequest"
+                            className={`${styles.link}`}
                         >
                             Ride Request
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{ fontWeight: 'bold', my: 2, color: 'white', display: 'block', fontSize: '14px', fontFamily: '"Permanent Marker", cursive' }}
                             component={Link}
                             to="/user/myRides"
+                            className={`${styles.link}`}
                         >
                             My Rides
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{ fontWeight: 'bold', my: 2, color: 'white', display: 'block', fontSize: '14px', fontFamily: '"Permanent Marker", cursive' }}
                             component={Link}
                             to="/user/messages"
+                            className={`${styles.link}`}
                         >
                             Messages
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{ fontWeight: 'bold', my: 2, color: 'white', display: 'block', fontSize: '14px', fontFamily: '"Permanent Marker", cursive' }}
                             component={Link}
                             to="/user/ridesHistory"
+                            className={`${styles.link}`}
                         >
                             Rides History
                         </Button>
                     </Box>
-                        <Greeting />
+                    <Greeting />
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
@@ -221,6 +197,9 @@ function UserNav() {
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
                                 <Link to="/user/messages" className="nav-link active" aria-current="page">Messages</Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Link to="/user/upload" className="nav-link active" aria-current="page">Upload image</Link>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
                                 <Link to="/user/logout" className="nav-link active" aria-current="page">Logout</Link>
