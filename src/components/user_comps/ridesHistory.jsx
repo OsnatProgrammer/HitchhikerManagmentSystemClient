@@ -261,10 +261,16 @@ export default function RidesHistory() {
       {
         Header: 'Ride date',
         accessor: (row) => (row.details_offer && row.details_offer.departure_time && new Date(row.details_offer.departure_time).toLocaleDateString()) || '',
+        Cell: ({ value }) => (
+          <span style={{color:'#8F97A3'}}>{value}</span>
+        ),
       },
       {
         Header: 'Ride time',
         accessor: (row) => (row.details_offer && row.details_offer.departure_time && new Date(row.details_offer.departure_time).toLocaleTimeString()) || '',
+        Cell: ({ value }) => (
+          <span style={{color:'#8F97A3'}}>{value}</span>
+        ),
       },
       {
         Header: 'Name',
@@ -275,6 +281,9 @@ export default function RidesHistory() {
             return row.ride_request.fullName.firstName;
           }
         },
+        Cell: ({ value }) => (
+          <span style={{color:'#8F97A3'}}>{value}</span>
+        ),
       },
       {
         Header: 'Departure address',
@@ -285,6 +294,9 @@ export default function RidesHistory() {
             return row.details_request.departure_address;
           }
         },
+        Cell: ({ value }) => (
+          <span style={{color:'#8F97A3'}}>{value}</span>
+        ),
       },
       {
         Header: 'Destination address',
@@ -295,6 +307,9 @@ export default function RidesHistory() {
             return row.details_request.destination_address;
           }
         },
+        Cell: ({ value }) => (
+          <span style={{color:'#8F97A3'}}>{value}</span>
+        ),
       },
       {
         Header: 'Status',
@@ -305,6 +320,9 @@ export default function RidesHistory() {
             return row.details_request.status;
           }
         },
+        Cell: ({ value }) => (
+          <span style={{color:'#8F97A3'}}>{value}</span>
+        ),
       },
       {
         Header: 'More details',
@@ -319,6 +337,7 @@ export default function RidesHistory() {
     ],
     []
   );
+  
 
   const {
     getTableProps,
@@ -352,7 +371,7 @@ export default function RidesHistory() {
 
   return (
     <div className="container">
-      <h1>Rides History</h1>
+      <div>Rides History</div>
       <div className="global-filter">
         Search: {' '}
         <input
@@ -378,7 +397,7 @@ export default function RidesHistory() {
                     {headerGroup.headers.map((column) => (
                       <th
                         {...column.getHeaderProps(column.getSortByToggleProps())}
-                        className={`p-3 m-3 text-left ${column.isSorted ? (column.isSortedDesc ? 'sort-desc' : 'sort-asc') : ''}`}
+                        className={`p-3 m-3 text-left th ${column.isSorted ? (column.isSortedDesc ? 'sort-desc' : 'sort-asc') : ''}`}
                         style={{
                           fontWeight: column.isSorted ? 'bold' : 'black',
                           color: 'black',

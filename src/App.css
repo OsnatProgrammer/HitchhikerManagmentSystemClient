@@ -514,9 +514,9 @@ body {
   border-spacing: 0 15px;
 }
 
-i {
+/* i {
   font-size: 1rem !important;
-}
+} */
 
 .tr {
   /* padding: 12px;
@@ -524,6 +524,14 @@ i {
   /* border-top: #0d1212 4px solid; */
   border-top:  #1B1F23 6px solid ;
   border-radius:  .625rem 0 0 .625rem;
+}
+.th{
+  color: #8F97A3;
+
+}
+
+thead .tr:nth-child(0){
+  color: #8F97A3;
 
 }
 
