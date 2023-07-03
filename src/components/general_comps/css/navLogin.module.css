@@ -6,6 +6,7 @@
     box-shadow: 10px 10px 35px 2px rgba(0,0,0,0.75);
     z-index: 99;
     border-bottom: #32511dd8 10px solid;
+    padding: 0
  }
 
  nav .link{

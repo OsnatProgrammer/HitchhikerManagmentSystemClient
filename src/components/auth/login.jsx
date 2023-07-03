@@ -40,7 +40,7 @@ export default function Login() {
   return (
     <>
     <NavLogin/>
-    <div className="cont shadow" style={{position:'relative', top:'125px'}}>
+    <div className="cont shadow" style={{position:'relative', top:'100px'}}>
       <div className="form sign-in" style={{boxShadow: 'box-shadow: 0px 0px 44px 20px #D32929 inset', background:'#70746e36'}}>
         <div>
           <SignIn />
