@@ -459,7 +459,7 @@ export default function RideOfferItem(props) {
                 borderRadius: '10px',
                 textAlign: 'center',
                 width: '600px',
-                height: '300px',
+                height: '340px',
                 position: 'relative',
               }}
             >
@@ -525,7 +525,8 @@ export default function RideOfferItem(props) {
                   fontWeight: 'bold',
                   border: 'none',
                   borderRadius: '5px',
-                  marginTop: '20px',
+                  marginTop: '10px',
+                  marginBottom:'10px',
                   cursor: 'pointer',
                 }}
                 onClick={cancel}

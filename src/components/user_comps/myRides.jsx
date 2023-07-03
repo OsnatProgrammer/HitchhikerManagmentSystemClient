@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER } from '../services/apiService';
+import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER, doApiMethod } from '../services/apiService';
 import _ from 'lodash';
 import styles from './css/myRides.module.css'
 import { styled } from 'styled-components';
+import { async } from 'q';
 
 export default function MyRides() {
   const [ridesOffer, setRidesOffer] = useState([]);
@@ -38,6 +39,29 @@ export default function MyRides() {
       throw new Error("Failed to fetch rides");
     }
   };
+
+  const deleteRideRequest = async (idRideDel) => {
+    try {
+      const url = API_URL + `/rideRequests/deleterideRequest/${idRideDel}`;
+      await doApiMethod(url, 'DELETE');
+      setRidesRequest((listRide) => listRide.filter((ride) => ride._id !== idRideDel));;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Failed to delete rides");
+    }
+  }
+
+  const deleteRideOffer = async (idRideDel) => {
+    try {
+      const url = API_URL + `/rideRequests/deleteRideOffer/${idRideDel}`;
+      await doApiMethod(url, 'DELETE');
+      setRidesRequest((listRide) => listRide.filter((ride) => ride._id !== idRideDel));;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Failed to delete rides");
+    }
+  }
+
 
 
   useEffect(() => {
@@ -83,6 +107,8 @@ export default function MyRides() {
   }, []);
 
 
+  console.log("rideR",ridesRequest);
+  console.log("rideO",ridesOffer);
   return (
     <div className="container">
       <div className={`${styles.strip} d-flex align-items-end`}>
@@ -103,7 +129,7 @@ export default function MyRides() {
               {/* <h6>Status: {ride.details_offer.status}</h6> */}
               <div className='d-flex'>
                 <button className={`btn m-1 ${styled.button}`}  >Update</button>
-                <button className={`btn m-1 ${styled.button}`}  >Delete</button>
+                <button className={`btn m-1 ${styled.button}`} onClick={deleteRideOffer} >Delete</button>
               </div>
             </div>
           ))
@@ -113,7 +139,7 @@ export default function MyRides() {
       </div>
       <div className="row justify-content-between text-center">
         <h2 className='text-white mt-4'>Rides Request</h2>
-        {ridesRequest.length > 0 ? (
+          {ridesRequest.length > 0 ? (
           ridesRequest.map((ride) => (
             <div className={`${styles.box}`} key={ride.rideID}>
               <h6>Ride date: {new Date(ride.details_request.departure_time).toLocaleDateString()}</h6>
@@ -123,7 +149,7 @@ export default function MyRides() {
               {/* <h6>Status: {ride.details_request.status}</h6> */}
               <div className='d-flex'>
                 <button className={`btn m-1 ${styled.button}`}>Update</button>
-                <button className={`btn m-1 ${styled.button}`}>Delete</button>
+                <button className={`btn m-1 ${styled.button}`} onClick={deleteRideRequest}>Delete</button>
               </div>
             </div>
           ))
