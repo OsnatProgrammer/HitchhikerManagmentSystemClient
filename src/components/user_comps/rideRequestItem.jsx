@@ -39,43 +39,32 @@ export default function RideRequestItem(props) {
 
 
   const doApi = async () => {
-
     try {
-
       // let current_user = JSON.parse(localStorage.getItem(CURRENT_USER))
       let offer = await doApiOpenOffer();
       doApiChangeStatus("rideRequests", item.ride_request._id);
-      // doApiChangeStatus("rideRequests", request.data._id);
-
       let ride = await doApiOpenRide(offer.data);
       rideId = ride.data._id;
-
       let message = doApiOpenMessageSystem(ride.data._id)
-
-      // window.location.reload();
-
     }
     catch (err) {
       console.log(err.response);
       alert("There is problem with doApi");
-
     }
   }
+
   const doApiOpenOffer = async () => {
     let urlRideOffer = API_URL + "/rideoffers/addRideOffer"
     console.log(urlRideOffer);
     try {
-
       let current_user = JSON.parse(localStorage.getItem(CURRENT_USER))
       let resp = await doApiMethod(urlRideOffer, "POST", { user_id: current_user._id, rideDetails_id: item.ride_request.rideDetails_id })
 
       return resp;
-
     }
     catch (err) {
       console.log(err);
       alert("There is problem with doApiOpenOffer");
-
     }
   }
 
@@ -83,49 +72,39 @@ export default function RideRequestItem(props) {
     let url = API_URL + `/${rideRourt}/updateStatus/${id}`;
 
     try {
-
       let resp = await doApiMethod(url, "PATCH", { status: 1 });
 
       return resp;
-
     }
     catch (err) {
       console.log(err.response);
       alert("There is problem with doApiChangeStatus");
-
     }
   }
 
   const doApiOpenRide = async (offer) => {
     let urlRides = API_URL + "/rides/addRide"
     try {
-
       let resp = await doApiMethod(urlRides, "POST", { rideOffer_id: offer._id, rideRequest_id: item.ride_request._id })
 
       return resp;
-
     }
     catch (err) {
       console.log(err.response);
       alert("There is problem with doApiOpenRide");
-
     }
   }
 
   const doApiOpenMessageSystem = async (id_ride) => {
     let urlMessages = API_URL + "/messages/addMessageSystem"
-
     try {
-
       let resp = await doApiMethod(urlMessages, "POST", { user_idReceive: item.ride_request.user_id, messageDetails: "Hello, There is driver that you can join his  ride:)", rides_id: id_ride })
 
       return resp;
-
     }
     catch (err) {
       console.log(err.response);
       alert("There is problem with doApiOpenMessageSystem");
-
     }
   }
 
@@ -141,7 +120,6 @@ export default function RideRequestItem(props) {
             <span className='text-decoration-underline'>Departure date:</span> {new Date(item.details_request.departure_time).toLocaleDateString()}<br />
             <span className='text-decoration-underline'>Departure time: </span>{new Date(item.details_request.departure_time).toLocaleTimeString()}<br />
           </p>
-
           {/* <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1" y="1" width="118" height="118" rx="24" fill="url(#paint0_linear_1366_4547)" fill-opacity="0.15" stroke="url(#paint1_radial_1366_4547)" stroke-width="2"><button className='btn button m-2 col-md-6' onClick={joinToRide}>Accept Request</button></rect>
                 
@@ -157,14 +135,10 @@ export default function RideRequestItem(props) {
                   </radialGradient>
                 </defs>
               </svg> */}
-
           <button className='btn button m-2 col-md-6' onClick={joinToRide}>Accept Request</button>
         </div>
       </div>
-
       {/* </div> */}
-
-
       <div>
         {/* <div className='shadow p-2 overflow-hidden h-100 text-center bg-light' style={{ borderRadius: '30px', lineHeight: '1.6' }}>
           departure: {item.details_request.departure_address}<br />
