@@ -199,6 +199,9 @@ function UserNav() {
                                 <Link to="/user/messages" className="nav-link active" aria-current="page">Messages</Link>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
+                                <Link to="/user/upload" className="nav-link active" aria-current="page">Upload image</Link>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseUserMenu}>
                                 <Link to="/user/logout" className="nav-link active" aria-current="page">Logout</Link>
                             </MenuItem>
                         </Menu>
