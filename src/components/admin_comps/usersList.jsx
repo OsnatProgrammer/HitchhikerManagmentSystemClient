@@ -59,7 +59,7 @@ export default function UsersList() {
           {/* <h1>Users</h1> */}
           {users.map((user) => (
             <div className="col-lg-3 mt-4">
-              <div className={`text-center ${styles.card_box}`}>
+              <div className={`text-center ${styles.card_box}`} style={{background:'#E1E2E0'}}>
                 <div className="member-card pt-2 pb-2">
                   <div className={`${styles.thumb_lg} ${styles.member_thumb} mx-auto`}>
                   <img src={user.gender == "male" ? `${imageMale}` : `${imageFemale}`} className={`rounded-circle ${styles.img_thumbnail}`} alt="profile-image" />
@@ -81,8 +81,9 @@ export default function UsersList() {
                     </li>
                   </ul>
                   <button
-                    className={`btn btn-primary mt-3 ${styles.btn_rounded} ${user.status ? 'btn-primary' : 'btn-secondary'}`}
+                    className={`btn mt-3 ${styles.btn_rounded} ${user.status ? 'button' : 'btn-secondary'}`}
                     onClick={() => { doApiStatus(user) }}
+                    style={{width:'80%'}}
                   >
                     {user.status ? 'Active' : 'Inactive'}
                   </button>
