@@ -191,12 +191,14 @@ export default function RideRequestItem(props) {
           >
             <div
               style={{
-                backgroundColor: 'white',
+                backgroundColor: 'black',
+                border: '0.5px  #54E8A9 solid',
+                color: "#54E8A9",
                 padding: '20px',
                 borderRadius: '10px',
                 textAlign: 'center',
                 width: '600px',
-                height: '300px',
+                height: '340px',
                 position: 'relative',
               }}
             >
@@ -204,8 +206,9 @@ export default function RideRequestItem(props) {
               <button
                 style={{
                   position: 'absolute',
-                  top: '10px',
-                  right: '10px',
+                  color: "#54E8A9",
+                  top: '-2px',
+                  left: '-110px',
                   padding: '5px',
                   backgroundColor: 'transparent',
                   border: 'none',
@@ -219,14 +222,14 @@ export default function RideRequestItem(props) {
               </button>
               <button
                 style={{
-                  padding: '10px 20px',
-                  backgroundColor: 'blue',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  marginTop: '70px',
-                  marginRight: '60px',
-                  cursor: 'pointer',
+                  backgroundColor: ' #54E8A9',
+                    color: 'black',
+                    fontWeight: 'bold',
+                    border: 'none',
+                    borderRadius: '5px',
+                    marginTop: '50px',
+                    marginRight: '10px',
+                    cursor: 'pointer',
                 }}
                 onClick={changeShowNewMessage}
               >
@@ -234,13 +237,14 @@ export default function RideRequestItem(props) {
               </button>
               <button
                 style={{
-                  padding: '10px 20px',
-                  backgroundColor: 'blue',
-                  color: 'white',
+                  backgroundColor: ' #54E8A9',
+                  color: 'black',
+                  fontWeight: 'bold',
                   border: 'none',
                   borderRadius: '5px',
-                  marginTop: '20px',
-                  marginRight: '60px',
+                  marginTop: '50px',
+                  marginRight: '10px',
+                  marginLeft:'20px',
                   cursor: 'pointer',
                 }}
                 onClick={save}
@@ -249,12 +253,13 @@ export default function RideRequestItem(props) {
               </button>
               <button
                 style={{
-                  padding: '10px 20px',
-                  backgroundColor: 'blue',
-                  color: 'white',
+                  backgroundColor: ' #54E8A9',
+                  color: 'black',
+                  fontWeight: 'bold',
                   border: 'none',
                   borderRadius: '5px',
-                  marginTop: '20px',
+                  marginTop: '10px',
+                  marginBottom:'10px',
                   cursor: 'pointer',
                 }}
                 onClick={cancel}
