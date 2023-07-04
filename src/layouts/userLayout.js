@@ -7,7 +7,9 @@ export default function UserLayout() {
   return (
     <>
       <HeaderUser />
+      <div style={{ minHeight: '68vh' }}>
         <Outlet />
+      </div>
       <Footer />
     </>
   )

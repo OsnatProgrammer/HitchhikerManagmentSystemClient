@@ -7,7 +7,7 @@ export default function ManagerNav() {
 
   return (
     <div className='w-100' >
-    <nav className="navbar navbar-expand-lg navbar-light w-100 shadow" style={{background: 'transparent', position: 'fixed', minHeight:'70px',display:'flex', alignItems:'center', boxShadow: '10px 10px 35px 2px rgba(0,0,0,0.75)'}}>
+    <nav className="navbar navbar-expand-lg navbar-light w-100 shadow" style={{background: 'transparent', position: 'fixed', minHeight:'70px',display:'flex', alignItems:'center', boxShadow: '10px 10px 35px 2px rgba(0,0,0,0.75)', zIndex:'999'}}>
       <div className="container-fluid d-flex justify-content-between align-items-center">
         <a className="navbar-brand" href="/manager">
         <i className='bx bxs-car bx-tada' style={{fontSize: '60px', color:'#ffffff'}}></i>
