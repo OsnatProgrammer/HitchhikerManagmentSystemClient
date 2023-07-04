@@ -58,37 +58,37 @@ export default function SignUp() {
     return (
         <>
             <div className='container'>
-                <h2 className='text-center pt-3'>CREATE AN ACCOUNT</h2>
+                <h2 className='text-center pt-3 label'>CREATE AN ACCOUNT</h2>
                 <form onSubmit={handleSubmit(onSubForm)} className='row mx-auto'>
 
-                    <div className="col-md-6">
+                    <div className="col-md-6 label">
                         <label>First Name:</label>
                         <input {...firstNameRef} type="text" />
                         {errors.fullName?.firstName && (
                             <small className="text-danger">Enter valid name</small>)}
                     </div>
 
-                    <div className="col-md-6">
+                    <div className="col-md-6 label">
                         <label>Last Name:</label>
                         <input {...lastNameRef} type="text" />
                         {errors.fullName?.lastName && (
                             <small className="text-danger">Enter valid name</small>)}
                     </div>
 
-                    <div className="d-flex col-md-6 flex-column">
+                    <div className="d-flex col-md-6 label flex-column">
                         <div className="d-flex align-items-center">
                             <label htmlFor="gender" className="text-sm font-medium text-gray-700">Gender:</label>
                         </div>
-                        <div className="d-flex align-items-center">
+                        <div className="d-flex align-items-center label">
                             <label className="radio-label">
                                 <input {...genderRef} type="radio" value="male" />
                                 <span className="radio-text">Male</span>
                             </label>
-                            <label className="radio-label">
+                            <label className="radio-label label">
                                 <input {...genderRef} type="radio" value="female" />
                                 <span className="radio-text">Female</span>
                             </label>
-                            <label className="radio-label">
+                            <label className="radio-label label">
                                 <input {...genderRef} type="radio" value="other" />
                                 <span className="radio-text">Other</span>
                             </label>
@@ -107,7 +107,7 @@ export default function SignUp() {
                         </select>
                         {errors.gender && <div className="text-danger">Enter valid gender</div>} */}
 
-                    <div className='col-md-6'>
+                    <div className='col-md-6 label'>
                         <label>Address:</label>
                         <input {...addressRef} type="text" />
                         {errors.address && <small className="text-danger">Enter valid address</small>}
@@ -116,19 +116,19 @@ export default function SignUp() {
                         onAddressChange={handleAddressChange} /> */}
                     </div >
 
-                    <div className='col-md-6'>
+                    <div className='col-md-6 label'>
                         <label>Email:</label>
                         <input {...emailRef} type="email" />
                         {errors.email && <small className="text-danger">Enter valid email</small>}
                     </div>
 
-                    <div className='col-md-6'>
+                    <div className='col-md-6 label'>
                         <label>Password:</label>
                         <input {...passwordRef} type="password" />
                         {errors.password && <small className="text-danger">Enter min 3 charts</small>}
                     </div>
 
-                    <div className="mt-4">
+                    <div className="mt-4 label">
                         {/* <div className="checkbox-container">
                             <input id="consent" type="checkbox" />
                         </div> */}

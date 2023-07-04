@@ -1,50 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER, doApiMethod } from '../services/apiService';
+import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER, doApiMethod, arrRidsCloseAdmin, arrRequstOpenAdmin, arrOfferOpenAdmin } from '../services/apiService';
 
-// Trips that have been closed
-export const getRidesList = async () => {
-  try {
-    const url = API_URL + `/rides/getAllRides`;
-    const response = await doApiGet(url);
-    console.log("response", response);
-    const rides = response.data.arr;
-    console.log(rides);
-    return rides;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch rides");
-  }
-};
+// // Trips that have been closed
+// export const getRidesList = async () => {
+//   try {
+//     const url = API_URL + `/rides/getAllRides`;
+//     const response = await doApiGet(url);
+//     console.log("response", response);
+//     const rides = response.data.arr;
+//     console.log(rides);
+//     return rides;
+//   } catch (err) {
+//     console.log(err);
+//     throw new Error("Failed to fetch rides");
+//   }
+// };
 
 
-//Travel requests
-export const getAllRidesRequest = async () => {
-  try {
-    const url = API_URL + "/rideRequests/getAllridesRequestsOpen";
-    const response = await doApiGet(url);
-    const rides = response.data.ar_rideRequests;
-    console.log(rides);
-    return rides;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch rides");
-  }
-};
+// //Travel requests
+// export const getAllRidesRequest = async () => {
+//   try {
+//     const url = API_URL + "/rideRequests/getAllridesRequestsOpen";
+//     const response = await doApiGet(url);
+//     const rides = response.data.ar_rideRequests;
+//     console.log(rides);
+//     return rides;
+//   } catch (err) {
+//     console.log(err);
+//     throw new Error("Failed to fetch rides");
+//   }
+// };
 
-//Travel offers
-export const getAllRidesOffer = async () => {
-  try {
-    const url = API_URL + "/rideoffers/getAllridesoffersOpen";
-    const response = await doApiGet(url);
+// //Travel offers
+// export const getAllRidesOffer = async () => {
+//   try {
+//     const url = API_URL + "/rideoffers/getAllridesoffersOpen";
+//     const response = await doApiGet(url);
 
-    const rides = response.data.ar_rideoffers;
-    console.log(rides);
-    return rides;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch rides");
-  }
-};
+//     const rides = response.data.ar_rideoffers;
+//     console.log(rides);
+//     return rides;
+//   } catch (err) {
+//     console.log(err);
+//     throw new Error("Failed to fetch rides");
+//   }
+// };
 
 
 export default function RidesList() {
@@ -55,8 +55,13 @@ export default function RidesList() {
   useEffect(() => {
     async function fetchRides() {
       try {
-        const ridesData = await getRidesList();
-        setRides(ridesData);
+        let arrRidsCloseAdmin = JSON.parse(localStorage.getItem(arrRidsCloseAdmin))
+        let arrRequstOpenAdmin = JSON.parse(localStorage.getItem(arrRequstOpenAdmin))
+        let arrOfferOpenAdmin = JSON.parse(localStorage.getItem(arrOfferOpenAdmin))
+
+        setRides(arrRidsCloseAdmin);
+        setRidesOffer(arrOfferOpenAdmin)
+        setRidesRequest(arrRequstOpenAdmin)
       } catch (err) {
         console.log(err);
       }
@@ -65,31 +70,31 @@ export default function RidesList() {
     fetchRides();
   }, []);
 
-  useEffect(() => {
-    async function fetchOfferRides() {
-      try {
-        const ridesData = await getAllRidesOffer();
-        setRidesOffer(ridesData);
-      } catch (err) {
-        console.log(err);
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchOfferRides() {
+  //     try {
+  //       const ridesData = await getAllRidesOffer();
+  //       setRidesOffer(ridesData);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
 
-    fetchOfferRides();
-  }, []);
+  //   fetchOfferRides();
+  // }, []);
 
-  useEffect(() => {
-    async function fetchRequestRides() {
-      try {
-        const ridesData = await getAllRidesRequest();
-        setRidesRequest(ridesData);
-      } catch (err) {
-        console.log(err);
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchRequestRides() {
+  //     try {
+  //       const ridesData = await getAllRidesRequest();
+  //       setRidesRequest(ridesData);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
 
-    fetchRequestRides();
-  }, []);
+  //   fetchRequestRides();
+  // }, []);
 
 
   return (

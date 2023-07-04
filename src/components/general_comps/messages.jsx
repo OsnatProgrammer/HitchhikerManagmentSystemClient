@@ -196,7 +196,7 @@ export default function Messages() {
       </div>
 
       <div className="container">
-        <div style={{fontSize:'32px'}}>Messages I Got</div>
+      <div className={`greenBgLinear display-6`} style={{ fontSize: '32px' }}>Messages I Got</div>
         {receivedMessages.length > 0 ? (
           <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
             <thead className="thead-dark">
@@ -220,7 +220,7 @@ export default function Messages() {
           <p>No Messages available</p>
         )}
 
-        <div style={{fontSize:'32px'}}>Messages I Sent</div>
+        <div className='greenBgLinear display-6' style={{fontSize:'32px'}}>Messages I Sent</div>
         {messages.length > 0 ? (
           <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
             <thead className="thead-dark">

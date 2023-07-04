@@ -95,7 +95,7 @@ export default function NearbyRides() {
   return (
     <>
       <div className={`${styles.strip} d-flex align-items-end`}>
-        <div className='display-1'>
+        <div className='display-1 '>
           Ride Requests & Ride Offers
         </div>
 
@@ -103,7 +103,7 @@ export default function NearbyRides() {
       <div className='container'>
         <div className='row g-3'>
           <div className='d-flex m-5' style={{ alignItems: 'center' }}>
-            <h2 className='font-weight-bold text-light'>Rides Requests: </h2>
+            <h2 className='font-weight-bold text-light greenBgLinear display-6'>Rides Requests: </h2>
             <div>
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                 onInput={(e) => setSearchTermRequests(e.target.value)} />
@@ -154,7 +154,7 @@ export default function NearbyRides() {
 
         <div className='row g-3'>
           <div className='d-flex m-5' style={{ alignItems: 'center' }}>
-            <h2 className='font-weight-bold text-light'>Rides Offers: </h2>
+            <h2 className='font-weight-bold text-light greenBgLinear display-6'>Rides Offers: </h2>
             <div>
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                 onInput={(e) => setSearchTermOffers(e.target.value)} />
