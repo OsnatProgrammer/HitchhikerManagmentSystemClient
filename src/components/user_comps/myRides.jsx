@@ -128,7 +128,7 @@ export default function MyRides() {
       </div> */}
       {/* <h1 className='text-white'>My Rides</h1> */}
       <div className="row justify-content-center text-center text-dark">
-        <h2 className='text-white mt-4 p-1'>Rides Offer</h2>
+        <h2 className='text-white mt-4 p-1 greenBgLinear display-6'>Rides Offer</h2>
         {ridesOffer.length > 0 ? (
           ridesOffer.map((ride, i) => (
             <div className={`${styles.box}`} key={ride.ride_offer._id}>
@@ -148,7 +148,7 @@ export default function MyRides() {
         )}
       </div>
       <div className="row justify-content-center text-center text-dark">
-        <h2 className='text-white mt-4'>Rides Request</h2>
+        <h2 className='text-white mt-4 greenBgLinear display-6'>Rides Request</h2>
         {ridesRequest.length > 0 ? (
           ridesRequest.map((ride, i) => (
             <div className={`${styles.box}`} key={ride.ride_request._id}>

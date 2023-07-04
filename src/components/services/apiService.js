@@ -1,9 +1,17 @@
 import axios from "axios";
 
-export const API_URL = "http://localhost:3001"
+export const API_URL = "https://hitchhikermanagmentsystem-jygl.onrender.com"
 export const TOKEN_NAME = "USER_TOKEN"
 export const CURRENT_USER="USER" 
 export const arrRideHistory="arrRideHistory"
+// export const arrMyRidesOffer="arrMyRidesOffer"
+// export const arrMyRidesRequst="arrMyRidesRequst"
+export const arrOfferOpenAdmin="arrOfferOpenAdmin"
+export const arrRequstOpenAdmin="arrRequstOpenAdmin"
+export const arrRidsCloseAdmin="arrRidsCloseAdmin"
+
+
+
 export const regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 export const regPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*.<>])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 export const regPhone = /^[0-9]+$/;

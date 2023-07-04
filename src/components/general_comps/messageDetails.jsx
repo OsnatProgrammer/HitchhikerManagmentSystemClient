@@ -127,9 +127,9 @@ export default function MessageDetails() {
 
   return (
     <>
-    <div className={`mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '140px', fontSize: '32px' }}></div>
-    <div className="container shadow col-md-6 my-5 text-danger">
-      <div className="font-weight-bold text-center m-3">Message Details</div>
+    <div className={`container mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '140px', fontSize: '32px'}}></div>
+    <div className=" shadow p-5 " style={{borderRadius: '60px',width:'750px',border: '1px solid #54E8A9', color:'white',margin:'0 auto'}}>
+      <div className="font-weight-bold text-center m-3 display-6 greenBgLinear">Message Details</div>
       <p>
         <span className="font-weight-bold">User Received:</span> {message.user_idReceive}
       </p>

@@ -45,8 +45,8 @@ export default function Login() {
         <div>
           <SignIn />
         </div>
-        <p className="forgot-pass">Forgot password?</p>
-        <button type="button" className="fb-btn">Connect with <span>facebook</span></button>
+        <p className="forgot-pass label">Forgot password?</p>
+        <button type="button" className="fb-btn label">Connect with <span>facebook</span></button>
       </div >
       <div className="sub-cont">
         <div className="img">
