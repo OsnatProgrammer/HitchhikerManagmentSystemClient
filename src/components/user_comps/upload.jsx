@@ -61,7 +61,7 @@ export default function UploadTest() {
             console.log(resp);
             if (resp.status) {
                 alert("file uploaded");
-                currentUser.imageUrl = resp.data.name;
+                currentUser.imageUrl = (resp.data.name).toString();
                 setTheUser(currentUser);
                 console.log(theUser);
                 doApiEditInfo(theUser);
@@ -73,11 +73,12 @@ export default function UploadTest() {
         }
     }
 
-    const doApiEditInfo = async (user) => {
-        if (user) {
-            let url = API_URL + '/users/updateImage/' + user._id;
+    const doApiEditInfo = async (_user) => {
+        if (_user) {
+            let url = API_URL + '/users/updateImage/' + _user._id;
             try {
-                const data = await doApiMethod(url, "PATCH", user);
+                console.log(_user);
+                const data = await doApiMethod(url, "PATCH", _user);
                 if (data) {
                     console.log(data);
                     window.location.reload(false);
