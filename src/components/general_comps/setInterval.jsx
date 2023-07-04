@@ -57,10 +57,10 @@ const SetInterval = () => {
 
   return (
     <div className={`${styles.wrapper} mt-5`}>
-      <Counter countTo={540} speed={80} decimals={decimals} formats={formats} text={"register users"}/>
+      <Counter countTo={540} speed={80} decimals={decimals} formats={formats} text={"registered users"}/>
       <Counter countTo={1245} speed={90} decimals={decimals} formats={formats} text={"rides"}/>
-      <Counter countTo={1547} speed={10} decimals={decimals} formats={formats} text={"offer"} />
-      <Counter countTo={954} speed={50} decimals={decimals} formats={formats} text={"hitchhiker"} />
+      <Counter countTo={1547} speed={10} decimals={decimals} formats={formats} text={"offers"} />
+      <Counter countTo={954} speed={50} decimals={decimals} formats={formats} text={"hitchhikers"} />
     </div>
   );
 };
