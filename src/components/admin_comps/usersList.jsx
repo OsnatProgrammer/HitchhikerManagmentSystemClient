@@ -43,7 +43,8 @@ export default function UsersList() {
     let url = API_URL + "/users/updateStatus/" + _user._id;
     try {
       _user.status = !_user.status
-      await doApiMethod(url, "PATCH", _user);
+      const data = await doApiMethod(url, "PATCH", _user);
+      console.log(data);
     }
     catch (err) {
       console.log(err.response);
