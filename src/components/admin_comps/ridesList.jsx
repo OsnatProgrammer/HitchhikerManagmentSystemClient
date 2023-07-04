@@ -1,50 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER, doApiMethod, arrRidsCloseAdmin, arrRequstOpenAdmin, arrOfferOpenAdmin } from '../services/apiService';
+import { doApiGet, API_URL, TOKEN_NAME, CURRENT_USER, doApiMethod } from '../services/apiService';
 
-// // Trips that have been closed
-// export const getRidesList = async () => {
-//   try {
-//     const url = API_URL + `/rides/getAllRides`;
-//     const response = await doApiGet(url);
-//     console.log("response", response);
-//     const rides = response.data.arr;
-//     console.log(rides);
-//     return rides;
-//   } catch (err) {
-//     console.log(err);
-//     throw new Error("Failed to fetch rides");
-//   }
-// };
+// Trips that have been closed
+export const getRidesList = async () => {
+  try {
+    const url = API_URL + `/rides/getAllRides`;
+    const response = await doApiGet(url);
+    console.log("response", response);
+    const rides = response.data.arr;
+    console.log(rides);
+    return rides;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch rides");
+  }
+};
 
+//Travel requests
+export const getAllRidesRequest = async () => {
+  try {
+    const url = API_URL + "/rideRequests/getAllridesRequestsOpen";
+    const response = await doApiGet(url);
+    const rides = response.data.ar_rideRequests;
+    console.log(rides);
+    return rides;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch rides");
+  }
+};
 
-// //Travel requests
-// export const getAllRidesRequest = async () => {
-//   try {
-//     const url = API_URL + "/rideRequests/getAllridesRequestsOpen";
-//     const response = await doApiGet(url);
-//     const rides = response.data.ar_rideRequests;
-//     console.log(rides);
-//     return rides;
-//   } catch (err) {
-//     console.log(err);
-//     throw new Error("Failed to fetch rides");
-//   }
-// };
+//Travel offers
+export const getAllRidesOffer = async () => {
+  try {
+    const url = API_URL + "/rideoffers/getAllridesoffersOpen";
+    const response = await doApiGet(url);
 
-// //Travel offers
-// export const getAllRidesOffer = async () => {
-//   try {
-//     const url = API_URL + "/rideoffers/getAllridesoffersOpen";
-//     const response = await doApiGet(url);
-
-//     const rides = response.data.ar_rideoffers;
-//     console.log(rides);
-//     return rides;
-//   } catch (err) {
-//     console.log(err);
-//     throw new Error("Failed to fetch rides");
-//   }
-// };
+    const rides = response.data.ar_rideoffers;
+    console.log(rides);
+    return rides;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch rides");
+  }
+};
 
 
 export default function RidesList() {
@@ -55,13 +54,8 @@ export default function RidesList() {
   useEffect(() => {
     async function fetchRides() {
       try {
-        let arrRidsCloseAdmin = JSON.parse(localStorage.getItem(arrRidsCloseAdmin))
-        let arrRequstOpenAdmin = JSON.parse(localStorage.getItem(arrRequstOpenAdmin))
-        let arrOfferOpenAdmin = JSON.parse(localStorage.getItem(arrOfferOpenAdmin))
-
-        setRides(arrRidsCloseAdmin);
-        setRidesOffer(arrOfferOpenAdmin)
-        setRidesRequest(arrRequstOpenAdmin)
+        const ridesData = await getRidesList();
+        setRides(ridesData);
       } catch (err) {
         console.log(err);
       }
@@ -70,38 +64,38 @@ export default function RidesList() {
     fetchRides();
   }, []);
 
-  // useEffect(() => {
-  //   async function fetchOfferRides() {
-  //     try {
-  //       const ridesData = await getAllRidesOffer();
-  //       setRidesOffer(ridesData);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
+  useEffect(() => {
+    async function fetchOfferRides() {
+      try {
+        const ridesData = await getAllRidesOffer();
+        setRidesOffer(ridesData);
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
-  //   fetchOfferRides();
-  // }, []);
+    fetchOfferRides();
+  }, []);
 
-  // useEffect(() => {
-  //   async function fetchRequestRides() {
-  //     try {
-  //       const ridesData = await getAllRidesRequest();
-  //       setRidesRequest(ridesData);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
+  useEffect(() => {
+    async function fetchRequestRides() {
+      try {
+        const ridesData = await getAllRidesRequest();
+        setRidesRequest(ridesData);
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
-  //   fetchRequestRides();
-  // }, []);
+    fetchRequestRides();
+  }, []);
 
 
   return (
     <div className="container">
 
       {/* Travel offers */}
-      <div className={`mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '174px',fontSize:'32px'}}>Rides Offer</div>
+      <div className={`mb-3 d-flex justify-content-center align-items-end greenBgLinear`} style={{ minHeight: '174px',fontSize:'32px'}}>Rides Offer</div>
       {ridesOffer.length > 0 ? (
         <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">
@@ -132,7 +126,7 @@ export default function RidesList() {
       )}
 
       {/* Travel requests */}
-      <div style={{fontSize:'32px'}}>Rides Request</div>
+      <div className='greenBgLinear' style={{fontSize:'32px'}}>Rides Request</div>
       {ridesRequest.length > 0 ? (
         <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">
@@ -163,7 +157,7 @@ export default function RidesList() {
       )}
 
       {/* Trips that have been closed */}
-      <div style={{fontSize:'32px'}}>Trips that have been closed</div>
+      <div className='greenBgLinear' style={{fontSize:'32px'}}>rides that have been closed</div>
       {rides.length > 0 ? (
         <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">

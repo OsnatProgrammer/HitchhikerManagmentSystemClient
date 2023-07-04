@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, doApiMethod } from '../services/apiService';
 import styles from './css/cardsUser.module.css'
+import stylesTitle from '../user_comps/css/nearByRides.module.css'
 
 
 export const getUsersList = async () => {
@@ -54,20 +55,23 @@ export default function UsersList() {
 
 
   return (
-    <div className="container">
-      <div className={`mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '50px', fontSize: '32px' }}></div>
+    <div className="container mt-2">
+      <div className={`${stylesTitle.title} display-1  d-flex justify-content-center align-items-end`} style={{ minHeight: '174px' }}>
+        User List
+      </div>
+      <div className={`mb-1 d-flex justify-content-center align-items-end`}></div>
       {users.length > 0 ? (
         <div className='row'>
           {/* <h1>Users</h1> */}
           {users.map((user) => (
             <div className="col-lg-3 mt-4">
-              <div className={`text-center ${styles.card_box}`} style={{ background: '#E1E2E0' }}>
+              <div className={`text-center m-0 ${styles.card_box}`} style={{ background: '#E1E2E0' }}>
                 <div className="member-card pt-2 pb-2">
                   <div className={`${styles.thumb_lg} ${styles.member_thumb} mx-auto`}>
                     <img src={user.gender == "male" ? `${imageMale}` : `${imageFemale}`} className={`rounded-circle ${styles.img_thumbnail}`} alt="profile-image" />
                     {/* <img src="" alt="profile-image" /> */}
                   </div>
-                  <div className="">
+                  <div className="mt-0">
                     <h4>{user.fullName.firstName + " " + user.fullName.lastName}</h4>
                     <p className={`${styles.text_muted}`}>{user.role}<span>| </span><span className={`${styles.text_pink}`}>{user.gender}</span></p>
                   </div>
@@ -83,15 +87,15 @@ export default function UsersList() {
                     </li>
                   </ul>
                   <button
-                    className={`btn mt-3 ${styles.btn_rounded} ${user.status ? 'button' : 'btn-secondary'}`}
+                    className={`btn mt-1 ${styles.btn_rounded} ${user.status ? 'button' : 'btn-secondary'}`}
                     onClick={() => { doApiStatus(user) }}
                     style={{ width: '80%' }}
                   >
                     {user.status ? 'Active' : 'Inactive'}
                   </button>
-                  <div className="mt-4">
+                  <div className="mt-1">
                     <div className="row">
-                      <div className="mt-2">
+                      <div className="mt-3">
                         <h4>Adrress:</h4>
                         <p className={`mb-0 ${styles.text_muted}`}>{user.address}</p>
                       </div>

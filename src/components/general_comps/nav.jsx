@@ -14,8 +14,8 @@ export default function Nav() {
                 </a>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link className="nav-link active" style={{fontSize: '24px'}} aria-current="page" to={"/login"}>Login</Link>
-                        <Link className="nav-link active" style={{fontSize: '24px'}} aria-current="page" to={"/"}>summary</Link>
+                        <Link className="nav-link active" style={{fontSize: '24px'}} aria-current="page" to={"/"}>HOME</Link>
+                        <Link className="nav-link active" style={{fontSize: '24px'}} aria-current="page" to={"/login"}>LOGIN</Link>
                     </div>
                 </div>
             </div>

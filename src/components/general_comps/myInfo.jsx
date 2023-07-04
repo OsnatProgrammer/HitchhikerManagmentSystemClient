@@ -12,6 +12,7 @@ import SelectGender from '../inputs/selectGender';
 import AddressInput from '../user_comps/addressInput';
 import InputPassword from '../inputs/inputPassword';
 import { bottom } from '@popperjs/core';
+import stylesTitle from '../user_comps/css/nearByRides.module.css'
 
 const user = JSON.parse(localStorage.getItem(CURRENT_USER));
 const imageFemale = "https://media.istockphoto.com/id/1098017436/photo/portrait-of-a-young-woman-side-view.jpg?s=612x612&w=0&k=20&c=Tr3GW0WT5ytzuj6JcLV98R4MDTtB6i2K3Z8gvqPTCpA=";
@@ -93,101 +94,104 @@ export default function MyInfo() {
   return (
     <div >
       {isEditing ? (
-        <div className="flex  py-12 px-4 sm:px-6 lg:px-8">
-          <div className=" container">
-            <form
-              onSubmit={handleSubmit(handleFormSubmit)}
-              className="col-md-6 p-3 shadow mx-auto"
-            // action="#"
-            // method="POST"
-            style={{ border:"solid 2px #54E8A9"}}
-            >
- 
-              <div className=" shadow-sm pt-5 text-white text-start" style={{ width: '65%',  margin: '0 auto' }}>
- 
-                
-                <InputFirstName
-                  label="First Name"
-                  register={register}
-                  errors={errors}
-                  // className="relative m-2 block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white text-dark"
-                  className='form-control'
-                />
-
-                <InputLastName
-                  label="Last Name"
-                  register={register}
-                  errors={errors}
-                  // className="relative m-2 block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white text-dark"
-                  className='form-control'
-                />
-
-                <InputEmail
-                  label="Email"
-                  register={register}
-                  errors={errors}
-                  className="relative m-2 block w-full appearance-none  border border-gray-300 px-3 py-2  focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white text-dark"
-                // style={{ width: '65%', margin: '0 auto' }}
-                />
-
-
-                <SelectGender
-                  label="Gender"
-                  register={register}
-                  errors={errors}
-                  name="gender"
-                  className="relative m-2 block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white mb-3 text-dark"
-                />
-
-              </div>
-              <p className='text-white mt-3 mb-1'>Address</p>
-              <AddressInput
-                label="Address"
-                onAddressChange={handleAddressChange}
-                register={register}
-                errors={errors}
-
-                defaultValue={user.address}
-              />
-
-
-              <div className="flex justify-between m-4">
-                <button
-                  type="submit"
-                  className="btn button"
-                  style={{width:"80px", marginRight:"16px"}}
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCancelEdit}
-                  className="btn button"
-                  style={{width:"80px" }}
-
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+        <div>
+          <div className={`${stylesTitle.title} display-1 mb-4 d-flex justify-content-center align-items-end`} style={{ minHeight: '110px' }}>
           </div>
-        </div>
+          <div className="flex  py-12 px-4 sm:px-6 lg:px-8">
+            <div className=" container">
+              <form
+                onSubmit={handleSubmit(handleFormSubmit)}
+                className="col-md-6 p-3 shadow mx-auto"
+                // action="#"
+                // method="POST"
+                style={{ border: "solid 2px #54E8A9" }}
+              >
+
+                <div className=" shadow-sm pt-5 text-white text-start" style={{ width: '65%', margin: '0 auto' }}>
+
+
+                  <InputFirstName
+                    label="First Name"
+                    register={register}
+                    errors={errors}
+                    // className="relative m-2 block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white text-dark"
+                    className='form-control'
+                  />
+
+                  <InputLastName
+                    label="Last Name"
+                    register={register}
+                    errors={errors}
+                    // className="relative m-2 block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white text-dark"
+                    className='form-control'
+                  />
+
+                  <InputEmail
+                    label="Email"
+                    register={register}
+                    errors={errors}
+                    className="relative m-2 block w-full appearance-none  border border-gray-300 px-3 py-2  focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white text-dark"
+                  // style={{ width: '65%', margin: '0 auto' }}
+                  />
+
+
+                  <SelectGender
+                    label="Gender"
+                    register={register}
+                    errors={errors}
+                    name="gender"
+                    className="relative m-2 block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white mb-3 text-dark"
+                  />
+
+                </div>
+                <p className='text-white mt-3 mb-1'>Address</p>
+                <AddressInput
+                  label="Address"
+                  onAddressChange={handleAddressChange}
+                  register={register}
+                  errors={errors}
+
+                  defaultValue={user.address}
+                />
+
+
+                <div className="flex justify-between m-4">
+                  <button
+                    type="submit"
+                    className="btn button"
+                    style={{ width: "80px", marginRight: "16px" }}
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleCancelEdit}
+                    className="btn button"
+                    style={{ width: "80px" }}
+
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div></div>
       ) : (
         <section className="container-fluid">
 
 
           <div className="card pt-5">
             <div
-              className=" mt-5 rounded-top text-white d-flex flex-row "
-              style={{ backgroundColor: '#000', height: '150px', borderBottom: '8px solid #54E8A9' }}
+              className="rounded-top text-white d-flex flex-row "
+              style={{ backgroundColor: '#000', height: '150px', borderBottom: '8px solid #54E8A9',marginTop:'65px' }}
             >
-              <div className="ms-4  d-flex flex-column" style={{ width: '150px',marginTop:"56px" }}>
+              <div className="ms-4  d-flex flex-column" style={{ width: '150px', marginTop: "56px" }}>
                 <img
                   src={user.gender == "male" ? `${imageMale}` : `${imageFemale}`}
 
                   alt="Generic placeholder image"
                   className="img-fluid  mt-3 mb-2"
-                  style={{ height: '250px',  zIndex: '1', }}
+                  style={{ height: '250px', zIndex: '1', }}
                 />
                 <button
                   type="button"
@@ -232,7 +236,7 @@ export default function MyInfo() {
                   <p className="font-italic mb-0">{user.email}</p>
                 </div>
               </div>
-              <div className="d-flex justify-content-between align-items-center mb-4">
+              {/* <div className="d-flex justify-content-between align-items-center mb-4">
                 <p className="lead fw-normal mb-0 text-white pt-3">Recent Rides</p>
                 <p className="mb-0">
                   <a href="#!" className="text-muted">
@@ -272,7 +276,7 @@ export default function MyInfo() {
                   />
                 </div>
 
-              </div>
+              </div> */}
             </div>
 
           </div>

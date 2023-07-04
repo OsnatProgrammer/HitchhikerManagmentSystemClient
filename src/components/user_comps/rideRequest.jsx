@@ -94,22 +94,22 @@ export default function RideRequest() {
         </div>
         <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto' style={{ background: '#DDDEDC', borderRadius: '10px', width: '45', border:'#54E8A9 3px solid' }}>
 
-          <label style={{ fontSize: '20px' }}>Departure Address:</label>
+          <label className='text-dark' style={{ fontSize: '20px' }}>Departure Address:</label>
           <AddressInput
             onAddressChange={handleDeparture_addressChange} />
 
-          <label style={{ fontSize: '20px' }}>Destination Address:</label>
+          <label className='text-dark' style={{ fontSize: '20px' }}>Destination Address:</label>
           <AddressInput
             onAddressChange={handleDestination_addressChange}  />
 
           <div className='row' style={{ justifyContent: 'center' }}>
             <div className='col-md-4'>
-              <label>Date:</label>
+              <label className='text-dark text-start'>Date:</label>
               <input {...departure_timeRef} type="date" className='form-control' />
             </div>
 
             <div className='col-md-4'>
-              <label>Time:</label>
+              <label className='text-dark text-start'>Time:</label>
               <input ref={time} type="time" className='form-control' />
             </div>
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const API_URL = "https://hitchhikermanagmentsystem-jygl.onrender.com"
+// export const API_URL = "http://localhost:3002"
 export const TOKEN_NAME = "USER_TOKEN"
 export const CURRENT_USER="USER" 
 export const arrRideHistory="arrRideHistory"

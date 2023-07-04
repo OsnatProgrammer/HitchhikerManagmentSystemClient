@@ -191,12 +191,12 @@ export default function Messages() {
 
   return (
     <>
-       <div className={`${stylesTitle.title} display-1 mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '174px'}}>
+       <div className={`${stylesTitle.title} display-1 mb-4 d-flex justify-content-center align-items-end`} style={{ minHeight: '174px'}}>
         Messages
       </div>
 
       <div className="container">
-      <div className={`greenBgLinear display-6`} style={{ fontSize: '32px' }}>Messages I Got</div>
+      <div className={`greenBgLinear display-6 m-4`} style={{ fontSize: '32px' }}>Messages I Got</div>
         {receivedMessages.length > 0 ? (
           <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
             <thead className="thead-dark">
@@ -220,7 +220,7 @@ export default function Messages() {
           <p>No Messages available</p>
         )}
 
-        <div className='greenBgLinear display-6' style={{fontSize:'32px'}}>Messages I Sent</div>
+        <div className='greenBgLinear display-6 m-4' style={{fontSize:'32px'}}>Messages I Sent</div>
         {messages.length > 0 ? (
           <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
             <thead className="thead-dark">

@@ -14,7 +14,8 @@ export default function Summary() {
 
                 </div>
                 <div className={`container p-4 ${styles.textContainer} ${styles.container}`}>
-                    <h3 className="mb-3 text-center font-weight-bold text-light">Welcome to RouteRide - Your On-Demand Ride Matching Platform!</h3>
+                    <div className="text-center font-weight-bold mt-4 greenBgLinear display-5 mb-1">Welcome to RouteRide</div> 
+                    <div className="text-center font-weight-bold greenBgLinear display-6 mb-3">Your On-Demand Ride Matching Platform</div>
                     At RouteRide, we've revolutionized the way people travel by creating a convenient and safe platform that connects drivers and hitchhikers.<br />
                     Whether you're a driver looking to share your journey or a hitchhiker seeking a ride,<br />
                     our location-based services and user preferences will ensure you have a seamless and enjoyable travel experience.<br />

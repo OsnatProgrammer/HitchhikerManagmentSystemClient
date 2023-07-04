@@ -5,9 +5,15 @@ import styles from '../user_comps/css/userNav.module.css'
 
 export default function ManagerNav() {
 
+  const navStyles = {
+    backdropFilter: 'blur(5px)', // יצירת אפקט blur לרקע
+    backgroundColor: 'rgba(255, 255, 255, 0.3)', // צבע הרקע השקוף
+    boxShadow: 'none', // הסרת הצל של הנאב
+  };
+
   return (
     <div className='w-100' >
-    <nav className="navbar navbar-expand-lg navbar-light w-100 shadow" style={{background: 'transparent', position: 'fixed', minHeight:'70px',display:'flex', alignItems:'center', boxShadow: '10px 10px 35px 2px rgba(0,0,0,0.75)', zIndex:'999'}}>
+    <nav className="navbar navbar-expand-lg navbar-light w-100 shadow" style={{...navStyles, background: 'transparent',background: 'transparent', position: 'fixed', minHeight:'70px',display:'flex', alignItems:'center', boxShadow: '10px 10px 35px 2px rgba(0,0,0,0.75)', zIndex:'1000'}}>
       <div className="container-fluid d-flex justify-content-between align-items-center">
         <a className="navbar-brand" href="/manager">
         <i className='bx bxs-car bx-tada' style={{fontSize: '60px', color:'#ffffff'}}></i>
