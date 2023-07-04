@@ -111,7 +111,7 @@ export default function RidesHistory() {
             setSelectedRide(row.original);
             setIsOfferedByUser(row.original.userIdOffer === user._id ? row.original.userIdOffer : row.original.userIdRequest);
             setIsOpenPopup(true);
-          }}>X</button>
+          }}>+</button>
         ),
       },
     ],
