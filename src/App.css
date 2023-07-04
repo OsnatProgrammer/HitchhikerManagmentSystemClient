@@ -1,7 +1,11 @@
 * {
   /* background-color: #1b1f23;;
   color: white; */
-  font-family: 'Permanent Marker', cursive;
+  /* font-family: 'Permanent Marker', cursive; */
+  /* font-family: 'Amatic SC', cursive; */
+  font-family: 'Neucha', cursive;
+  /* font-family: 'Patrick Hand SC', cursive; */
+  font-size: 24px;
 }
 
 
@@ -102,7 +106,8 @@
 }
 
 body {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  /* font-family: "Open Sans", Helvetica, Arial, sans-serif; */
+  font-family: 'Neucha', cursive;
   background: #ededed;
 }
 
@@ -111,7 +116,8 @@ button {
   border: none;
   outline: none;
   background: none;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  /* font-family: "Open Sans", Helvetica, Arial, sans-serif; */
+  font-family: "Neucha", Helvetica, Arial, sans-serif;
 }
 
 .tip {

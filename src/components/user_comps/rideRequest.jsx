@@ -99,7 +99,7 @@ export default function RideRequest() {
 
           <label style={{ fontSize: '20px' }}>Destination Address:</label>
           <AddressInput
-            onAddressChange={handleDestination_addressChange} />
+            onAddressChange={handleDestination_addressChange}  />
 
           <div className='row' style={{ justifyContent: 'center' }}>
             <div className='col-md-4'>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { regPassword } from '../services/apiService';
 
-const InputPasswordLinked = (props) => {
+const InputPassword = (props) => {
     const errors = props.errors
     const register = props.register
     const label = props.label
@@ -33,7 +33,7 @@ const InputPasswordLinked = (props) => {
     )
 }
 
-export default InputPasswordLinked
+export default InputPassword
 
 
 

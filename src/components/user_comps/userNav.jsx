@@ -154,7 +154,7 @@ function UserNav() {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Patrick Hand SC", cursive'}}
                             component={Link}
                             to="/user/rideOffer"
                             className={`${styles.link}`}
@@ -163,7 +163,7 @@ function UserNav() {
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Patrick Hand SC", cursive'}}
                             component={Link}
                             to="/user/rideRequest"
                             className={`${styles.link}`}
@@ -172,7 +172,7 @@ function UserNav() {
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Patrick Hand SC", cursive'}}
                             component={Link}
                             to="/user/myRides"
                             className={`${styles.link}`}
@@ -181,7 +181,7 @@ function UserNav() {
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Patrick Hand SC", cursive'}}
                             component={Link}
                             to="/user/messages"
                             className={`${styles.link}`}
@@ -190,7 +190,7 @@ function UserNav() {
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
-                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Permanent Marker", cursive'}}
+                            sx={{fontWeight:'bold', my: 2, color: 'white', display: 'block', fontSize:'18px', fontFamily: '"Patrick Hand SC", cursive'}}
                             component={Link}
                             to="/user/ridesHistory"
                             className={`${styles.link}`}
@@ -223,7 +223,7 @@ function UserNav() {
                             onClose={handleCloseUserMenu}
                         >
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Link to="/user/myInfo" className="nav-link active" aria-current="page">My Info</Link>
+                                <Link to="/user/myInfo" className="nav-link active" aria-current="page">Profile</Link>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
                                 <Link to="/user/messages" className="nav-link active" aria-current="page">Messages</Link>

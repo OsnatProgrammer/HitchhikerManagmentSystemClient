@@ -111,9 +111,9 @@ export default function SignUp() {
                         <label>Address:</label>
                         <input {...addressRef} type="text" />
                         {errors.address && <div className="text-danger">Enter valid address</div>}
-                        {/* <label>Address:</label>
+                        <label>Address:</label>
                     <AddressInput
-                        onAddressChange={handleAddressChange} /> */}
+                        onAddressChange={handleAddressChange} />
                     </div >
 
                     <div className='col-md-6'>

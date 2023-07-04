@@ -2,22 +2,35 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const AddressInput = (props) => {
 
-    const {onAddressChange } = props;
+    const { onAddressChange, defaultValue } = props;
 
     const [address, setAddress] = useState('');
     const [predictions, setPredictions] = useState([]);
     const [selectedAddress, setSelectedAddress] = useState('');
 
     const inputRef = useRef(null);
-
+//של רבקי
     const handleChange = (event) => {
         console.log(event.target.value);
         setAddress(event.target.value);
         setSelectedAddress('');
     };
 
+    //עם תוספת של הדסה
+    // const handleChange = (event) => {
+    //     const enteredAddress = event.target.value;
+    //     if (enteredAddress !== defaultValue) {
+    //       setAddress(enteredAddress);
+    //       setSelectedAddress('');
+    //     }
+    //   };
+      
     useEffect(() => {
         const autocompleteService = new window.google.maps.places.AutocompleteService();
+        if (defaultValue != null) {
+            setAddress(defaultValue)
+            // setAddress(props.defaultValue)
+        }
         onAddressChange(address);
 
         if (address) {
@@ -64,7 +77,7 @@ const AddressInput = (props) => {
                 onChange={handleChange}
                 ref={inputRef}
                 className='form-control'
-                style={{width:'65%', margin:'0 auto'}}
+                style={{ width: '65%', margin: '0 auto' }}
             />
         </div>
     );
