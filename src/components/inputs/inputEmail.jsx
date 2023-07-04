@@ -17,7 +17,7 @@ const InputEmail = (props) => {
     return (
         <>
             <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-medium ">
                    {label}
                 </label>
                 <input   defaultValue={defaultValue}
@@ -26,12 +26,12 @@ const InputEmail = (props) => {
                     name="email"
                     type="text"
                     autoComplete="email"
-                    className={classNames(errors.email ? "relative block w-full appearance-none rounded-t-md  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className={classNames(errors.email ? "relative block w-full appearance-none rounded  border border-gray-300 px-3 py-2 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white"
                         :
-                        "relative block w-full appearance-none  rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm")}
+                        "relative block w-full appearance-none  rounded border border-gray-300 px-3 py-2   focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-white")}
                         
                 />
-                {errors.email && <p className='text-white font-bold bg-red-800 text-center rounded-b-md  border-gray-300  py-1'>Enter valid email</p>}
+                {errors.email && <p className='text-white font-bold  text-center rounded  border-gray-300  py-1'>Enter valid email</p>}
             </div>
 
 
