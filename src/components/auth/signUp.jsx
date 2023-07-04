@@ -110,10 +110,10 @@ export default function SignUp() {
                     <div className='col-md-6'>
                         <label>Address:</label>
                         <input {...addressRef} type="text" />
-                        {errors.address && <div className="text-danger">Enter valid address</div>}
+                        {errors.address && <small className="text-danger">Enter valid address</small>}
                         {/* <label>Address:</label>
                     <AddressInput
-                        onAddressChange={handleAddressChange} />
+                        onAddressChange={handleAddressChange} /> */}
                     </div >
 
                     <div className='col-md-6'>
@@ -146,20 +146,3 @@ export default function SignUp() {
         </>
     )
 }
-
-
-{/* <form onSubmit={handleSubmit(onSubFormLogin)} className=' p-3 mx-auto'>
-            <h2>Welcome back</h2>
-            <label>
-              <span>Email</span>
-              <input  {...emailRefLogin} type="email" />
-              {errors.email && <div className="text-danger">Enter valid email</div>}
-            </label>
-            <label>
-              <span>Password</span>
-              <input {...passwordRefLogin} type="password" />
-              {errors.password && <div className="text-danger ">Enter min 3 charts password</div>}
-            </label>
-            <button type="submit" className="submit">login</button>
-            <button type="button" className="fb-btn">Join with <span>facebook</span></button>
-          </form> */}

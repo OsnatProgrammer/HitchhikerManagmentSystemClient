@@ -73,7 +73,7 @@ export default function SignIn() {
     return (
         <>
             <div className='container'>
-                <form onSubmit={handleSubmit(onSubForm)} className=' p-3 mx-auto'>
+                <form onSubmit={handleSubmit(onSubForm)} className=' p-5 mx-auto'>
                     {/* <h2>Welcome back</h2> */}
                     <h2>WELCOME BACK</h2>
                     <label>
