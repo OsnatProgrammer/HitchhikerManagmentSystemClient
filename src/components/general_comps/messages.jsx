@@ -196,18 +196,18 @@ export default function Messages() {
       </div>
 
       <div className="container">
-        <h1>Messages I Got</h1>
+        <div style={{fontSize:'32px'}}>Messages I Got</div>
         {receivedMessages.length > 0 ? (
           <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
             <thead className="thead-dark">
               <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>User Received</th>
-                <th>MessageDetails</th>
-                <th>Rides id</th>
-                <th>Status</th>
-                <th>Delete</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Date</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Time</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>User Received</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>MessageDetails</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Rides id</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Status</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -220,18 +220,18 @@ export default function Messages() {
           <p>No Messages available</p>
         )}
 
-        <h1>Messages I Sent</h1>
+        <div style={{fontSize:'32px'}}>Messages I Sent</div>
         {messages.length > 0 ? (
           <table id="dtBasicExample" className="table table-bordered table-sm" cellSpacing="0" width="100%">
             <thead className="thead-dark">
               <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>User Received</th>
-                <th>MessageDetails</th>
-                <th>Rides id</th>
-                <th>Status</th>
-                <th>Delete</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Date</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Time</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>User Received</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>MessageDetails</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Rides id</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Status</th>
+                <th style={{background: '#5c6777', color: '#ffffffba'}}>Delete</th>
               </tr>
             </thead>
             <tbody>

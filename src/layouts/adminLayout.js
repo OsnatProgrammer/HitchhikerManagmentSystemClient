@@ -7,7 +7,10 @@ export default function AdminLayout() {
     return (
         <>
             <HeaderManager />
-            <Outlet />
+            <div style={{minHeight:'68vh'}}>
+                 <Outlet />
+            </div>
+           
             <Footer/>
         </>
     )

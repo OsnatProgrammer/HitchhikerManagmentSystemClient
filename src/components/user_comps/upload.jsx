@@ -13,6 +13,9 @@ export default function UploadTest() {
     const [theUser, setTheUser] = useState(currentUser);
     console.log(theUser);
 
+    const imageFemale = "https://media.istockphoto.com/id/1098017436/photo/portrait-of-a-young-woman-side-view.jpg?s=612x612&w=0&k=20&c=Tr3GW0WT5ytzuj6JcLV98R4MDTtB6i2K3Z8gvqPTCpA=";
+  const imageMale = "https://media.istockphoto.com/id/498085583/photo/silhouette-of-the-man-on-a-white-background.jpg?b=1&s=612x612&w=0&k=20&c=qtvfp762Uyes36ThewDwdRnTuj1xf45rHJEDsk4ius0=";
+
     useEffect(() => {
         // Fetch the user data, including the imageUrl, from the server when the component mounts
         const fetchUserData = async () => {
@@ -58,7 +61,7 @@ export default function UploadTest() {
             console.log(resp);
             if (resp.status) {
                 alert("file uploaded");
-                currentUser.imageUrl = resp.data.name;
+                currentUser.imageUrl = (resp.data.name).toString();
                 setTheUser(currentUser);
                 console.log(theUser);
                 doApiEditInfo(theUser);
@@ -70,12 +73,14 @@ export default function UploadTest() {
         }
     }
 
-    const doApiEditInfo = async (user) => {
-        if (user) {
-            let url = API_URL + '/users/updateImage/' + user._id;
+    const doApiEditInfo = async (_user) => {
+        if (_user) {
+            let url = API_URL + '/users/updateImage/' + _user._id;
             try {
-                const data = await doApiMethod(url, "PATCH", user);
+                console.log(_user);
+                const data = await doApiMethod(url, "PATCH", _user);
                 if (data) {
+                    console.log(data);
                     window.location.reload(false);
                 } else {
                     console.log(data)
@@ -93,7 +98,7 @@ export default function UploadTest() {
                 <div className="col-lg-3 mt-5 ">
                     <div className={`text-center ${styles.card_box}`}>
                         <div className={`${styles.thumb_lg} ${styles.member_thumb} mx-auto`}>
-                            <img src="" className={`rounded-circle ${styles.img_thumbnail}`} alt="profile-image" />
+                            <img src={theUser.gender == "male" ? `${imageMale}` : `${imageFemale}`} className={`rounded-circle ${styles.img_thumbnail}`} alt="profile-image" />
                         </div>
                         <div className="mx-auto text-center">
                             <h4>upload image</h4>

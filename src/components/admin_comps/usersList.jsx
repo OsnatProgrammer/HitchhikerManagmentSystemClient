@@ -43,7 +43,8 @@ export default function UsersList() {
     let url = API_URL + "/users/updateStatus/" + _user._id;
     try {
       _user.status = !_user.status
-      await doApiMethod(url, "PATCH", _user);
+      const data = await doApiMethod(url, "PATCH", _user);
+      console.log(data);
     }
     catch (err) {
       console.log(err.response);
@@ -54,16 +55,17 @@ export default function UsersList() {
 
   return (
     <div className="container">
+      <div className={`mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '50px', fontSize: '32px' }}></div>
       {users.length > 0 ? (
         <div className='row'>
           {/* <h1>Users</h1> */}
           {users.map((user) => (
             <div className="col-lg-3 mt-4">
-              <div className={`text-center ${styles.card_box}`} style={{background:'#E1E2E0'}}>
+              <div className={`text-center ${styles.card_box}`} style={{ background: '#E1E2E0' }}>
                 <div className="member-card pt-2 pb-2">
                   <div className={`${styles.thumb_lg} ${styles.member_thumb} mx-auto`}>
-                  <img src={user.gender == "male" ? `${imageMale}` : `${imageFemale}`} className={`rounded-circle ${styles.img_thumbnail}`} alt="profile-image" />
-                  {/* <img src="" alt="profile-image" /> */}
+                    <img src={user.gender == "male" ? `${imageMale}` : `${imageFemale}`} className={`rounded-circle ${styles.img_thumbnail}`} alt="profile-image" />
+                    {/* <img src="" alt="profile-image" /> */}
                   </div>
                   <div className="">
                     <h4>{user.fullName.firstName + " " + user.fullName.lastName}</h4>
@@ -83,7 +85,7 @@ export default function UsersList() {
                   <button
                     className={`btn mt-3 ${styles.btn_rounded} ${user.status ? 'button' : 'btn-secondary'}`}
                     onClick={() => { doApiStatus(user) }}
-                    style={{width:'80%'}}
+                    style={{ width: '80%' }}
                   >
                     {user.status ? 'Active' : 'Inactive'}
                   </button>
