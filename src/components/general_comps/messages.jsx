@@ -122,7 +122,7 @@ import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, CURRENT_USER, doApiMethod, TOKEN_NAME } from '../services/apiService';
 import MessageItem from './messageItem';
 import ScrollProgressBar from './scroll';
-import styles from '../user_comps/css/nearByRides.module.css'
+import stylesTitle from '../user_comps/css/nearByRides.module.css'
 const user = JSON.parse(localStorage.getItem(CURRENT_USER))
 
 export const getMessageByIdSend = async (_idSend) => {
@@ -191,10 +191,8 @@ export default function Messages() {
 
   return (
     <>
-      <div className={`${styles.strip} d-flex align-items-end`}>
-        <div className='display-1'>
-          Messages
-        </div>
+       <div className={`${stylesTitle.title} display-1 mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '174px'}}>
+        Messages
       </div>
 
       <div className="container">

@@ -58,21 +58,21 @@ export default function SignUp() {
     return (
         <>
             <div className='container'>
-                <h2 className='text-center mt-1'>CREATE AN ACCOUNT</h2>
-                <form onSubmit={handleSubmit(onSubForm)} className='row p-3 mx-auto'>
+                <h2 className='text-center pt-3'>CREATE AN ACCOUNT</h2>
+                <form onSubmit={handleSubmit(onSubForm)} className='row mx-auto'>
 
                     <div className="col-md-6">
                         <label>First Name:</label>
                         <input {...firstNameRef} type="text" />
                         {errors.fullName?.firstName && (
-                            <div className="text-danger">Enter valid name</div>)}
+                            <small className="text-danger">Enter valid name</small>)}
                     </div>
 
                     <div className="col-md-6">
                         <label>Last Name:</label>
                         <input {...lastNameRef} type="text" />
                         {errors.fullName?.lastName && (
-                            <div className="text-danger">Enter valid name</div>)}
+                            <small className="text-danger">Enter valid name</small>)}
                     </div>
 
                     <div className="d-flex col-md-6 flex-column">
@@ -111,7 +111,7 @@ export default function SignUp() {
                         <label>Address:</label>
                         <input {...addressRef} type="text" />
                         {errors.address && <div className="text-danger">Enter valid address</div>}
-                        <label>Address:</label>
+                        {/* <label>Address:</label>
                     <AddressInput
                         onAddressChange={handleAddressChange} />
                     </div >
@@ -119,13 +119,13 @@ export default function SignUp() {
                     <div className='col-md-6'>
                         <label>Email:</label>
                         <input {...emailRef} type="email" />
-                        {errors.email && <div className="text-danger">Enter valid email</div>}
+                        {errors.email && <small className="text-danger">Enter valid email</small>}
                     </div>
 
                     <div className='col-md-6'>
                         <label>Password:</label>
                         <input {...passwordRef} type="password" />
-                        {errors.password && <div className="text-danger">Enter min 3 charts password</div>}
+                        {errors.password && <small className="text-danger">Enter min 3 charts</small>}
                     </div>
 
                     <div className="mt-4">

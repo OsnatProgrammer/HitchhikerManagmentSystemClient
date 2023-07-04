@@ -83,7 +83,7 @@ export default function RideOffer() {
         </div>
       </div> */}
 
-      <div style={{ minHeight: '111px', backgroundColor: '#54E8A9', position: 'relative', top: '340px', zIndex: '-99' }}></div>
+      <div style={{ minHeight: '111px', backgroundColor: '#54E8A9', position: 'relative', top: '340px', zIndex: '-99'}}></div>
 
       <div className='container'>
 
@@ -91,7 +91,7 @@ export default function RideOffer() {
           Ride Offer
         </div>
 
-        <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto' style={{ background: '#DDDEDC', borderRadius: '10px', width: '45' }}>
+        <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto' style={{ background: '#DDDEDC', borderRadius: '10px', width: '45' , border:'#54E8A9 3px solid'}}>
 
           <label style={{ fontSize: '20px' }}>Departure Address:</label>
           <AddressInput

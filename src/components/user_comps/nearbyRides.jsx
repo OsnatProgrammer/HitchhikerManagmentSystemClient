@@ -6,36 +6,6 @@ import RideRequestItem from './rideRequestItem';
 import Loading from '../general_comps/loading';
 import styles from './css/nearByRides.module.css'
 
-
-export const getAllridesRequestsOpen = async () => {
-  let url = API_URL + "/rideRequests/getAllridesRequestsOpen";
-  try {
-    const response = await doApiGet(url);
-    console.log("Requests", response);
-    const ridesRequests = response.data.ar_rideRequests;
-    console.log(ridesRequests);
-    return ridesRequests;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch ridesRequests");
-  }
-};
-
-export const getAllridesoffersOpen = async () => {
-  let url = API_URL + "/rideoffers/getAllridesoffersOpen";
-  try {
-    const response = await doApiGet(url);
-    console.log("Offer", response);
-    const ridesoffers = response.data.ar_rideoffers;
-    console.log(ridesoffers);
-    return ridesoffers;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch ridesoffers");
-  }
-};
-
-
 export default function NearbyRides() {
   const [ridesRequests, setRidesRequests] = useState([]);
   const [ridesoffers, setridesoffers] = useState([]);
@@ -43,16 +13,55 @@ export default function NearbyRides() {
   const [FilteredRidesRequests, setFilteredRidesRequests] = useState([])
   const [FilteredRidesOffers, setFilteredRidesOffers] = useState([])
 
+  const getAllridesRequestsOpenDifferentId = async () => {
+    let url = API_URL + "/rideRequests/getAllridesRequestsOpenDifferentId";
+    try {
+      const response = await doApiGet(url);
+      console.log("Requests", response);
+      const ridesRequests = response.data.ar_rideRequests;
+      console.log(ridesRequests);
+      return ridesRequests;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Failed to fetch ridesRequests");
+    }
+  };
+
+  const getAllridesoffersOpenDifferentId = async () => {
+    let url = API_URL + "/rideoffers/getAllridesoffersOpenDifferentId";
+    try {
+      const response = await doApiGet(url);
+      console.log("Offer", response);
+      const ridesoffers = response.data.ar_rideoffers;
+      console.log(ridesoffers);
+      return ridesoffers;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Failed to fetch ridesoffers");
+    }
+  };
 
   useEffect(() => {
     async function fetchrides() {
       try {
-        const ridesRequestsData = await getAllridesRequestsOpen();
+        const ridesRequestsData = await getAllridesRequestsOpenDifferentId();
         setRidesRequests(ridesRequestsData);
-        const ridesoffersData = await getAllridesoffersOpen();
-        setridesoffers(ridesoffersData);
 
         setFilteredRidesRequests(ridesRequestsData);
+
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchrides();
+  }, [refreshFlag]);
+
+  useEffect(() => {
+    async function fetchrides() {
+      try {
+        const ridesoffersData = await getAllridesoffersOpenDifferentId();
+        setridesoffers(ridesoffersData);
+
         setFilteredRidesOffers(ridesoffersData)
 
       } catch (err) {
@@ -60,9 +69,7 @@ export default function NearbyRides() {
       }
     }
     fetchrides();
-    // setRefreshFlag(false)
   }, [refreshFlag]);
-
 
   const setSearchTermRequests = (searchTerm) => {
     console.log(searchTerm);
@@ -103,7 +110,6 @@ export default function NearbyRides() {
             </div>
           </div>
 
-
           <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
               {FilteredRidesRequests.length > 0 && (
@@ -129,23 +135,24 @@ export default function NearbyRides() {
                 </>
               )}
             </div>
-            <button className="carousel-control-prev" style={{ top: 63, left: -103 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <button className="carousel-control-prev" style={{ top: 135, left: -72 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" style={{ top: 63, right: -103 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            </button> 
+            <button className="carousel-control-next" style={{ top: 135, right: -72 }} type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
               <span className="carousel-control-next-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>
           </div>
 
-
-          {FilteredRidesRequests.length < 1 && <Loading />}
+          {FilteredRidesRequests.length < 1 &&
+            <div className="spinner-border text-light text-center" role="status">
+              <span className="sr-only"></span>
+            </div>
+          }
         </div>
 
-
         <div className='row g-3'>
-
           <div className='d-flex m-5' style={{ alignItems: 'center' }}>
             <h2 className='font-weight-bold text-light'>Rides Offers: </h2>
             <div>
@@ -179,21 +186,23 @@ export default function NearbyRides() {
                 </>
               )}
             </div>
-            <button className="carousel-control-prev" style={{ top: 63, left: -103 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
+            <button className="carousel-control-prev" style={{ top: 135, left: -72 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
             </button>
-            <button className="carousel-control-next" style={{ top: 63, right: -103 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
+            <button className="carousel-control-next" style={{  top: 135,right: -72 }} type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="next">
               <span className="carousel-control-next-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>
           </div>
 
-          {FilteredRidesOffers.length < 1 && <Loading />}
+          {FilteredRidesOffers.length < 1 &&
+            <div className="spinner-border text-light text-center" role="status">
+              <span className="sr-only"></span>
+            </div>
+          }
         </div>
-
       </div>
-
     </>
   )
 }

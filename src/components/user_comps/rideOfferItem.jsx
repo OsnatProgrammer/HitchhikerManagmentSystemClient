@@ -394,10 +394,10 @@ export default function RideOfferItem(props) {
         <div className="container-card bg-green-box">
           {/* <p className="card-title">Request</p> */}
           <p className="card-description">
-            departure: {item.details_offer.departure_address}<br />
-            destination: {item.details_offer.destination_address}<br />
-            departure time: {new Date(item.details_offer.departure_time).toLocaleDateString()}<br />
-            departure time: {new Date(item.details_offer.departure_time).toLocaleTimeString()}<br />
+            <span className='text-decoration-underline'>Departure Address:</span> <br/> {item.details_offer.departure_address}<br />
+            <span className='text-decoration-underline'>Destination Address:</span><br/> {item.details_offer.destination_address}<br />
+            <span className='text-decoration-underline'>Departure time:</span> {new Date(item.details_offer.departure_time).toLocaleDateString()}<br />
+            <span className='text-decoration-underline'>Departure time: </span>{new Date(item.details_offer.departure_time).toLocaleTimeString()}<br />
           </p>
 
           {/* <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -482,8 +482,9 @@ export default function RideOfferItem(props) {
                 X
               </button>
 
-              <div className='d-flex m-5'>
+              <div className='row'>
                 <button
+                className='col-md-5'
                   style={{
                     // padding: '10px 20px',
                     backgroundColor: ' #54E8A9',
@@ -491,8 +492,8 @@ export default function RideOfferItem(props) {
                     fontWeight: 'bold',
                     border: 'none',
                     borderRadius: '5px',
-                    marginTop: '50px',
-                    marginRight: '10px',
+                    marginTop: '100px',
+                    // marginRight: '10px',
                     cursor: 'pointer',
                   }}
                   onClick={changeShowNewMessage}
@@ -500,6 +501,7 @@ export default function RideOfferItem(props) {
                   Send message to hitchhiker
                 </button>
                 <button
+                className='col-md-5'
                   style={{
                     // padding: '10px 20px',
                     backgroundColor: ' #54E8A9',
@@ -507,9 +509,9 @@ export default function RideOfferItem(props) {
                     fontWeight: 'bold',
                     border: 'none',
                     borderRadius: '5px',
-                    marginTop: '50px',
-                    marginRight: '10px',
-                    marginLeft:'20px',
+                    marginTop: '100px',
+                    // marginRight: '10px',
+                    // marginLeft:'20px',
                     cursor: 'pointer',
                   }}
                   onClick={save}
@@ -525,7 +527,7 @@ export default function RideOfferItem(props) {
                   fontWeight: 'bold',
                   border: 'none',
                   borderRadius: '5px',
-                  marginTop: '10px',
+                  marginTop: '30px',
                   marginBottom:'10px',
                   cursor: 'pointer',
                 }}

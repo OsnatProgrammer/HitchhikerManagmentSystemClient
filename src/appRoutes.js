@@ -20,6 +20,8 @@ import Logout from './components/auth/logout';
 import UsersList from './components/admin_comps/usersList';
 import RidesList from './components/admin_comps/ridesList';
 import PrivacyPolicy from './components/general_comps/privacyPolicy';
+import UploadTest from './components/user_comps/upload';
+import HomeManager from './components/admin_comps/homeManager';
 
 // import RidesHistoryDetails from './components/user_comps/ridesHistoryDetails';
 // import PopUp from './components/user_comps/popup';
@@ -45,6 +47,7 @@ const AppRoutes = () => {
                 </Route>
 
                 <Route path='/manager' element={<AdminLayout />}>
+                    <Route path='/manager' element={< HomeManager />} />
                     <Route path='/manager/usersList' element={< UsersList />} />
                     <Route path='/manager/ridesList' element={< RidesList />} />
                     <Route path='/manager/messages' element={< Messages />} />
@@ -60,6 +63,7 @@ const AppRoutes = () => {
                     <Route path='/user/rideRequest' element={< RideRequest />} />
                     <Route path='/user/myRides' element={< MyRides />} />
                     <Route path='/user/messages' element={< Messages />} />
+                    <Route path='/user/upload' element={< UploadTest />} />
                     <Route path='/user/message-details/:id' element={<MessageDetails />} />
                     <Route path='/user/ridesHistory' element={< RidesHistory />} />
                     {/* <Route path='/user/popup' element={<  PopUp/>} /> */}

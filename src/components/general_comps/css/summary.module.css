@@ -1,9 +1,9 @@
 .strip {
-  background-image: url("https://i.ibb.co/Cv8WbJm/pexels-erica-gaia-12905646.jpg");
+  background-image: url("https://i.guim.co.uk/img/media/7bb41f0aa17c29a22b476534f8f9f546990f6f54/0_107_5670_3403/master/5670.jpg?width=620&quality=45&dpr=2&s=none");
   box-shadow: 0px 3px 10px 1px #000;
   background-position: center;
   background-size: cover;
-  min-height: 510px;
+  min-height: 400px;
   /* position: relative; */
   width: 100%;
 }
