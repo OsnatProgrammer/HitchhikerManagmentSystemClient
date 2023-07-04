@@ -126,8 +126,10 @@ export default function MessageDetails() {
   };
 
   return (
+    <>
+    <div className={`mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '140px', fontSize: '32px' }}></div>
     <div className="container shadow col-md-6 my-5 text-danger">
-      <h1 className="font-weight-bold text-center m-3">Message Details</h1>
+      <div className="font-weight-bold text-center m-3">Message Details</div>
       <p>
         <span className="font-weight-bold">User Received:</span> {message.user_idReceive}
       </p>
@@ -156,5 +158,6 @@ export default function MessageDetails() {
         <ToastContainer />
       </div>
     </div>
+    </>
   );
 }

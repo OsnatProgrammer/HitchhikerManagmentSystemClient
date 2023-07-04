@@ -96,7 +96,7 @@ export default function RidesList() {
     <div className="container">
 
       {/* Travel offers */}
-      <h1>Rides Offer</h1>
+      <div className={`mb-3 d-flex justify-content-center align-items-end`} style={{ minHeight: '174px',fontSize:'32px'}}>Rides Offer</div>
       {ridesOffer.length > 0 ? (
         <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">
@@ -127,7 +127,7 @@ export default function RidesList() {
       )}
 
       {/* Travel requests */}
-      <h1>Rides Request</h1>
+      <div style={{fontSize:'32px'}}>Rides Request</div>
       {ridesRequest.length > 0 ? (
         <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">
@@ -158,7 +158,7 @@ export default function RidesList() {
       )}
 
       {/* Trips that have been closed */}
-      <h1>Trips that have been closed</h1>
+      <div style={{fontSize:'32px'}}>Trips that have been closed</div>
       {rides.length > 0 ? (
         <table id="dtBasicExample" className="table table-striped table-bordered table-sm" cellSpacing="0" width="100%">
           <thead className="thead-dark">
