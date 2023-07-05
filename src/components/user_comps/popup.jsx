@@ -55,7 +55,7 @@ const PopUp = ({ close, children }) => (
     <div className="shadow p-2 overflow-hidden h-100 p-3 popUp" style={{ borderRadius: '10%' }}>
       {close ? (
         <button onClick={close} className="close">
-          <CloseOutlinedIcon />
+          {/* <CloseOutlinedIcon /> */}
         </button>
       ) : null}
       <div className="children-popup">{children}</div>

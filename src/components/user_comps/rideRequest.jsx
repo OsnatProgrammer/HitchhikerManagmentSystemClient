@@ -86,13 +86,13 @@ export default function RideRequest() {
         </div>
       </div> */}
 
-      <div style={{ minHeight: '111px', backgroundColor: '#54E8A9', position: 'relative', top: '340px', zIndex: '-99' }}></div>
+      <div style={{ minHeight: '100px', backgroundColor: '#54E8A9', position: 'relative', top: '340px', zIndex: '-99' }}></div>
 
       <div className='container'>
       <div className={`${styles.title} display-1 mb-3`}>
           Ride Request
         </div>
-        <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-3 shadow mx-auto' style={{ background: '#DDDEDC', borderRadius: '10px', width: '45', border:'#54E8A9 3px solid' }}>
+        <form onSubmit={handleSubmit(onSubForm)} className='col-md-6 p-2 shadow mx-auto' style={{ background: '#DDDEDC', borderRadius: '10px', width: '45', border:'#54E8A9 3px solid' }}>
 
           <label className='text-dark' style={{ fontSize: '20px' }}>Departure Address:</label>
           <AddressInput

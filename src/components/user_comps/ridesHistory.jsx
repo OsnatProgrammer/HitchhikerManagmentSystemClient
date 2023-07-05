@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { doApiGet, API_URL, CURRENT_USER, arrRideHistory } from '../services/apiService';
 import { useTable, useSortBy, useFilters, useGlobalFilter, useAsyncDebounce, usePagination } from 'react-table';
 import PopUp from './popup';
-import { border, color } from '@mui/system';
+import { border, color, fontSize } from '@mui/system';
 import stylesTitle from './css/nearByRides.module.css'
 import _ from 'lodash';
 
@@ -29,6 +29,10 @@ export default function RidesHistory() {
     }
     fetchRides();
   }, []);
+
+  const cancel = () => {
+    setIsOpenPopup(false)
+  }
 
   const columns = React.useMemo(
     () => [
@@ -107,7 +111,7 @@ export default function RidesHistory() {
       {
         Header: 'More details',
         Cell: ({ row }) => (
-          <button style={{ width: 'fit-content' }} onClick={() => {
+          <button style={{ width: 'fit-content',fontSize:'24px' }} onClick={() => {
             setSelectedRide(row.original);
             setIsOfferedByUser(row.original.userIdOffer === user._id ? row.original.userIdOffer : row.original.userIdRequest);
             setIsOpenPopup(true);
@@ -248,23 +252,94 @@ export default function RidesHistory() {
       </div>
       {isOpenPopup ? (
         <PopUp close={() => setIsOpenPopup(false)}>
-          <div className="popup-content">
-            <p>Ride Details:</p>
+          <div className='shadow' style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 9999,
+            }}>
+          <div  style={{
+            
+                backgroundColor: 'rgb(27 30 32)',
+                border: '0.5px  #54E8A9 solid',
+                color: "#54E8A9",
+                padding: '20px',
+                borderRadius: '10px',
+                textAlign: 'center',
+                width: '340px',
+                height: '340px',
+                position: 'relative',
+              }}>
+            <h3 >Ride Details:</h3>
+            <button
+                style={{
+                  position: 'absolute',
+                  color: "#54E8A9",
+                  top: '-2px',
+                  left: '-110px',
+                  padding: '5px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '24px',
+                }}
+                onClick={cancel}
+              >
+                X
+              </button>
             {isOfferedByUser ? (
-              <div>
-                <p>Ride ID: {selectedRide.rideID}</p>
-                <p>Name: {selectedRide.ride_offer.fullName.firstName} {selectedRide.ride_offer.fullName.lastName}</p>
+              <div className='text-light text-start'>
+                {/* <p>Ride ID: {selectedRide.rideID}</p> */}
+                <p>Driver: {selectedRide.ride_offer.fullName.firstName} {selectedRide.ride_offer.fullName.lastName}</p>
+               <p>Date: {new Date(selectedRide.details_offer.departure_time).toLocaleDateString()}</p>
+               <p>Time: {new Date(selectedRide.details_offer.departure_time).toLocaleTimeString()}</p>
+               <p>Address Departure: </p>
+               <p> {selectedRide.details_offer.departure_address}</p>
+               <p>Address Destination: </p>
+               <p>{selectedRide.details_offer.destination_address}</p>
                 {/* Add more details here */}
               </div>
             ) : (
-              <div>
-                <p>Ride ID: {selectedRide.rideID}</p>
-                <p>Name: {selectedRide.ride_request.fullName.firstName} {selectedRide.ride_request.fullName.lastName}</p>
+              <div className='text-light text-start'>
+                {/* <p>Ride ID: {selectedRide.rideID}</p> */}
+                <p>Passenger: {selectedRide.ride_request.fullName.firstName} {selectedRide.ride_request.fullName.lastName}</p>
+                <p>Date: {new Date(selectedRide.details_request.departure_time).toLocaleDateString()}</p>
+               <p>Time: {new Date(selectedRide.details_request.departure_time).toLocaleTimeString()}</p>
+               <p>Address Departure: </p><br/>
+               <p> {selectedRide.details_request.departure_address}</p>
+               <p>Address Destination: </p><br/>
+               <p>{selectedRide.details_request.destination_address}</p>
                 {/* Add more details here */}
               </div>
             )}
-          </div>
+          </div></div>
         </PopUp>
+        // <PopUp close={() => setIsOpenPopup(false)}>
+        //   <div >
+        //   <div className="popup-content">
+        //     <p>Ride Details:</p>
+        //     {isOfferedByUser ? (
+        //       <div>
+        //         <p>Ride ID: {selectedRide.rideID}</p>
+        //         <p>Name: {selectedRide.ride_offer.fullName.firstName} {selectedRide.ride_offer.fullName.lastName}</p>
+        //         {/* Add more details here */}
+        //       </div>
+        //     ) : (
+        //       <div>
+        //         <p>Ride ID: {selectedRide.rideID}</p>
+        //         <p>Name: {selectedRide.ride_request.fullName.firstName} {selectedRide.ride_request.fullName.lastName}</p>
+        //         {/* Add more details here */}
+        //       </div>
+        //     )}
+        //   </div></div>
+        // </PopUp>
       ) : null}
     </div>
   );
